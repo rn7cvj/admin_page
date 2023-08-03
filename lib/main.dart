@@ -1,5 +1,6 @@
-import 'package:admin_page/features/admin_console/admin_console.dart';
+import 'package:admin_page/features/services/services.dart';
 import 'package:flutter/material.dart';
+import 'features/staff/staff.dart';
 
 void main() {
   runApp(const App());
@@ -11,7 +12,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: AdminConsole(),
+      home: Services(),
       debugShowCheckedModeBanner: false,
     );
   }
