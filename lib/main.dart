@@ -1,5 +1,6 @@
 import 'package:admin_page/features/services/services.dart';
 import 'package:admin_page/features/themes/app_theme.dart';
+import 'package:admin_page/router.dart';
 import 'package:flutter/material.dart';
 import 'features/staff/staff.dart';
 
@@ -22,10 +23,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       theme: _lightTheme,
       darkTheme: _darkTheme,
-      home: Services(),
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
     );
   }

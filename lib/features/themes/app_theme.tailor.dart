@@ -8,7 +8,7 @@ part of 'app_theme.dart';
 // TailorAnnotationsGenerator
 // **************************************************************************
 
-class AppTheme extends ThemeExtension<AppTheme> {
+class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
   const AppTheme({
     required this.backgoundColor,
     required this.buttonColor,
@@ -19,6 +19,7 @@ class AppTheme extends ThemeExtension<AppTheme> {
     required this.cardHeadlineTextStyle,
     required this.indicatorTabColor,
     required this.lableTextStyle,
+    required this.navigationTheme,
     required this.secetedTabColor,
     required this.selectedTabTextStyle,
     required this.tabelContentTextStyle,
@@ -36,6 +37,7 @@ class AppTheme extends ThemeExtension<AppTheme> {
   final TextStyle cardHeadlineTextStyle;
   final Color indicatorTabColor;
   final TextStyle lableTextStyle;
+  final NavigationTheme navigationTheme;
   final Color secetedTabColor;
   final TextStyle selectedTabTextStyle;
   final TextStyle tabelContentTextStyle;
@@ -43,95 +45,87 @@ class AppTheme extends ThemeExtension<AppTheme> {
   final Color unsecetedTabColor;
   final TextStyle unselectedTabTextStyle;
 
-  static const AppTheme light = AppTheme(
-    backgoundColor: Color.fromRGBO(247, 247, 247, 1),
-    buttonColor: Color.fromRGBO(67, 67, 244, 1),
-    buttonIconColor: Color.fromRGBO(255, 255, 255, 1),
-    buttonextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 20,
-        color: Color.fromRGBO(255, 255, 255, 1),
-        fontWeight: FontWeight.w300),
-    cardColor: Color.fromRGBO(255, 255, 255, 1),
-    cardContentTextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 16,
-        color: Color.fromRGBO(37, 37, 37, 1),
-        fontWeight: FontWeight.w300),
-    cardHeadlineTextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 28,
-        color: Color.fromRGBO(37, 37, 37, 1),
-        fontWeight: FontWeight.w500),
-    indicatorTabColor: Color.fromRGBO(67, 67, 244, 1),
-    lableTextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 32,
-        color: Color.fromRGBO(37, 37, 37, 1),
-        fontWeight: FontWeight.w600),
-    secetedTabColor: Color.fromRGBO(37, 37, 37, 1),
-    selectedTabTextStyle: TextStyle(
-        fontFamily: "Roboto", fontSize: 28, fontWeight: FontWeight.w600),
-    tabelContentTextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 18,
-        color: Color.fromRGBO(0, 0, 0, 1),
-        fontWeight: FontWeight.w300),
-    tabelHeadlineTextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 20,
-        color: Color.fromRGBO(0, 0, 0, 1),
-        fontWeight: FontWeight.w400),
-    unsecetedTabColor: Color.fromRGBO(193, 193, 193, 1),
-    unselectedTabTextStyle: TextStyle(
-        fontFamily: "Roboto", fontSize: 28, fontWeight: FontWeight.w300),
+  static AppTheme get light => kDebugMode ? _lightGetter : _lightFinal;
+
+  static AppTheme get dark => kDebugMode ? _darkGetter : _darkFinal;
+
+  static AppTheme get _lightGetter => AppTheme(
+        backgoundColor: _$AppTheme.backgoundColor[0],
+        buttonColor: _$AppTheme.buttonColor[0],
+        buttonIconColor: _$AppTheme.buttonIconColor[0],
+        buttonextStyle: _$AppTheme.buttonextStyle[0],
+        cardColor: _$AppTheme.cardColor[0],
+        cardContentTextStyle: _$AppTheme.cardContentTextStyle[0],
+        cardHeadlineTextStyle: _$AppTheme.cardHeadlineTextStyle[0],
+        indicatorTabColor: _$AppTheme.indicatorTabColor[0],
+        lableTextStyle: _$AppTheme.lableTextStyle[0],
+        navigationTheme: _$AppTheme.navigationTheme[0],
+        secetedTabColor: _$AppTheme.secetedTabColor[0],
+        selectedTabTextStyle: _$AppTheme.selectedTabTextStyle[0],
+        tabelContentTextStyle: _$AppTheme.tabelContentTextStyle[0],
+        tabelHeadlineTextStyle: _$AppTheme.tabelHeadlineTextStyle[0],
+        unsecetedTabColor: _$AppTheme.unsecetedTabColor[0],
+        unselectedTabTextStyle: _$AppTheme.unselectedTabTextStyle[0],
+      );
+
+  static final AppTheme _lightFinal = AppTheme(
+    backgoundColor: _$AppTheme.backgoundColor[0],
+    buttonColor: _$AppTheme.buttonColor[0],
+    buttonIconColor: _$AppTheme.buttonIconColor[0],
+    buttonextStyle: _$AppTheme.buttonextStyle[0],
+    cardColor: _$AppTheme.cardColor[0],
+    cardContentTextStyle: _$AppTheme.cardContentTextStyle[0],
+    cardHeadlineTextStyle: _$AppTheme.cardHeadlineTextStyle[0],
+    indicatorTabColor: _$AppTheme.indicatorTabColor[0],
+    lableTextStyle: _$AppTheme.lableTextStyle[0],
+    navigationTheme: _$AppTheme.navigationTheme[0],
+    secetedTabColor: _$AppTheme.secetedTabColor[0],
+    selectedTabTextStyle: _$AppTheme.selectedTabTextStyle[0],
+    tabelContentTextStyle: _$AppTheme.tabelContentTextStyle[0],
+    tabelHeadlineTextStyle: _$AppTheme.tabelHeadlineTextStyle[0],
+    unsecetedTabColor: _$AppTheme.unsecetedTabColor[0],
+    unselectedTabTextStyle: _$AppTheme.unselectedTabTextStyle[0],
   );
 
-  static const AppTheme dark = AppTheme(
-    backgoundColor: Color.fromRGBO(247, 247, 247, 1),
-    buttonColor: Color.fromRGBO(67, 67, 244, 1),
-    buttonIconColor: Color.fromRGBO(255, 255, 255, 1),
-    buttonextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 20,
-        color: Color.fromRGBO(255, 255, 255, 1),
-        fontWeight: FontWeight.w300),
-    cardColor: Color.fromRGBO(255, 255, 255, 1),
-    cardContentTextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 16,
-        color: Color.fromRGBO(37, 37, 37, 1),
-        fontWeight: FontWeight.w300),
-    cardHeadlineTextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 28,
-        color: Color.fromRGBO(37, 37, 37, 1),
-        fontWeight: FontWeight.w500),
-    indicatorTabColor: Color.fromRGBO(67, 67, 244, 1),
-    lableTextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 32,
-        color: Color.fromRGBO(37, 37, 37, 1),
-        fontWeight: FontWeight.w600),
-    secetedTabColor: Color.fromRGBO(37, 37, 37, 1),
-    selectedTabTextStyle: TextStyle(
-        fontFamily: "Roboto", fontSize: 28, fontWeight: FontWeight.w600),
-    tabelContentTextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 18,
-        color: Color.fromRGBO(0, 0, 0, 1),
-        fontWeight: FontWeight.w300),
-    tabelHeadlineTextStyle: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 20,
-        color: Color.fromRGBO(0, 0, 0, 1),
-        fontWeight: FontWeight.w400),
-    unsecetedTabColor: Color.fromRGBO(193, 193, 193, 1),
-    unselectedTabTextStyle: TextStyle(
-        fontFamily: "Roboto", fontSize: 28, fontWeight: FontWeight.w300),
+  static AppTheme get _darkGetter => AppTheme(
+        backgoundColor: _$AppTheme.backgoundColor[1],
+        buttonColor: _$AppTheme.buttonColor[1],
+        buttonIconColor: _$AppTheme.buttonIconColor[1],
+        buttonextStyle: _$AppTheme.buttonextStyle[1],
+        cardColor: _$AppTheme.cardColor[1],
+        cardContentTextStyle: _$AppTheme.cardContentTextStyle[1],
+        cardHeadlineTextStyle: _$AppTheme.cardHeadlineTextStyle[1],
+        indicatorTabColor: _$AppTheme.indicatorTabColor[1],
+        lableTextStyle: _$AppTheme.lableTextStyle[1],
+        navigationTheme: _$AppTheme.navigationTheme[1],
+        secetedTabColor: _$AppTheme.secetedTabColor[1],
+        selectedTabTextStyle: _$AppTheme.selectedTabTextStyle[1],
+        tabelContentTextStyle: _$AppTheme.tabelContentTextStyle[1],
+        tabelHeadlineTextStyle: _$AppTheme.tabelHeadlineTextStyle[1],
+        unsecetedTabColor: _$AppTheme.unsecetedTabColor[1],
+        unselectedTabTextStyle: _$AppTheme.unselectedTabTextStyle[1],
+      );
+
+  static final AppTheme _darkFinal = AppTheme(
+    backgoundColor: _$AppTheme.backgoundColor[1],
+    buttonColor: _$AppTheme.buttonColor[1],
+    buttonIconColor: _$AppTheme.buttonIconColor[1],
+    buttonextStyle: _$AppTheme.buttonextStyle[1],
+    cardColor: _$AppTheme.cardColor[1],
+    cardContentTextStyle: _$AppTheme.cardContentTextStyle[1],
+    cardHeadlineTextStyle: _$AppTheme.cardHeadlineTextStyle[1],
+    indicatorTabColor: _$AppTheme.indicatorTabColor[1],
+    lableTextStyle: _$AppTheme.lableTextStyle[1],
+    navigationTheme: _$AppTheme.navigationTheme[1],
+    secetedTabColor: _$AppTheme.secetedTabColor[1],
+    selectedTabTextStyle: _$AppTheme.selectedTabTextStyle[1],
+    tabelContentTextStyle: _$AppTheme.tabelContentTextStyle[1],
+    tabelHeadlineTextStyle: _$AppTheme.tabelHeadlineTextStyle[1],
+    unsecetedTabColor: _$AppTheme.unsecetedTabColor[1],
+    unselectedTabTextStyle: _$AppTheme.unselectedTabTextStyle[1],
   );
 
-  static const themes = [
+  static final themes = [
     light,
     dark,
   ];
@@ -147,6 +141,7 @@ class AppTheme extends ThemeExtension<AppTheme> {
     TextStyle? cardHeadlineTextStyle,
     Color? indicatorTabColor,
     TextStyle? lableTextStyle,
+    NavigationTheme? navigationTheme,
     Color? secetedTabColor,
     TextStyle? selectedTabTextStyle,
     TextStyle? tabelContentTextStyle,
@@ -165,6 +160,7 @@ class AppTheme extends ThemeExtension<AppTheme> {
           cardHeadlineTextStyle ?? this.cardHeadlineTextStyle,
       indicatorTabColor: indicatorTabColor ?? this.indicatorTabColor,
       lableTextStyle: lableTextStyle ?? this.lableTextStyle,
+      navigationTheme: navigationTheme ?? this.navigationTheme,
       secetedTabColor: secetedTabColor ?? this.secetedTabColor,
       selectedTabTextStyle: selectedTabTextStyle ?? this.selectedTabTextStyle,
       tabelContentTextStyle:
@@ -193,6 +189,8 @@ class AppTheme extends ThemeExtension<AppTheme> {
       indicatorTabColor:
           Color.lerp(indicatorTabColor, other.indicatorTabColor, t)!,
       lableTextStyle: TextStyle.lerp(lableTextStyle, other.lableTextStyle, t)!,
+      navigationTheme:
+          navigationTheme.lerp(other.navigationTheme, t) as NavigationTheme,
       secetedTabColor: Color.lerp(secetedTabColor, other.secetedTabColor, t)!,
       selectedTabTextStyle:
           TextStyle.lerp(selectedTabTextStyle, other.selectedTabTextStyle, t)!,
@@ -205,6 +203,31 @@ class AppTheme extends ThemeExtension<AppTheme> {
       unselectedTabTextStyle: TextStyle.lerp(
           unselectedTabTextStyle, other.unselectedTabTextStyle, t)!,
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppTheme'))
+      ..add(DiagnosticsProperty('backgoundColor', backgoundColor))
+      ..add(DiagnosticsProperty('buttonColor', buttonColor))
+      ..add(DiagnosticsProperty('buttonIconColor', buttonIconColor))
+      ..add(DiagnosticsProperty('buttonextStyle', buttonextStyle))
+      ..add(DiagnosticsProperty('cardColor', cardColor))
+      ..add(DiagnosticsProperty('cardContentTextStyle', cardContentTextStyle))
+      ..add(DiagnosticsProperty('cardHeadlineTextStyle', cardHeadlineTextStyle))
+      ..add(DiagnosticsProperty('indicatorTabColor', indicatorTabColor))
+      ..add(DiagnosticsProperty('lableTextStyle', lableTextStyle))
+      ..add(DiagnosticsProperty('navigationTheme', navigationTheme))
+      ..add(DiagnosticsProperty('secetedTabColor', secetedTabColor))
+      ..add(DiagnosticsProperty('selectedTabTextStyle', selectedTabTextStyle))
+      ..add(DiagnosticsProperty('tabelContentTextStyle', tabelContentTextStyle))
+      ..add(
+          DiagnosticsProperty('tabelHeadlineTextStyle', tabelHeadlineTextStyle))
+      ..add(DiagnosticsProperty('unsecetedTabColor', unsecetedTabColor))
+      ..add(DiagnosticsProperty(
+          'unselectedTabTextStyle', unselectedTabTextStyle));
   }
 
   @override
@@ -229,6 +252,8 @@ class AppTheme extends ThemeExtension<AppTheme> {
                 .equals(indicatorTabColor, other.indicatorTabColor) &&
             const DeepCollectionEquality()
                 .equals(lableTextStyle, other.lableTextStyle) &&
+            const DeepCollectionEquality()
+                .equals(navigationTheme, other.navigationTheme) &&
             const DeepCollectionEquality()
                 .equals(secetedTabColor, other.secetedTabColor) &&
             const DeepCollectionEquality()
@@ -256,6 +281,7 @@ class AppTheme extends ThemeExtension<AppTheme> {
       const DeepCollectionEquality().hash(cardHeadlineTextStyle),
       const DeepCollectionEquality().hash(indicatorTabColor),
       const DeepCollectionEquality().hash(lableTextStyle),
+      const DeepCollectionEquality().hash(navigationTheme),
       const DeepCollectionEquality().hash(secetedTabColor),
       const DeepCollectionEquality().hash(selectedTabTextStyle),
       const DeepCollectionEquality().hash(tabelContentTextStyle),

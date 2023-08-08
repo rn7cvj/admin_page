@@ -1,3 +1,5 @@
+import 'package:admin_page/features/themes/navigation_theme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 
@@ -9,6 +11,12 @@ part 'app_theme.tailor.dart';
   generateStaticGetters: true,
 )
 class _$AppTheme {
+  @themeExtension
+  static List<NavigationTheme> navigationTheme = [
+    NavigationTheme.light,
+    NavigationTheme.dark,
+  ];
+
   static const List<Color> backgoundColor = [
     Color.fromRGBO(247, 247, 247, 1),
     Color.fromRGBO(247, 247, 247, 1),

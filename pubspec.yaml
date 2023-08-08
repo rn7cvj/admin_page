@@ -32,6 +32,9 @@ flutter:
 
   uses-material-design: true
 
+  assets:
+    - assets/icons/
+
   fonts:
   # название семейства шрифтов
   - family: Roboto

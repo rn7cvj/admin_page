@@ -1,3 +1,4 @@
+import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class BuildingCard extends StatelessWidget {
@@ -13,7 +14,7 @@ class BuildingCard extends StatelessWidget {
     return SizedBox(
       width: 310,
       child: Card(
-        color: Colors.white,
+        color: context.appTheme.cardColor,
         surfaceTintColor: Colors.transparent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -23,7 +24,7 @@ class BuildingCard extends StatelessWidget {
               padding: const EdgeInsets.only(top: 24, left: 24, right: 24),
               child: Row(
                 children: [
-                  Expanded(child: Text(lable, style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold))),
+                  Expanded(child: Text(lable, style: context.appTheme.cardHeadlineTextStyle)),
                   Expanded(
                       child: Text(buildingType,
                           style: TextStyle(fontSize: 18, color: Color.fromRGBO(67, 67, 244, 1)),
@@ -37,7 +38,10 @@ class BuildingCard extends StatelessWidget {
             ...zones
                 .map((text) => Padding(
                       padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-                      child: Text(text),
+                      child: Text(
+                        text,
+                        style: context.appTheme.cardContentTextStyle,
+                      ),
                     ))
                 .toList(),
             const SizedBox(
