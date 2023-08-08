@@ -1,3 +1,4 @@
+import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class TabBarSelector extends StatelessWidget {
@@ -10,13 +11,15 @@ class TabBarSelector extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: TabBar(
-        indicatorColor: const Color.fromRGBO(67, 67, 244, 1),
-        labelColor: const Color.fromRGBO(67, 67, 244, 1),
-        unselectedLabelColor: const Color.fromRGBO(193, 193, 193, 1),
+        dividerColor: Colors.transparent,
+        indicatorColor: context.appTheme.indicatorTabColor,
+        labelColor: context.appTheme.secetedTabColor,
+        unselectedLabelColor: context.appTheme.unsecetedTabColor,
         controller: tabBarController,
         isScrollable: true,
         labelPadding: EdgeInsets.all(8.0),
-        labelStyle: TextStyle(fontSize: 28),
+        labelStyle: context.appTheme.selectedTabTextStyle,
+        unselectedLabelStyle: context.appTheme.unselectedTabTextStyle,
         tabAlignment: TabAlignment.start,
         tabs: [
           Tab(text: "Посетители"),

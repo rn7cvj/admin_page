@@ -1,3 +1,4 @@
+import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ServiceCard extends StatelessWidget {
@@ -13,7 +14,7 @@ class ServiceCard extends StatelessWidget {
       width: 310,
       child: Card(
         // margin: EdgeInsets.zero,
-        color: Colors.white,
+        color: context.appTheme.cardColor,
         // color: Colors.black,
         surfaceTintColor: Colors.transparent,
         // elevation: 1,
@@ -30,7 +31,7 @@ class ServiceCard extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 24.0, top: 24.0),
                     child: Text(
                       lable,
-                      style: TextStyle(fontSize: 28),
+                      style: context.appTheme.cardHeadlineTextStyle,
                     ),
                   ),
                 ),
@@ -46,7 +47,7 @@ class ServiceCard extends StatelessWidget {
             ...services
                 .map((text) => Padding(
                       padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-                      child: Text(text),
+                      child: Text(text, style: context.appTheme.cardContentTextStyle),
                     ))
                 .toList(),
             const SizedBox(

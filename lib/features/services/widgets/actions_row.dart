@@ -1,3 +1,4 @@
+import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ActionsRow extends StatelessWidget {
@@ -51,15 +52,15 @@ class ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton.icon(
       style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(67, 67, 244, 1)),
-          iconColor: MaterialStateProperty.all(Colors.white),
+          backgroundColor: MaterialStateProperty.all(context.appTheme.buttonColor),
+          iconColor: MaterialStateProperty.all(context.appTheme.buttonIconColor),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
           visualDensity: VisualDensity.comfortable),
       onPressed: onPressed,
       icon: icon,
-      label: Text(lable, style: TextStyle(color: Colors.white)),
+      label: Text(lable, style: context.appTheme.buttonextStyle),
     );
   }
 }

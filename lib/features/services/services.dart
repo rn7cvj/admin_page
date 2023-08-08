@@ -1,5 +1,6 @@
 import 'package:admin_page/features/services/widgets/building_tab.dart';
 import 'package:admin_page/features/services/widgets/service_tab.dart';
+import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/actions_row.dart';
@@ -18,7 +19,7 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(247, 247, 247, 1),
+      backgroundColor: context.appTheme.backgoundColor,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

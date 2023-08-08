@@ -1,3 +1,4 @@
+import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class Lable extends StatelessWidget {
@@ -8,9 +9,9 @@ class Lable extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
+        Text(
           "Люди",
-          style: TextStyle(fontSize: 32),
+          style: context.appTheme.lableTextStyle,
         ),
         CircleAvatar(
             backgroundColor: const Color.fromRGBO(67, 67, 244, 1),

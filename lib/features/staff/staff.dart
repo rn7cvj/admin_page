@@ -1,11 +1,9 @@
 import 'package:admin_page/features/staff/widgets/actions_row.dart';
 import 'package:admin_page/features/staff/widgets/lable.dart';
 import 'package:admin_page/features/staff/widgets/tab_bar_selector.dart';
+import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:scrollable_table_view/scrollable_table_view.dart';
-
 import 'widgets/users_table.dart';
-import 'widgets/navigation.dart';
 
 class Staff extends StatefulWidget {
   const Staff({super.key});
@@ -20,6 +18,7 @@ class _StaffState extends State<Staff> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.appTheme.backgoundColor,
       body: Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 16.0),
         child: Column(

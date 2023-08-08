@@ -1,17 +1,30 @@
 import 'package:admin_page/features/services/services.dart';
+import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'features/staff/staff.dart';
 
 void main() {
-  runApp(const App());
+  runApp(App());
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
+  App({super.key});
+
+  final _lightTheme = ThemeData(
+    brightness: Brightness.light,
+    extensions: [AppTheme.light],
+  );
+
+  final _darkTheme = ThemeData(
+    brightness: Brightness.dark,
+    extensions: [AppTheme.dark],
+  );
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: _lightTheme,
+      darkTheme: _darkTheme,
       home: Services(),
       debugShowCheckedModeBanner: false,
     );
