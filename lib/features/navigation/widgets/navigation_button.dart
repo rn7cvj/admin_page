@@ -3,10 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NavigationButton extends StatelessWidget {
-  const NavigationButton({super.key, required this.svgPath, required this.isSelected});
+  const NavigationButton({
+    super.key,
+    required this.selectedSvgPath,
+    required this.unselectedSvgPath,
+    required this.isSelected,
+    required this.onTap,
+  });
 
-  final String svgPath;
+  final String selectedSvgPath;
+  final String unselectedSvgPath;
   final bool isSelected;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +23,7 @@ class NavigationButton extends StatelessWidget {
     if (isSelected) borderColor = context.appTheme.navigationTheme.indicatorColor;
 
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -29,7 +37,7 @@ class NavigationButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: SvgPicture.asset(
-            svgPath,
+            isSelected ? selectedSvgPath : unselectedSvgPath,
             colorFilter: ColorFilter.mode(
               context.appTheme.navigationTheme.iconColor,
               BlendMode.srcIn,

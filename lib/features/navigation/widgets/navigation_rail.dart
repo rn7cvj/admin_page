@@ -2,8 +2,13 @@ import 'package:admin_page/features/navigation/widgets/navigation_button.dart';
 import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomNavigationRail extends StatelessWidget {
+  const CustomNavigationRail({super.key, required this.state});
+
+  final GoRouterState state;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,19 +30,39 @@ class CustomNavigationRail extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 24.0),
-                    child: NavigationButton(svgPath: "assets/icons/dashboard.svg", isSelected: false),
+                    child: NavigationButton(
+                      selectedSvgPath: "assets/icons/dashboard.svg",
+                      unselectedSvgPath: "assets/icons/dashboard_outline.svg",
+                      isSelected: state.fullPath == "/dashboard",
+                      onTap: () => context.go("/dashboard"),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 24.0),
-                    child: NavigationButton(svgPath: "assets/icons/people.svg", isSelected: false),
+                    child: NavigationButton(
+                      selectedSvgPath: "assets/icons/people.svg",
+                      unselectedSvgPath: "assets/icons/people_outline.svg",
+                      isSelected: state.fullPath == "/people",
+                      onTap: () => context.go("/people"),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 24.0),
-                    child: NavigationButton(svgPath: "assets/icons/calculator.svg", isSelected: true),
+                    child: NavigationButton(
+                      selectedSvgPath: "assets/icons/service.svg",
+                      unselectedSvgPath: "assets/icons/service_outline.svg",
+                      isSelected: state.fullPath == "/service",
+                      onTap: () => context.go("/service"),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 24.0),
-                    child: NavigationButton(svgPath: "assets/icons/calendar.svg", isSelected: false),
+                    child: NavigationButton(
+                      selectedSvgPath: "assets/icons/calendar.svg",
+                      unselectedSvgPath: "assets/icons/calendar_outline.svg",
+                      isSelected: state.fullPath == "/calendar",
+                      onTap: () => context.go("/calendar"),
+                    ),
                   ),
                 ],
               ),
