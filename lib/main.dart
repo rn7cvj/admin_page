@@ -1,8 +1,6 @@
-import 'package:admin_page/features/services/services.dart';
 import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:admin_page/router.dart';
 import 'package:flutter/material.dart';
-import 'features/people/people.dart';
 
 void main() {
   runApp(App());

@@ -23,8 +23,8 @@ class _PeopleState extends State<People> with TickerProviderStateMixin {
         padding: const EdgeInsets.only(left: 8.0, right: 16.0),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Lable(),
             ),
             Padding(
@@ -33,15 +33,15 @@ class _PeopleState extends State<People> with TickerProviderStateMixin {
                 tabBarController: tabBarContoller,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: const ActionsRow(),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: ActionsRow(),
             ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TabBarView(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: tabBarContoller,
                   children: const [
                     UsersTable(

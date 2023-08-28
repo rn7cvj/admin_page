@@ -1,7 +1,6 @@
 import 'package:admin_page/features/services/services.dart';
 import 'package:admin_page/features/people/people.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'features/navigation/scaffold_with_rail.dart';
@@ -17,8 +16,8 @@ final GoRouter router = GoRouter(
       navigatorKey: _shellNavigationKey,
       builder: (context, state, child) {
         return ScaffoldWithNavigationRails(
-          child: child,
           state: state,
+          child: child,
         );
       },
       routes: [

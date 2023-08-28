@@ -17,6 +17,7 @@ dependencies:
   scrollable_table_view: ^2.0.2
   flutter_svg: ^2.0.7
   slang: ^3.22.0
+  slang_flutter: ^3.18.0
   theme_tailor: ^2.0.0
   theme_tailor_annotation: ^2.0.0
   go_router: ^10.0.0

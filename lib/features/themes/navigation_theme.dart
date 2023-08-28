@@ -5,17 +5,17 @@ part 'navigation_theme.tailor.dart';
 
 @tailorComponent
 class _$NavigationTheme {
-  static List<Color> backgoundColor = [
+  static const List<Color> backgoundColor = [
     Color.fromRGBO(37, 37, 37, 1),
     Color.fromRGBO(37, 37, 37, 1),
   ];
 
-  static List<Color> indicatorColor = [
+  static const List<Color> indicatorColor = [
     Color.fromRGBO(67, 67, 244, 1),
     Color.fromRGBO(67, 67, 244, 1),
   ];
 
-  static List<Color> iconColor = [
+  static const List<Color> iconColor = [
     Color.fromRGBO(255, 255, 255, 1),
     Color.fromRGBO(255, 255, 255, 1),
   ];

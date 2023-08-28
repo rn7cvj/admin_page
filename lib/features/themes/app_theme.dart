@@ -49,10 +49,7 @@ class _$AppTheme {
 
   // Цвета из стилей текста не применяются
 
-  static const List<Color> indicatorTabColor = [
-    const Color.fromRGBO(67, 67, 244, 1),
-    const Color.fromRGBO(67, 67, 244, 1)
-  ];
+  static const List<Color> indicatorTabColor = [Color.fromRGBO(67, 67, 244, 1), Color.fromRGBO(67, 67, 244, 1)];
 
   static const List<Color> secetedTabColor = [
     Color.fromRGBO(37, 37, 37, 1),

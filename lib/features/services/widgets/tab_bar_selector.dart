@@ -1,8 +1,10 @@
 import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
+import '../../../i18n/strings.g.dart';
+
 class TabBarSelector extends StatelessWidget {
-  TabBarSelector({super.key, required this.tabBarController});
+  const TabBarSelector({super.key, required this.tabBarController});
 
   final TabController tabBarController;
 
@@ -17,15 +19,15 @@ class TabBarSelector extends StatelessWidget {
         unselectedLabelColor: context.appTheme.unsecetedTabColor,
         controller: tabBarController,
         isScrollable: true,
-        labelPadding: EdgeInsets.all(8.0),
+        labelPadding: const EdgeInsets.all(8.0),
         labelStyle: context.appTheme.selectedTabTextStyle,
         unselectedLabelStyle: context.appTheme.unselectedTabTextStyle,
         tabAlignment: TabAlignment.start,
-        tabs: const [
+        tabs: [
           // Tab(text: "Занятия"),
           // Tab(text: "Корпуса"),
-          Tab(child: Text("Занятия")),
-          Tab(child: Text("Корпуса")),
+          Tab(child: Text(t.services.tab_exercise)),
+          Tab(child: Text(t.services.tab_building)),
         ],
       ),
     );

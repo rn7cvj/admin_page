@@ -1,5 +1,4 @@
 import 'package:admin_page/features/navigation/widgets/navigation_button.dart';
-import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -72,7 +71,7 @@ class CustomNavigationRail extends StatelessWidget {
             backgroundColor: Colors.blue,
             child: IconButton(color: Colors.white, onPressed: () {}, icon: const Icon(Icons.people)),
           ),
-          SizedBox(
+          const SizedBox(
             height: 64,
           )
         ],

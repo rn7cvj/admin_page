@@ -1,6 +1,8 @@
 import 'package:admin_page/features/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
+import '../../../i18n/strings.g.dart';
+
 class Lable extends StatelessWidget {
   const Lable({super.key});
 
@@ -10,7 +12,7 @@ class Lable extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "Услуги",
+          t.services.label,
           style: context.appTheme.lableTextStyle,
         ),
         CircleAvatar(

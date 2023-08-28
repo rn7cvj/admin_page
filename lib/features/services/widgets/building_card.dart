@@ -26,9 +26,12 @@ class BuildingCard extends StatelessWidget {
                 children: [
                   Expanded(child: Text(lable, style: context.appTheme.cardHeadlineTextStyle)),
                   Expanded(
-                      child: Text(buildingType,
-                          style: TextStyle(fontSize: 18, color: Color.fromRGBO(67, 67, 244, 1)),
-                          textAlign: TextAlign.right)),
+                    child: Text(
+                      buildingType,
+                      style: const TextStyle(fontSize: 18, color: Color.fromRGBO(67, 67, 244, 1)),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -1,0 +1,14 @@
+lable: Люди
+tab_visitor: Посетители
+tab_trainer: Тренера
+tab_staff: Сотрудники
+sort: Сортровка
+filter: Фильтры
+download: Скачать
+column_fullname: ФИО
+column_sex: Пол
+column_birthdate: Дата рождения
+column_status: Статус
+column_phone_number: Номер телефона
+column_last_visit: Последнее посещение
+column_profile: Профиль

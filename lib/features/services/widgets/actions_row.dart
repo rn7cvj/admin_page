@@ -1,4 +1,5 @@
 import 'package:admin_page/features/themes/app_theme.dart';
+import 'package:admin_page/i18n/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class ActionsRow extends StatelessWidget {
@@ -12,22 +13,22 @@ class ActionsRow extends StatelessWidget {
         Row(
           children: [
             ActionButton(
-              lable: "Новая категория",
+              lable: t.services.new_category,
               onPressed: () {},
               icon: const Icon(Icons.add),
             ),
-            VerticalDivider(
+            const VerticalDivider(
               width: 16,
             ),
             ActionButton(
-              lable: "Редактировать",
+              lable: t.services.edit,
               onPressed: () {},
               icon: const Icon(Icons.edit_outlined),
             ),
           ],
         ),
         ActionButton(
-          lable: "Скачать",
+          lable: t.people.download,
           onPressed: () {},
           icon: const Icon(Icons.download),
         ),

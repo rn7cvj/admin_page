@@ -19,19 +19,19 @@ class NavigationTheme extends ThemeExtension<NavigationTheme> {
   final Color iconColor;
   final Color indicatorColor;
 
-  static final NavigationTheme light = NavigationTheme(
-    backgoundColor: _$NavigationTheme.backgoundColor[0],
-    iconColor: _$NavigationTheme.iconColor[0],
-    indicatorColor: _$NavigationTheme.indicatorColor[0],
+  static const NavigationTheme light = NavigationTheme(
+    backgoundColor: Color.fromRGBO(37, 37, 37, 1),
+    iconColor: Color.fromRGBO(255, 255, 255, 1),
+    indicatorColor: Color.fromRGBO(67, 67, 244, 1),
   );
 
-  static final NavigationTheme dark = NavigationTheme(
-    backgoundColor: _$NavigationTheme.backgoundColor[1],
-    iconColor: _$NavigationTheme.iconColor[1],
-    indicatorColor: _$NavigationTheme.indicatorColor[1],
+  static const NavigationTheme dark = NavigationTheme(
+    backgoundColor: Color.fromRGBO(37, 37, 37, 1),
+    iconColor: Color.fromRGBO(255, 255, 255, 1),
+    indicatorColor: Color.fromRGBO(67, 67, 244, 1),
   );
 
-  static final themes = [
+  static const themes = [
     light,
     dark,
   ];
