@@ -1,14 +1,14 @@
-lable: People
-tab_visitor: Visiotrs
-tab_trainer: Trainers
-tab_staff: Staff
-sort: Sort
-filter: Filter
-download: Download
-column_fullname: Fullname
-column_sex: Sex
-column_birthdate: Birthdate
-column_status: Status
-column_phone_number: Phone number
-column_last_visit: Last visit
-column_profile: Profile
+lable: Люди
+tab_visitor: Посетители
+tab_trainer: Тренера
+tab_staff: Сотрудники
+sort: Сортровка
+filter: Фильтры
+download: Скачать
+column_fullname: ФИО
+column_sex: Пол
+column_birthdate: Дата рождения
+column_status: Статус
+column_phone_number: Номер телефона
+column_last_visit: Последнее посещение
+column_profile: Профиль

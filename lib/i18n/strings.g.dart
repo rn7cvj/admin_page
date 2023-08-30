@@ -6,7 +6,7 @@
 /// Locales: 2
 /// Strings: 42 (21 per locale)
 ///
-/// Built on 2023-08-28 at 06:47 UTC
+/// Built on 2023-08-30 at 01:40 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -161,20 +161,20 @@ class _StringsPeopleEn {
 	final _StringsEn _root; // ignore: unused_field
 
 	// Translations
-	String get lable => 'Люди';
-	String get tab_visitor => 'Посетители';
-	String get tab_trainer => 'Тренера';
-	String get tab_staff => 'Сотрудники';
-	String get sort => 'Сортровка';
-	String get filter => 'Фильтры';
-	String get download => 'Скачать';
-	String get column_fullname => 'ФИО';
-	String get column_sex => 'Пол';
-	String get column_birthdate => 'Дата рождения';
-	String get column_status => 'Статус';
-	String get column_phone_number => 'Номер телефона';
-	String get column_last_visit => 'Последнее посещение';
-	String get column_profile => 'Профиль';
+	String get lable => 'People';
+	String get tab_visitor => 'Visiotrs';
+	String get tab_trainer => 'Trainers';
+	String get tab_staff => 'Staff';
+	String get sort => 'Sort';
+	String get filter => 'Filter';
+	String get download => 'Download';
+	String get column_fullname => 'Fullname';
+	String get column_sex => 'Sex';
+	String get column_birthdate => 'Birthdate';
+	String get column_status => 'Status';
+	String get column_phone_number => 'Phone number';
+	String get column_last_visit => 'Last visit';
+	String get column_profile => 'Profile';
 }
 
 // Path: services
@@ -229,20 +229,20 @@ class _StringsPeopleRu implements _StringsPeopleEn {
 	@override final _StringsRu _root; // ignore: unused_field
 
 	// Translations
-	@override String get lable => 'People';
-	@override String get tab_visitor => 'Visiotrs';
-	@override String get tab_trainer => 'Trainers';
-	@override String get tab_staff => 'Staff';
-	@override String get sort => 'Sort';
-	@override String get filter => 'Filter';
-	@override String get download => 'Download';
-	@override String get column_fullname => 'Fullname';
-	@override String get column_sex => 'Sex';
-	@override String get column_birthdate => 'Birthdate';
-	@override String get column_status => 'Status';
-	@override String get column_phone_number => 'Phone number';
-	@override String get column_last_visit => 'Last visit';
-	@override String get column_profile => 'Profile';
+	@override String get lable => 'Люди';
+	@override String get tab_visitor => 'Посетители';
+	@override String get tab_trainer => 'Тренера';
+	@override String get tab_staff => 'Сотрудники';
+	@override String get sort => 'Сортровка';
+	@override String get filter => 'Фильтры';
+	@override String get download => 'Скачать';
+	@override String get column_fullname => 'ФИО';
+	@override String get column_sex => 'Пол';
+	@override String get column_birthdate => 'Дата рождения';
+	@override String get column_status => 'Статус';
+	@override String get column_phone_number => 'Номер телефона';
+	@override String get column_last_visit => 'Последнее посещение';
+	@override String get column_profile => 'Профиль';
 }
 
 // Path: services
@@ -267,20 +267,20 @@ class _StringsServicesRu implements _StringsServicesEn {
 extension on _StringsEn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'people.lable': return 'Люди';
-			case 'people.tab_visitor': return 'Посетители';
-			case 'people.tab_trainer': return 'Тренера';
-			case 'people.tab_staff': return 'Сотрудники';
-			case 'people.sort': return 'Сортровка';
-			case 'people.filter': return 'Фильтры';
-			case 'people.download': return 'Скачать';
-			case 'people.column_fullname': return 'ФИО';
-			case 'people.column_sex': return 'Пол';
-			case 'people.column_birthdate': return 'Дата рождения';
-			case 'people.column_status': return 'Статус';
-			case 'people.column_phone_number': return 'Номер телефона';
-			case 'people.column_last_visit': return 'Последнее посещение';
-			case 'people.column_profile': return 'Профиль';
+			case 'people.lable': return 'People';
+			case 'people.tab_visitor': return 'Visiotrs';
+			case 'people.tab_trainer': return 'Trainers';
+			case 'people.tab_staff': return 'Staff';
+			case 'people.sort': return 'Sort';
+			case 'people.filter': return 'Filter';
+			case 'people.download': return 'Download';
+			case 'people.column_fullname': return 'Fullname';
+			case 'people.column_sex': return 'Sex';
+			case 'people.column_birthdate': return 'Birthdate';
+			case 'people.column_status': return 'Status';
+			case 'people.column_phone_number': return 'Phone number';
+			case 'people.column_last_visit': return 'Last visit';
+			case 'people.column_profile': return 'Profile';
 			case 'services.label': return 'Services';
 			case 'services.tab_exercise': return 'Exercise';
 			case 'services.tab_building': return 'Buildings';
@@ -296,20 +296,20 @@ extension on _StringsEn {
 extension on _StringsRu {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'people.lable': return 'People';
-			case 'people.tab_visitor': return 'Visiotrs';
-			case 'people.tab_trainer': return 'Trainers';
-			case 'people.tab_staff': return 'Staff';
-			case 'people.sort': return 'Sort';
-			case 'people.filter': return 'Filter';
-			case 'people.download': return 'Download';
-			case 'people.column_fullname': return 'Fullname';
-			case 'people.column_sex': return 'Sex';
-			case 'people.column_birthdate': return 'Birthdate';
-			case 'people.column_status': return 'Status';
-			case 'people.column_phone_number': return 'Phone number';
-			case 'people.column_last_visit': return 'Last visit';
-			case 'people.column_profile': return 'Profile';
+			case 'people.lable': return 'Люди';
+			case 'people.tab_visitor': return 'Посетители';
+			case 'people.tab_trainer': return 'Тренера';
+			case 'people.tab_staff': return 'Сотрудники';
+			case 'people.sort': return 'Сортровка';
+			case 'people.filter': return 'Фильтры';
+			case 'people.download': return 'Скачать';
+			case 'people.column_fullname': return 'ФИО';
+			case 'people.column_sex': return 'Пол';
+			case 'people.column_birthdate': return 'Дата рождения';
+			case 'people.column_status': return 'Статус';
+			case 'people.column_phone_number': return 'Номер телефона';
+			case 'people.column_last_visit': return 'Последнее посещение';
+			case 'people.column_profile': return 'Профиль';
 			case 'services.label': return 'Услуги';
 			case 'services.tab_exercise': return 'Занятия';
 			case 'services.tab_building': return 'Корпуса';
