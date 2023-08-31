@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:admin_page/controllers/people.dart';
 import 'package:admin_page/features/people/people.dart';
 import 'package:admin_page/features/themes/app_theme.dart';
@@ -5,6 +7,7 @@ import 'package:admin_page/router.dart';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get_it/get_it.dart';
 
 import 'backend_connections/authenticator.dart';
@@ -23,6 +26,11 @@ void setUpSystemUIOverlay() {
 }
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  Future.delayed(Duration(seconds: 5), () => FlutterNativeSplash.remove());
+
   setUpSystemUIOverlay();
 
   final chopper = ChopperClient(

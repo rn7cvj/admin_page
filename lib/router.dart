@@ -1,3 +1,4 @@
+import 'package:admin_page/features/auth/auth.dart';
 import 'package:admin_page/features/services/services.dart';
 import 'package:admin_page/features/people/people.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +11,12 @@ final _shellNavigationKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: "/people",
+  initialLocation: "/auth",
   routes: [
+    GoRoute(
+      path: "/auth",
+      builder: (context, state) => const Auth(),
+    ),
     ShellRoute(
       navigatorKey: _shellNavigationKey,
       builder: (context, state, child) {

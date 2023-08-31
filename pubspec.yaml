@@ -32,6 +32,8 @@ dependencies:
 
   source_gen: ^1.1.0
   loading_animation_widget: ^1.2.0+4
+  email_validator: ^2.1.17
+  flutter_native_splash: ^2.3.2
 
 dev_dependencies:
   flutter_test:

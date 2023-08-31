@@ -10,6 +10,7 @@ part of 'app_theme.dart';
 
 class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
   const AppTheme({
+    required this.authTheme,
     required this.backgoundColor,
     required this.buttonColor,
     required this.buttonIconColor,
@@ -28,6 +29,7 @@ class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
     required this.unselectedTabTextStyle,
   });
 
+  final AuthTheme authTheme;
   final Color backgoundColor;
   final Color buttonColor;
   final Color buttonIconColor;
@@ -50,6 +52,7 @@ class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
   static AppTheme get dark => kDebugMode ? _darkGetter : _darkFinal;
 
   static AppTheme get _lightGetter => AppTheme(
+        authTheme: _$AppTheme.authTheme[0],
         backgoundColor: _$AppTheme.backgoundColor[0],
         buttonColor: _$AppTheme.buttonColor[0],
         buttonIconColor: _$AppTheme.buttonIconColor[0],
@@ -69,6 +72,7 @@ class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
       );
 
   static final AppTheme _lightFinal = AppTheme(
+    authTheme: _$AppTheme.authTheme[0],
     backgoundColor: _$AppTheme.backgoundColor[0],
     buttonColor: _$AppTheme.buttonColor[0],
     buttonIconColor: _$AppTheme.buttonIconColor[0],
@@ -88,6 +92,7 @@ class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
   );
 
   static AppTheme get _darkGetter => AppTheme(
+        authTheme: _$AppTheme.authTheme[1],
         backgoundColor: _$AppTheme.backgoundColor[1],
         buttonColor: _$AppTheme.buttonColor[1],
         buttonIconColor: _$AppTheme.buttonIconColor[1],
@@ -107,6 +112,7 @@ class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
       );
 
   static final AppTheme _darkFinal = AppTheme(
+    authTheme: _$AppTheme.authTheme[1],
     backgoundColor: _$AppTheme.backgoundColor[1],
     buttonColor: _$AppTheme.buttonColor[1],
     buttonIconColor: _$AppTheme.buttonIconColor[1],
@@ -132,6 +138,7 @@ class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
 
   @override
   AppTheme copyWith({
+    AuthTheme? authTheme,
     Color? backgoundColor,
     Color? buttonColor,
     Color? buttonIconColor,
@@ -150,6 +157,7 @@ class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
     TextStyle? unselectedTabTextStyle,
   }) {
     return AppTheme(
+      authTheme: authTheme ?? this.authTheme,
       backgoundColor: backgoundColor ?? this.backgoundColor,
       buttonColor: buttonColor ?? this.buttonColor,
       buttonIconColor: buttonIconColor ?? this.buttonIconColor,
@@ -177,6 +185,7 @@ class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
   AppTheme lerp(covariant ThemeExtension<AppTheme>? other, double t) {
     if (other is! AppTheme) return this as AppTheme;
     return AppTheme(
+      authTheme: authTheme.lerp(other.authTheme, t) as AuthTheme,
       backgoundColor: Color.lerp(backgoundColor, other.backgoundColor, t)!,
       buttonColor: Color.lerp(buttonColor, other.buttonColor, t)!,
       buttonIconColor: Color.lerp(buttonIconColor, other.buttonIconColor, t)!,
@@ -210,6 +219,7 @@ class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'AppTheme'))
+      ..add(DiagnosticsProperty('authTheme', authTheme))
       ..add(DiagnosticsProperty('backgoundColor', backgoundColor))
       ..add(DiagnosticsProperty('buttonColor', buttonColor))
       ..add(DiagnosticsProperty('buttonIconColor', buttonIconColor))
@@ -235,6 +245,7 @@ class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AppTheme &&
+            const DeepCollectionEquality().equals(authTheme, other.authTheme) &&
             const DeepCollectionEquality()
                 .equals(backgoundColor, other.backgoundColor) &&
             const DeepCollectionEquality()
@@ -272,6 +283,7 @@ class AppTheme extends ThemeExtension<AppTheme> with DiagnosticableTreeMixin {
   int get hashCode {
     return Object.hash(
       runtimeType.hashCode,
+      const DeepCollectionEquality().hash(authTheme),
       const DeepCollectionEquality().hash(backgoundColor),
       const DeepCollectionEquality().hash(buttonColor),
       const DeepCollectionEquality().hash(buttonIconColor),

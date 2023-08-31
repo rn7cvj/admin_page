@@ -1,3 +1,4 @@
+import 'package:admin_page/features/themes/auth_theme.dart';
 import 'package:admin_page/features/themes/navigation_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,12 @@ class _$AppTheme {
   static List<NavigationTheme> navigationTheme = [
     NavigationTheme.light,
     NavigationTheme.dark,
+  ];
+
+  @themeExtension
+  static List<AuthTheme> authTheme = [
+    AuthTheme.light,
+    AuthTheme.dark,
   ];
 
   static const List<Color> backgoundColor = [
