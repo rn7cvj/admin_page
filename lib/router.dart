@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
+import 'features/calendar/calendar.dart';
 import 'features/navigation/scaffold_with_rail.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -13,12 +14,12 @@ final _shellNavigationKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: "/auth",
-  redirect: (context, state) {
-    AuthContoller authContoller = GetIt.I<AuthContoller>();
-    if (authContoller.token != null) return null;
-    return "/auth";
-  },
+  initialLocation: "/calendar",
+  // redirect: (context, state) {
+  //   AuthContoller authContoller = GetIt.I<AuthContoller>();
+  //   if (authContoller.token != null) return null;
+  //   return "/auth";
+  // },
   routes: [
     GoRoute(
       path: "/auth",
@@ -47,7 +48,7 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "/calendar",
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const Calendar(),
         ),
       ],
     ),
