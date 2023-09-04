@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:admin_page/backend_connections/auth.dart';
+import 'package:admin_page/controllers/auth.dart';
 import 'package:admin_page/controllers/people.dart';
 import 'package:admin_page/features/people/people.dart';
 import 'package:admin_page/features/themes/app_theme.dart';
@@ -26,26 +28,31 @@ void setUpSystemUIOverlay() {
 }
 
 void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  Future.delayed(Duration(seconds: 5), () => FlutterNativeSplash.remove());
+  // Future.delayed(Duration(seconds: 5), () => FlutterNativeSplash.remove());
 
   setUpSystemUIOverlay();
+
+  GetIt.I.registerSingleton<AuthContoller>(AuthContoller());
 
   final chopper = ChopperClient(
     baseUrl: Uri.parse("https://fefufit.dvfu.ru/api2"),
     authenticator: CustomAuthenticator(),
     services: [
       PeopleService.create(),
+      AuthService.create(),
     ],
+    converter: const JsonConverter(),
   );
 
   GetIt.I.registerSingleton<PeopleService>(chopper.getService<PeopleService>());
+  GetIt.I.registerSingleton<AuthService>(chopper.getService<AuthService>());
 
   GetIt.I.registerSingleton<PeopleContoller>(PeopleContoller());
 
-  GetIt.I<PeopleContoller>().init();
+  GetIt.I<AuthContoller>().init();
 
   runApp(App());
 }

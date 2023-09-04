@@ -1,11 +1,23 @@
+import 'package:admin_page/controllers/auth.dart';
+import 'package:admin_page/controllers/people.dart';
 import 'package:admin_page/features/auth/widgets/text_field.dart';
 import 'package:admin_page/features/themes/app_theme.dart';
+import 'package:admin_page/logger.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class AuthButtons extends StatelessWidget {
   AuthButtons({super.key});
   final _formKey = GlobalKey<FormState>();
+
+  final AuthContoller contoller = GetIt.I<AuthContoller>();
+
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +45,8 @@ class AuthButtons extends StatelessWidget {
           SizedBox(
             width: 320,
             child: CustomTextField(
+              obscureText: false,
+              controller: email,
               validator: (value) {
                 if (value == null || value.isEmpty) return "Введите почту";
                 if (!EmailValidator.validate(value)) return "Введите корректную почту";
@@ -50,6 +64,8 @@ class AuthButtons extends StatelessWidget {
           SizedBox(
             width: 320,
             child: CustomTextField(
+              obscureText: true,
+              controller: password,
               validator: (value) => null,
             ),
           ),
@@ -64,28 +80,39 @@ class AuthButtons extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  print("Form is valid");
-                  return;
-                }
-                print("Form is invalid");
-              },
-              child: SizedBox(
-                width: 275,
-                height: 60,
-                child: Center(
-                    child: Text(
-                  "Войти",
-                  style: context.appTheme.authTheme.loginButtonTextStyle,
-                )),
+          Observer(builder: (_) {
+            return Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: ElevatedButton(
+                onPressed: contoller.isLoading
+                    ? null
+                    : () {
+                        if (_formKey.currentState!.validate()) {
+                          logger.i("Form is valid");
+                          contoller.tryToLogin(email.text, password.text, () {
+                            GetIt.I<PeopleContoller>().init();
+                            context.go("/people");
+                          });
+                          return;
+                        }
+                        logger.i("Form is invalid");
+                      },
+                style: context.appTheme.authTheme.loginButtonStyle,
+                child: SizedBox(
+                  width: 275,
+                  height: 60,
+                  child: Center(
+                    child: contoller.isLoading
+                        ? LoadingAnimationWidget.prograssiveDots(color: Colors.purple, size: 60)
+                        : Text(
+                            "Войти",
+                            style: context.appTheme.authTheme.loginButtonTextStyle,
+                          ),
+                  ),
+                ),
               ),
-              style: context.appTheme.authTheme.loginButtonStyle,
-            ),
-          )
+            );
+          })
         ],
       ),
     );

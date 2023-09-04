@@ -1,7 +1,9 @@
+import 'package:admin_page/controllers/auth.dart';
 import 'package:admin_page/features/auth/auth.dart';
 import 'package:admin_page/features/services/services.dart';
 import 'package:admin_page/features/people/people.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import 'features/navigation/scaffold_with_rail.dart';
@@ -12,6 +14,11 @@ final _shellNavigationKey = GlobalKey<NavigatorState>();
 final GoRouter router = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: "/auth",
+  redirect: (context, state) {
+    AuthContoller authContoller = GetIt.I<AuthContoller>();
+    if (authContoller.token != null) return null;
+    return "/auth";
+  },
   routes: [
     GoRoute(
       path: "/auth",
