@@ -54,7 +54,7 @@ Future<void> main() async {
   await tokenStorage.init();
   TokenContoller tokenContoller = TokenContoller(tokenConvertor: tokenConvertor, tokenStorage: tokenStorage);
   tokenContoller.onSuccessAwait.add((response) async => logger.i(response));
-  tokenContoller.onSuccessAwait.add((response) async => AppNavigator.goToHomePage());
+  // tokenContoller.onSuccessAwait.add((response) async => AppNavigator.goToHomePage());
 
   await tokenContoller.init();
 
