@@ -1,5 +1,5 @@
-import 'package:admin_page/Pages/services/widgets/building_tab.dart';
-import 'package:admin_page/Pages/services/widgets/service_tab.dart';
+import 'package:admin_page/pages/services/widgets/building_tab.dart';
+import 'package:admin_page/pages/services/widgets/service_tab.dart';
 import 'package:admin_page/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
