@@ -4,25 +4,28 @@
     // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "admin_page",
             "request": "launch",
             "type": "dart",
-            "args": ["--web-browser-flag=--disable-web-security"]
+            "args": ["--web-browser-flag", "--disable-web-security", "--web-port" , "1234"]
         },
         {
             "name": "admin_page (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
-            "args": ["--web-browser-flag=--disable-web-security"]
+            
+            "args": ["--web-browser-flag", "--disable-web-security", "--web-port" , "1234"]
         },
         {
             "name": "admin_page (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
-            "args": ["--web-browser-flag=--disable-web-security"]
+            
+            "args": ["--web-browser-flag", "--disable-web-security", "--web-port" , "1234"]
         }
     ]
 }

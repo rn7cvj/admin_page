@@ -1,19 +1,21 @@
 import 'dart:async';
 
-import 'package:admin_page/backend_connections/auth.dart';
-import 'package:admin_page/controllers/auth.dart';
-import 'package:admin_page/controllers/people.dart';
-import 'package:admin_page/features/people/people.dart';
-import 'package:admin_page/features/themes/app_theme.dart';
-import 'package:admin_page/router.dart';
+import 'package:get_it/get_it.dart';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:get_it/get_it.dart';
+import 'package:admin_page/router.dart';
+import 'package:admin_page/logger.dart';
+import 'package:admin_page/themes/app_theme.dart';
+import 'package:admin_page/contollers/auth/auth_service.dart';
+import 'package:admin_page/contollers/auth/auth_contoller.dart';
+import 'package:admin_page/contollers/auth/auth_convertor.dart';
+import 'package:admin_page/contollers/token/token_contoller.dart';
+import 'package:admin_page/contollers/token/token_convetor.dart';
+import 'package:admin_page/contollers/token/token_service.dart';
+import 'package:admin_page/contollers/token/token_storage.dart';
 
-import 'backend_connections/authenticator.dart';
-import 'backend_connections/people.dart';
+import 'navigation/navigator.dart';
 
 void setUpSystemUIOverlay() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +29,7 @@ void setUpSystemUIOverlay() {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 }
 
-void main() {
+Future<void> main() async {
   // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
@@ -35,24 +37,47 @@ void main() {
 
   setUpSystemUIOverlay();
 
-  GetIt.I.registerSingleton<AuthContoller>(AuthContoller());
+  // GetIt.I.registerSingleton<AuthContoller>(AuthContoller());
 
   final chopper = ChopperClient(
     baseUrl: Uri.parse("https://fefufit.dvfu.ru/api2"),
-    authenticator: CustomAuthenticator(),
+    // authenticator: CustomAuthenticator(),
     services: [
-      PeopleService.create(),
       AuthService.create(),
+      TokenService.create(),
     ],
     converter: const JsonConverter(),
   );
 
-  GetIt.I.registerSingleton<PeopleService>(chopper.getService<PeopleService>());
-  GetIt.I.registerSingleton<AuthService>(chopper.getService<AuthService>());
+  TokenConvertor tokenConvertor = TokenConvertor(tokenService: chopper.getService<TokenService>());
+  TokenStorage tokenStorage = TokenStorage();
+  await tokenStorage.init();
+  TokenContoller tokenContoller = TokenContoller(tokenConvertor: tokenConvertor, tokenStorage: tokenStorage);
+  tokenContoller.onSuccessAwait.add((response) async => logger.i(response));
+  tokenContoller.onSuccessAwait.add((response) async => AppNavigator.goToHomePage());
 
-  GetIt.I.registerSingleton<PeopleContoller>(PeopleContoller());
+  await tokenContoller.init();
 
-  GetIt.I<AuthContoller>().init();
+  AuthConvertor authConvertor = AuthConvertor(authService: chopper.getService<AuthService>());
+  AuthController authController = AuthController(authConvertor: authConvertor);
+
+  authController.onSuccessAwait.add((response) async {
+    if (response.token != null && response.refreshToken != null) {
+      logger.i("Write new token");
+      tokenContoller.writeNewToken(response.token!, response.refreshToken!);
+    }
+  });
+  authController.onSuccessAwait.add((response) async => AppNavigator.goToHomePage());
+
+  GetIt.I.registerSingleton(authController);
+  GetIt.I.registerSingleton(tokenContoller);
+
+  // GetIt.I.registerSingleton<PeopleService>(chopper.getService<PeopleService>());
+  // GetIt.I.registerSingleton<AuthService>(chopper.getService<AuthService>());
+
+  // GetIt.I.registerSingleton<PeopleContoller>(PeopleContoller());
+
+  // GetIt.I<AuthContoller>().init();
 
   runApp(App());
 }

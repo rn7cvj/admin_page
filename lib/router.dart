@@ -1,20 +1,17 @@
-import 'package:admin_page/controllers/auth.dart';
-import 'package:admin_page/features/auth/auth.dart';
-import 'package:admin_page/features/services/services.dart';
-import 'package:admin_page/features/people/people.dart';
+import 'package:admin_page/pages/auth/auth.dart';
+import 'package:admin_page/pages/calendar/calendar.dart';
+import 'package:admin_page/pages/services/services.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
-import 'features/calendar/calendar.dart';
-import 'features/navigation/scaffold_with_rail.dart';
+import 'navigation/scaffold_with_rail.dart';
 
-final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigationKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
-  navigatorKey: _rootNavigatorKey,
-  initialLocation: "/calendar",
+  navigatorKey: rootNavigatorKey,
+  initialLocation: "/auth",
   // redirect: (context, state) {
   //   AuthContoller authContoller = GetIt.I<AuthContoller>();
   //   if (authContoller.token != null) return null;
@@ -23,7 +20,7 @@ final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: "/auth",
-      builder: (context, state) => const Auth(),
+      builder: (context, state) => Auth(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigationKey,
@@ -38,10 +35,10 @@ final GoRouter router = GoRouter(
           path: "/dashboard",
           builder: (context, state) => const Placeholder(),
         ),
-        GoRoute(
-          path: "/people",
-          builder: (context, state) => const People(),
-        ),
+        // GoRoute(
+        //   path: "/people",
+        //   builder: (context, state) => const People(),
+        // ),
         GoRoute(
           path: "/service",
           builder: (context, state) => const Services(),

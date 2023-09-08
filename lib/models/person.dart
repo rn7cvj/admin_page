@@ -33,16 +33,16 @@ class PersonViewModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['gender'] = this.gender;
-    data['birthdate'] = this.birthdate;
-    data['status'] = this.status;
-    data['phone_number'] = this.phoneNumber;
-    data['email'] = this.email;
-    data['type'] = this.type;
-    data['name'] = this.name;
-    data['last_visit'] = this.lastVisit;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['gender'] = gender;
+    data['birthdate'] = birthdate;
+    data['status'] = status;
+    data['phone_number'] = phoneNumber;
+    data['email'] = email;
+    data['type'] = type;
+    data['name'] = name;
+    data['last_visit'] = lastVisit;
     return data;
   }
 }
