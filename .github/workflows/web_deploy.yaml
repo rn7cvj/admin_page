@@ -3,9 +3,10 @@ name: Web deploy
 on:
   workflow_dispatch:
 
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
+      - new-baclend-connection
   
 
 jobs:
@@ -25,7 +26,7 @@ jobs:
 
           cache: true
       - run: flutter pub get
-      - run: flutter build web --web-renderer canvaskit --base-href "/fefufit/admin_console/"
+      - run: flutter build web --web-renderer canvaskit --base-href "/admin/"
 
       - name: 📂 Sync files
         uses: garygrossgarten/github-action-scp@release
