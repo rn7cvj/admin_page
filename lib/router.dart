@@ -50,6 +50,10 @@ final GoRouter router = GoRouter(
           path: "/calendar",
           builder: (context, state) => const Calendar(),
         ),
+        GoRoute(
+          path: "/calculator",
+          builder: (context, state) => const Placeholder(),
+        ),
       ],
     ),
   ],

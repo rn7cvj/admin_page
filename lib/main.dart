@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:admin_page/contollers/people/people_controller.dart';
 import 'package:admin_page/contollers/people/people_convertor.dart';
 import 'package:admin_page/contollers/people/people_service.dart';
+import 'package:admin_page/contollers/service/service_controller.dart';
+import 'package:admin_page/contollers/service/service_converter.dart';
+import 'package:admin_page/contollers/service/service_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
@@ -58,9 +61,13 @@ Future<void> main() async {
       AuthService.create(),
       TokenService.create(),
       PeopleService.create(),
+      ServiceService.create(),
     ],
     converter: const JsonConverter(),
   );
+
+  ServiceConverter serviceConverter = ServiceConverter(serviceService: chopper.getService<ServiceService>());
+  ServiceController serviceController = ServiceController(serviceConverter: serviceConverter);
 
   PeopleConvertor peopleConvertor = PeopleConvertor(peopleService: chopper.getService<PeopleService>());
   PeopleContoller peopleContoller = PeopleContoller(peopleConvertor: peopleConvertor);
@@ -76,6 +83,7 @@ Future<void> main() async {
   });
   tokenContoller.onSuccess.add((response) async {
     peopleContoller.init();
+    serviceController.init();
   });
   // tokenContoller.onSuccessAwait.add((response) async => AppNavigator.goToHomePage());
 
@@ -90,7 +98,10 @@ Future<void> main() async {
       tokenContoller.writeNewToken(response.token!, response.refreshToken!);
     }
   });
-  authController.onSuccessAwait.add((response) => peopleContoller.init());
+  authController.onSuccessAwait.add((response) async {
+    peopleContoller.init();
+    serviceController.init();
+  });
   authController.onSuccessAwait.add((response) async => AppNavigator.goToHomePage());
 
   GetIt.I.registerSingleton(authController);

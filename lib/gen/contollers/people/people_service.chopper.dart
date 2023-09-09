@@ -6,7 +6,7 @@ part of '../../../contollers/people/people_service.dart';
 // ChopperGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_brace_in_string_interps
+// ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_string_interpolations, unnecessary_brace_in_string_interps
 final class _$PeopleService extends PeopleService {
   _$PeopleService([ChopperClient? client]) {
     if (client == null) return;

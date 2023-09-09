@@ -63,6 +63,15 @@ class CustomNavigationRail extends StatelessWidget {
                       onTap: () => context.go("/calendar"),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 24.0),
+                    child: NavigationButton(
+                      selectedSvgPath: "assets/icons/calculator.svg",
+                      unselectedSvgPath: "assets/icons/calculator_outline.svg",
+                      isSelected: state.fullPath == "/calculator",
+                      onTap: () => context.go("/calculator"),
+                    ),
+                  ),
                 ],
               ),
             ),
