@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:admin_page/models/person.dart';
+import 'package:admin_page/models/person_viewmodel.dart';
 import 'package:admin_page/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';

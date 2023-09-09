@@ -1,6 +1,7 @@
 import 'package:admin_page/contollers/token/token_contoller.dart';
 import 'package:admin_page/pages/auth/auth.dart';
 import 'package:admin_page/pages/calendar/calendar.dart';
+import 'package:admin_page/pages/people/people.dart';
 import 'package:admin_page/pages/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -39,7 +40,7 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "/people",
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const People(),
         ),
         GoRoute(
           path: "/service",
