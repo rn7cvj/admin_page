@@ -58,7 +58,7 @@ class _PeoplePortraitState extends State<PeoplePortrait> with TickerProviderStat
                     }
 
                     return TabBarView(
-                      physics: const NeverScrollableScrollPhysics(),
+                      // physics: const NeverScrollableScrollPhysics(),
                       controller: tabBarContoller,
                       children: [
                         UserTableMobile(
