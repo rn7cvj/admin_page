@@ -47,9 +47,11 @@ class AuthPortrait extends StatelessWidget {
                   flex: 4,
                   child: Padding(
                     padding: const EdgeInsets.all(16),
-                    child: AuthButtons(
-                      email: email,
-                      password: password,
+                    child: SingleChildScrollView(
+                      child: AuthButtons(
+                        email: email,
+                        password: password,
+                      ),
                     ),
                   ),
                 ),

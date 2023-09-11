@@ -54,7 +54,7 @@ class _ServicesPortraitState extends State<ServicesPortrait> with TickerProvider
 
                   return TabBarView(
                     controller: tabBarContoller,
-                    physics: const NeverScrollableScrollPhysics(),
+                    // physics: const NeverScrollableScrollPhysics(),
                     children: [
                       ServiceTab(),
                       BuildingTab(),
