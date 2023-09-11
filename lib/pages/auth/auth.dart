@@ -12,11 +12,22 @@ class Auth extends StatelessWidget {
 
   final AuthController _controller = GetIt.I<AuthController>();
 
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    if (MediaQuery.sizeOf(context).shortestSide < 600) return AuthPortrait();
+    if (MediaQuery.sizeOf(context).shortestSide < 600) {
+      return AuthPortrait(
+        email: email,
+        password: password,
+      );
+    }
 
-    return AuthLandscape();
+    return AuthLandscape(
+      email: email,
+      password: password,
+    );
   }
 
   void showSnackBar(BuildContext context, AuthMessage message) {

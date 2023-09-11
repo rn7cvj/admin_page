@@ -7,10 +7,11 @@ import 'package:admin_page/contollers/auth/auth_contoller.dart';
 import 'package:admin_page/pages/auth/widgets/auth_buttons.dart';
 
 class AuthPortrait extends StatelessWidget {
-  AuthPortrait({super.key});
+  AuthPortrait({super.key, required this.email, required this.password});
 
   final AuthController _controller = GetIt.I<AuthController>();
-
+  final TextEditingController email;
+  final TextEditingController password;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -46,7 +47,10 @@ class AuthPortrait extends StatelessWidget {
                   flex: 4,
                   child: Padding(
                     padding: const EdgeInsets.all(16),
-                    child: AuthButtons(),
+                    child: AuthButtons(
+                      email: email,
+                      password: password,
+                    ),
                   ),
                 ),
               ],

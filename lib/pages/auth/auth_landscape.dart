@@ -6,9 +6,12 @@ import 'package:admin_page/contollers/auth/auth_contoller.dart';
 import 'package:admin_page/pages/auth/widgets/auth_buttons.dart';
 
 class AuthLandscape extends StatelessWidget {
-  AuthLandscape({super.key});
+  AuthLandscape({super.key, required this.email, required this.password});
 
   final AuthController _controller = GetIt.I<AuthController>();
+
+  final TextEditingController email;
+  final TextEditingController password;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,10 @@ class AuthLandscape extends StatelessWidget {
 
                   return Padding(
                     padding: const EdgeInsets.all(128),
-                    child: AuthButtons(),
+                    child: AuthButtons(
+                      email: email,
+                      password: password,
+                    ),
                   );
                 },
               ),

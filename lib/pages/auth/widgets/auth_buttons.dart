@@ -8,13 +8,13 @@ import 'package:get_it/get_it.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class AuthButtons extends StatelessWidget {
-  AuthButtons({super.key});
+  AuthButtons({super.key, required this.email, required this.password});
   final _formKey = GlobalKey<FormState>();
 
   final AuthController controller = GetIt.I<AuthController>();
 
-  final TextEditingController email = TextEditingController();
-  final TextEditingController password = TextEditingController();
+  final TextEditingController email;
+  final TextEditingController password;
 
   @override
   Widget build(BuildContext context) {
