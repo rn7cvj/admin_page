@@ -25,6 +25,7 @@ class ScaffoldWithDrawer extends StatelessWidget {
         ),
         foregroundColor: Colors.white,
         backgroundColor: context.appTheme.navigationTheme.backgoundColor,
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
       ),
       // backgroundColor: context.appTheme.navigationTheme.backgoundColor,
       body: child,

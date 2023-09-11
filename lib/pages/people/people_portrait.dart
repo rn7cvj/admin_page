@@ -1,4 +1,5 @@
 import 'package:admin_page/contollers/people/people_controller.dart';
+import 'package:admin_page/models/person_viewmodel.dart';
 
 import 'package:admin_page/pages/people/widgets/lable.dart';
 import 'package:admin_page/pages/people/widgets/tab_bar_selector.dart';
@@ -32,10 +33,10 @@ class _PeoplePortraitState extends State<PeoplePortrait> with TickerProviderStat
         padding: const EdgeInsets.only(left: 8.0, right: 16.0),
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Lable(),
-            ),
+            // const Padding(
+            //   padding: EdgeInsets.all(8.0),
+            //   child: Lable(),
+            // ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
               child: TabBarSelector(
