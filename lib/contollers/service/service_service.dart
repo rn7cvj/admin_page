@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:admin_page/logger.dart';
 import 'package:chopper/chopper.dart';
 import 'dart:convert';
 
@@ -26,7 +25,7 @@ FutureOr<ServiceBackendResponse> converResponse(Response res) {
     return response;
   }
 
-  String jsonBody = Utf8Decoder().convert(res.bodyBytes);
+  String jsonBody = const Utf8Decoder().convert(res.bodyBytes);
   List<dynamic> json = jsonDecode(jsonBody);
 
   // List<PersonBackendModel> personList = json.map((e) => PersonBackendModel.fromJson(e)).toList();
@@ -111,7 +110,7 @@ class ServiceTempBackendResponse {
     if (json['service_photo'] != null) {
       servicePhoto = <String>[];
       json['service_photo'].forEach((v) {
-        servicePhoto!.add(v);
+        servicePhoto.add(v);
       });
     }
     // if (json['plans'] != null) {
@@ -123,7 +122,7 @@ class ServiceTempBackendResponse {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['service_id'] = serviceId;
     data['service_name'] = serviceName;
     data['service_description'] = serviceDescription;

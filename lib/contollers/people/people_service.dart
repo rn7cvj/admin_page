@@ -35,7 +35,7 @@ FutureOr<PeopleBackendResponse> converResponse(Response res) {
     return response;
   }
 
-  String jsonBody = Utf8Decoder().convert(res.bodyBytes);
+  String jsonBody = const Utf8Decoder().convert(res.bodyBytes);
   List<dynamic> json = jsonDecode(jsonBody);
 
   List<PersonBackendModel> personList = json.map((e) => PersonBackendModel.fromJson(e)).toList();

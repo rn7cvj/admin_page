@@ -19,6 +19,7 @@ abstract class ServiceControllerStore with Store {
     if (response.status != ServiceResponseStatus.success) return;
 
     for (var category in response.categoryList!) {
+      logger.i(category.runtimeType);
       logger.i(category.toJson());
     }
   }
