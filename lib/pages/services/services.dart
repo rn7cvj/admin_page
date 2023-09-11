@@ -1,5 +1,7 @@
 import 'package:admin_page/contollers/building/building_contoller.dart';
 import 'package:admin_page/contollers/service/service_controller.dart';
+import 'package:admin_page/pages/services/services_landscape.dart';
+import 'package:admin_page/pages/services/services_portrait.dart';
 import 'package:admin_page/pages/services/widgets/building_tab.dart';
 import 'package:admin_page/pages/services/widgets/service_tab.dart';
 import 'package:admin_page/themes/app_theme.dart';
@@ -12,60 +14,13 @@ import 'widgets/actions_row.dart';
 import 'widgets/lable.dart';
 import 'widgets/tab_bar_selector.dart';
 
-class Services extends StatefulWidget {
+class Services extends StatelessWidget {
   const Services({super.key});
 
   @override
-  State<Services> createState() => _ServicesState();
-}
-
-class _ServicesState extends State<Services> with TickerProviderStateMixin {
-  late final tabBarContoller = TabController(length: 2, vsync: this);
-
-  final ServiceController _serviceController = GetIt.I<ServiceController>();
-  final BuildingController _buildingController = GetIt.I<BuildingController>();
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.appTheme.backgoundColor,
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Lable(),
-            ),
-            TabBarSelector(tabBarController: tabBarContoller),
-            const Padding(
-              padding: EdgeInsets.only(left: 8.0, top: 16.0, bottom: 16.0),
-              child: ActionsRow(),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Observer(builder: (_) {
-                  if (_serviceController.isLoading || _buildingController.isLoading) {
-                    return Center(
-                      child: LoadingAnimationWidget.prograssiveDots(color: Colors.purple, size: 60),
-                    );
-                  }
+    if (MediaQuery.sizeOf(context).shortestSide < 600) return const ServicesPortrait();
 
-                  return TabBarView(
-                    controller: tabBarContoller,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: [
-                      ServiceTab(),
-                      BuildingTab(),
-                    ],
-                  );
-                }),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+    return const ServicesLandscape();
   }
 }

@@ -15,6 +15,7 @@ final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigationKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
+  routerNeglect: true,
   navigatorKey: rootNavigatorKey,
   initialLocation: "/dashboard",
   redirect: (context, state) {

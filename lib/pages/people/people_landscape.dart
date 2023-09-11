@@ -43,7 +43,10 @@ class _PeopleLandscapeState extends State<PeopleLandscape> with TickerProviderSt
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: ActionsRow(),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: ActionsRow(),
+              ),
             ),
             Expanded(
               child: Padding(

@@ -49,7 +49,8 @@ class ScaffoldWithDrawer extends StatelessWidget {
               ),
               selected: state.fullPath == "/dashboard",
               onTap: () {
-                context.go("/dashboard");
+                // context.go("/dashboard");
+                clearAndNavigate(context, "/dashboard");
                 _scaffoldKey.currentState!.closeDrawer();
               },
             ),
@@ -66,7 +67,8 @@ class ScaffoldWithDrawer extends StatelessWidget {
               ),
               selected: state.fullPath == "/people",
               onTap: () {
-                context.go("/people");
+                // context.go("/people");
+                clearAndNavigate(context, "/people");
                 _scaffoldKey.currentState!.closeDrawer();
               },
             ),
@@ -83,7 +85,8 @@ class ScaffoldWithDrawer extends StatelessWidget {
               ),
               selected: state.fullPath == "/service",
               onTap: () {
-                context.go("/service");
+                // context.go("/service");
+                clearAndNavigate(context, "/service");
                 _scaffoldKey.currentState!.closeDrawer();
               },
             ),
@@ -100,7 +103,8 @@ class ScaffoldWithDrawer extends StatelessWidget {
               ),
               selected: state.fullPath == "/calendar",
               onTap: () {
-                context.go("/calendar");
+                // context.go("/calendar");
+                clearAndNavigate(context, "/calendar");
                 _scaffoldKey.currentState!.closeDrawer();
               },
             ),
@@ -117,7 +121,8 @@ class ScaffoldWithDrawer extends StatelessWidget {
               ),
               selected: state.fullPath == "/calculator",
               onTap: () {
-                context.go("/calculator");
+                // context.go("/calculator");
+                clearAndNavigate(context, "/calculator");
                 _scaffoldKey.currentState!.closeDrawer();
               },
             ),
@@ -125,6 +130,10 @@ class ScaffoldWithDrawer extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void clearAndNavigate(BuildContext context, String path) {
+    Router.neglect(context, () => context.go(path));
   }
 
   String getAppBarTitle() {

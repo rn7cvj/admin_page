@@ -7,32 +7,34 @@ class ActionsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            ActionButton(
-              lable: t.services.new_category,
-              onPressed: () {},
-              icon: const Icon(Icons.add),
-            ),
-            const VerticalDivider(
-              width: 16,
-            ),
-            ActionButton(
-              lable: t.services.edit,
-              onPressed: () {},
-              icon: const Icon(Icons.edit_outlined),
-            ),
-          ],
-        ),
-        ActionButton(
-          lable: t.people.download,
-          onPressed: () {},
-          icon: const Icon(Icons.download),
-        ),
-      ],
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          ActionButton(
+            lable: t.services.new_category,
+            onPressed: () {},
+            icon: const Icon(Icons.add),
+          ),
+          const VerticalDivider(
+            width: 16,
+          ),
+          ActionButton(
+            lable: t.services.edit,
+            onPressed: () {},
+            icon: const Icon(Icons.edit_outlined),
+          ),
+          const VerticalDivider(
+            width: 16,
+          ),
+          ActionButton(
+            lable: t.people.download,
+            onPressed: () {},
+            icon: const Icon(Icons.download),
+          ),
+        ],
+      ),
     );
   }
 }
