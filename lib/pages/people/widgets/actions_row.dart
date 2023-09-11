@@ -8,32 +8,33 @@ class ActionsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            ActionButton(
-              lable: t.people.sort,
-              onPressed: () {},
-              icon: const Icon(Icons.sort),
-            ),
-            const VerticalDivider(
-              width: 16,
-            ),
-            ActionButton(
-              lable: t.people.filter,
-              onPressed: () {},
-              icon: const Icon(Icons.filter_alt),
-            ),
-          ],
-        ),
-        ActionButton(
-          lable: t.people.download,
-          onPressed: () {},
-          icon: const Icon(Icons.download),
-        ),
-      ],
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          ActionButton(
+            lable: t.people.sort,
+            onPressed: () {},
+            icon: const Icon(Icons.sort),
+          ),
+          const VerticalDivider(
+            width: 16,
+          ),
+          ActionButton(
+            lable: t.people.filter,
+            onPressed: () {},
+            icon: const Icon(Icons.filter_alt),
+          ),
+          const VerticalDivider(
+            width: 16,
+          ),
+          ActionButton(
+            lable: t.people.download,
+            onPressed: () {},
+            icon: const Icon(Icons.download),
+          ),
+        ],
+      ),
     );
   }
 }

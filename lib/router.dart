@@ -51,7 +51,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "/people",
           name: t.people.lable,
-          builder: (context, state) => const People(),
+          builder: (context, state) => People(),
         ),
         GoRoute(
           path: "/service",
