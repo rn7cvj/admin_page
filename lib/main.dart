@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:admin_page/contollers/building/building_contoller.dart';
+import 'package:admin_page/contollers/building/building_converter.dart';
+import 'package:admin_page/contollers/building/building_service.dart';
 import 'package:admin_page/contollers/people/people_controller.dart';
 import 'package:admin_page/contollers/people/people_convertor.dart';
 import 'package:admin_page/contollers/people/people_service.dart';
@@ -62,9 +65,13 @@ Future<void> main() async {
       TokenService.create(),
       PeopleService.create(),
       ServiceService.create(),
+      BuildingService.create(),
     ],
     converter: const JsonConverter(),
   );
+
+  BuildingConverter buildingConverter = BuildingConverter(buildingService: chopper.getService<BuildingService>());
+  BuildingController buildingController = BuildingController(buildingConverter: buildingConverter);
 
   ServiceConverter serviceConverter = ServiceConverter(serviceService: chopper.getService<ServiceService>());
   ServiceController serviceController = ServiceController(serviceConverter: serviceConverter);
@@ -73,17 +80,20 @@ Future<void> main() async {
   PeopleContoller peopleContoller = PeopleContoller(peopleConvertor: peopleConvertor);
 
   GetIt.I.registerSingleton(peopleContoller);
+  GetIt.I.registerSingleton(serviceController);
+  GetIt.I.registerSingleton(buildingController);
 
   TokenConvertor tokenConvertor = TokenConvertor(tokenService: chopper.getService<TokenService>());
   TokenStorage tokenStorage = TokenStorage();
-  await tokenStorage.init();
   TokenContoller tokenContoller = TokenContoller(tokenConvertor: tokenConvertor, tokenStorage: tokenStorage);
+
   tokenContoller.onSuccessAwait.add((response) async {
     logger.i("Token sucsessfully restore\n$response");
   });
   tokenContoller.onSuccess.add((response) async {
     peopleContoller.init();
     serviceController.init();
+    buildingController.init();
   });
   // tokenContoller.onSuccessAwait.add((response) async => AppNavigator.goToHomePage());
 
@@ -101,6 +111,7 @@ Future<void> main() async {
   authController.onSuccessAwait.add((response) async {
     peopleContoller.init();
     serviceController.init();
+    buildingController.init();
   });
   authController.onSuccessAwait.add((response) async => AppNavigator.goToHomePage());
 

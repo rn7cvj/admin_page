@@ -1,108 +1,34 @@
+import 'package:admin_page/contollers/service/service_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
 
 import 'service_card.dart';
 
 class ServiceTab extends StatelessWidget {
-  const ServiceTab({super.key});
+  ServiceTab({super.key});
+
+  final ServiceController _controller = GetIt.I<ServiceController>();
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Wrap(
-        spacing: 16.0,
-        runSpacing: 16.0,
-        direction: Axis.horizontal,
-        children: [
-          ServiceCard(lable: "Тренажерный зал", services: ["Тренажерный зал", "Кроссфит"]),
-          ServiceCard(
-            lable: "Бассейн",
-            services: ["Свободное плавание", "Аквааэробика", "Обучение плаванию взрослых", "Обучение плаванию детей"],
-          ),
-          ServiceCard(
-            lable: "Групповые занятия",
-            services: [
-              "Беговой клуб",
-              "Степ-аэробика",
-              "Силовая тренировка",
-              "Танец живота",
-              "Hot Iron",
-              "Пилатес",
-              "Fat burn",
-              "Детская секция по фехтованию"
-            ],
-          ),
-          ServiceCard(
-            lable: "Единоборства",
-            services: [
-              "Бокс",
-              "Карате",
-              "ММА",
-            ],
-          ),
-          ServiceCard(
-            lable: "Игровые направления",
-            services: [
-              "Настольный тенис",
-              "Тениис",
-            ],
-          ),
-          ServiceCard(
-            lable: "Групповые занятия",
-            services: [
-              "Беговой клуб",
-              "Степ-аэробика",
-              "Силовая тренировка",
-              "Танец живота",
-              "Hot Iron",
-              "Пилатес",
-              "Fat burn",
-              "Детская секция по фехтованию"
-            ],
-          ),
-          ServiceCard(
-            lable: "Единоборства",
-            services: [
-              "Бокс",
-              "Карате",
-              "ММА",
-            ],
-          ),
-          ServiceCard(
-            lable: "Игровые направления",
-            services: [
-              "Настольный тенис",
-              "Тениис",
-            ],
-          ),
-          ServiceCard(
-            lable: "Групповые занятия",
-            services: [
-              "Беговой клуб",
-              "Степ-аэробика",
-              "Силовая тренировка",
-              "Танец живота",
-              "Hot Iron",
-              "Пилатес",
-              "Fat burn",
-              "Детская секция по фехтованию"
-            ],
-          ),
-          ServiceCard(
-            lable: "Единоборства",
-            services: [
-              "Бокс",
-              "Карате",
-              "ММА",
-            ],
-          ),
-          ServiceCard(
-            lable: "Игровые направления",
-            services: [
-              "Настольный тенис",
-              "Тениис",
-            ],
-          ),
-        ],
+    return SingleChildScrollView(
+      child: Observer(
+        builder: (_) {
+          return Wrap(
+            spacing: 16.0,
+            runSpacing: 16.0,
+            direction: Axis.horizontal,
+            children: _controller.categories
+                .map(
+                  (category) => ServiceCard(
+                    lable: category.name,
+                    services: category.services.map((service) => service.name).toList(),
+                  ),
+                )
+                .toList(),
+          );
+        },
       ),
     );
   }
