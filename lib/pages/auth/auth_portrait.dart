@@ -29,10 +29,15 @@ class AuthPortrait extends StatelessWidget {
                   child: SizedBox(
                     width: double.infinity,
                     child: Container(
-                      color: context.appTheme.authTheme.logoBackgoundColor,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: SvgPicture.asset("assets/icons/logo.svg"),
+                        child: SvgPicture.asset(
+                          "assets/icons/logo.svg",
+                          colorFilter: ColorFilter.mode(
+                            context.appTheme.authTheme.logoBackgoundColor,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                       ),
                     ),
                   ),
