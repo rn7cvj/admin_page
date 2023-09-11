@@ -1,3 +1,5 @@
+import 'package:admin_page/pages/auth/auth_landscape.dart';
+import 'package:admin_page/pages/auth/auth_portrait.dart';
 import 'package:admin_page/themes/app_theme.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
@@ -12,31 +14,9 @@ class Auth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: context.appTheme.authTheme.authBackgroundColor,
-      child: Row(
-        children: [
-          const Expanded(flex: 1, child: Logo()),
-          Expanded(
-            flex: 2,
-            child: Scaffold(
-              body: Builder(
-                builder: (context) {
-                  _controller.messageStream.stream.listen(
-                    (message) => showSnackBar(context, message),
-                  );
+    if (MediaQuery.sizeOf(context).shortestSide < 600) return AuthPortrait();
 
-                  return Padding(
-                    padding: const EdgeInsets.all(128),
-                    child: AuthButtons(),
-                  );
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+    return AuthLandscape();
   }
 
   void showSnackBar(BuildContext context, AuthMessage message) {

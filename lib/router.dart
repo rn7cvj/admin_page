@@ -1,4 +1,6 @@
 import 'package:admin_page/contollers/token/token_contoller.dart';
+import 'package:admin_page/i18n/strings.g.dart';
+import 'package:admin_page/navigation/scaffold_with_drawer.dart';
 import 'package:admin_page/pages/auth/auth.dart';
 import 'package:admin_page/pages/calendar/calendar.dart';
 import 'package:admin_page/pages/people/people.dart';
@@ -28,6 +30,13 @@ final GoRouter router = GoRouter(
     ShellRoute(
       navigatorKey: _shellNavigationKey,
       builder: (context, state, child) {
+        if (MediaQuery.sizeOf(context).shortestSide < 600) {
+          return ScaffoldWithDrawer(
+            state: state,
+            child: child,
+          );
+        }
+
         return ScaffoldWithNavigationRails(
           state: state,
           child: child,
@@ -36,22 +45,27 @@ final GoRouter router = GoRouter(
       routes: [
         GoRoute(
           path: "/dashboard",
+          name: "Dashboard",
           builder: (context, state) => const Placeholder(),
         ),
         GoRoute(
           path: "/people",
+          name: t.people.lable,
           builder: (context, state) => const People(),
         ),
         GoRoute(
           path: "/service",
+          name: t.services.label,
           builder: (context, state) => const Services(),
         ),
         GoRoute(
           path: "/calendar",
-          builder: (context, state) => const Calendar(),
+          name: "Calendar",
+          builder: (context, state) => const Placeholder(),
         ),
         GoRoute(
           path: "/calculator",
+          name: "Calculator",
           builder: (context, state) => const Placeholder(),
         ),
       ],
