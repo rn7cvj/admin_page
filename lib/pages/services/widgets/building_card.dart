@@ -88,15 +88,23 @@ class BuildingCard extends StatelessWidget {
             child: AnimatedOpacity(
               duration: const Duration(milliseconds: 200),
               opacity: isEditing ? 1 : 0,
-              child: IconButton(
-                onPressed: isEditing
-                    ? () {
-                        isActive
-                            ? _controller.deactiveteBuilding(buildingId)
-                            : _controller.activateBuilding(buildingId, lable);
-                      }
-                    : null,
-                icon: Icon(isActive ? Icons.visibility : Icons.visibility_off),
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: isEditing
+                        ? () {
+                            isActive
+                                ? _controller.deactiveteBuilding(buildingId)
+                                : _controller.activateBuilding(buildingId, lable);
+                          }
+                        : null,
+                    icon: Icon(isActive ? Icons.visibility : Icons.visibility_off),
+                  ),
+                  IconButton(
+                    onPressed: isEditing ? () {} : null,
+                    icon: const Icon(Icons.edit),
+                  ),
+                ],
               ),
             ),
           )
