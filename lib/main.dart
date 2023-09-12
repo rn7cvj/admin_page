@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:admin_page/vibration.dart';
 import 'package:get_it/get_it.dart';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +71,10 @@ Future<void> main() async {
     ],
     converter: const JsonConverter(),
   );
+
+  VibrationController vibrationController = VibrationController();
+  await vibrationController.init();
+  GetIt.I.registerSingleton(vibrationController);
 
   BuildingConverter buildingConverter = BuildingConverter(buildingService: chopper.getService<BuildingService>());
   BuildingController buildingController = BuildingController(buildingConverter: buildingConverter);

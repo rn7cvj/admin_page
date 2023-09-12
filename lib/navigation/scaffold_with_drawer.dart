@@ -1,16 +1,20 @@
 import 'package:admin_page/i18n/strings.g.dart';
 import 'package:admin_page/themes/app_theme.dart';
+import 'package:admin_page/vibration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class ScaffoldWithDrawer extends StatelessWidget {
-  const ScaffoldWithDrawer({super.key, required this.child, required this.state});
+  ScaffoldWithDrawer({super.key, required this.child, required this.state});
 
   final Widget child;
   final GoRouterState state;
+
+  final VibrationController vibrationController = GetIt.I<VibrationController>();
 
   @override
   Widget build(BuildContext context) {
@@ -131,6 +135,7 @@ class ScaffoldWithDrawer extends StatelessWidget {
   }
 
   void clearAndNavigate(BuildContext context, String path) {
+    vibrationController.onTapVibraion();
     Router.neglect(context, () => context.go(path));
   }
 
