@@ -17,11 +17,18 @@ abstract class BuildingService extends ChopperService {
     return convertAddBuildingResponse(res);
   }
 
+  Future<void> deleteBuidling(int buildingId) async {
+    await _deleteBuilding(buildingId);
+  }
+
   @Get(path: "/building/view")
   Future<Response> _getBuilding(@Query("screen") screen);
 
   @Post(path: "/building/add")
   Future<Response> _addBuilding(@Field("building_name") String buildingName);
+
+  @Delete(path: "/building/delete")
+  Future<Response> _deleteBuilding(@Query("building_id") int);
 
   static BuildingService create([ChopperClient? client]) => _$BuildingService(client);
 }

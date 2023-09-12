@@ -55,7 +55,7 @@ class _PeopleLandscapeState extends State<PeopleLandscape> with TickerProviderSt
                   builder: (context) {
                     if (contoller.isLoading) {
                       return Center(
-                        child: LoadingAnimationWidget.prograssiveDots(color: Colors.purple, size: 60),
+                        child: LoadingAnimationWidget.prograssiveDots(color: Color.fromRGBO(67, 67, 244, 1), size: 60),
                       );
                     }
 

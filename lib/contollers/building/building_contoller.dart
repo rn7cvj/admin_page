@@ -48,6 +48,12 @@ abstract class BuildingControllerStore with Store {
   @observable
   bool isBuildingAdding = false;
 
+  @observable
+  bool isBuidlingEditing = false;
+
+  @action
+  void switchEditingMod() => isBuidlingEditing = !isBuidlingEditing;
+
   @action
   Future<void> addBuidling(String buildingName) async {
     isBuildingAdding = true;
@@ -74,6 +80,13 @@ abstract class BuildingControllerStore with Store {
     if (response.status == AddBuildingResponseStatus.buildingAlradyExist) {
       addBuidlingMessageStream.add(AddBuildingMessage(info: AbbBuildingMessageInfo.buildingAlradyExist));
     }
+  }
+
+  @action
+  Future<void> deleteBuilding(int buildingId) async {
+    isLoading = true;
+    await buildingConverter.deleteBuiding(buildingId);
+    init();
   }
 }
 

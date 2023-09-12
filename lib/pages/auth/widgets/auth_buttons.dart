@@ -98,7 +98,7 @@ class AuthButtons extends StatelessWidget {
                     height: 60,
                     child: Center(
                       child: controller.isLoading
-                          ? LoadingAnimationWidget.prograssiveDots(color: Colors.purple, size: 60)
+                          ? LoadingAnimationWidget.prograssiveDots(color: Color.fromRGBO(67, 67, 244, 1), size: 60)
                           : Text(
                               "Войти",
                               style: context.appTheme.authTheme.loginButtonTextStyle,

@@ -57,6 +57,22 @@ mixin _$BuildingController on BuildingControllerStore, Store {
     });
   }
 
+  late final _$isBuidlingEditingAtom =
+      Atom(name: 'BuildingControllerStore.isBuidlingEditing', context: context);
+
+  @override
+  bool get isBuidlingEditing {
+    _$isBuidlingEditingAtom.reportRead();
+    return super.isBuidlingEditing;
+  }
+
+  @override
+  set isBuidlingEditing(bool value) {
+    _$isBuidlingEditingAtom.reportWrite(value, super.isBuidlingEditing, () {
+      super.isBuidlingEditing = value;
+    });
+  }
+
   late final _$initAsyncAction =
       AsyncAction('BuildingControllerStore.init', context: context);
 
@@ -73,12 +89,36 @@ mixin _$BuildingController on BuildingControllerStore, Store {
     return _$addBuidlingAsyncAction.run(() => super.addBuidling(buildingName));
   }
 
+  late final _$deleteBuildingAsyncAction =
+      AsyncAction('BuildingControllerStore.deleteBuilding', context: context);
+
+  @override
+  Future<void> deleteBuilding(int buildingId) {
+    return _$deleteBuildingAsyncAction
+        .run(() => super.deleteBuilding(buildingId));
+  }
+
+  late final _$BuildingControllerStoreActionController =
+      ActionController(name: 'BuildingControllerStore', context: context);
+
+  @override
+  void switchEditingMod() {
+    final _$actionInfo = _$BuildingControllerStoreActionController.startAction(
+        name: 'BuildingControllerStore.switchEditingMod');
+    try {
+      return super.switchEditingMod();
+    } finally {
+      _$BuildingControllerStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 isLoading: ${isLoading},
 buildings: ${buildings},
-isBuildingAdding: ${isBuildingAdding}
+isBuildingAdding: ${isBuildingAdding},
+isBuidlingEditing: ${isBuidlingEditing}
     ''';
   }
 }

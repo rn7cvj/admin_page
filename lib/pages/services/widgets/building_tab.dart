@@ -39,7 +39,7 @@ class BuildingTab extends StatelessWidget {
                 // ),
                 ActionButton(
                   lable: t.services.edit,
-                  onPressed: () {},
+                  onPressed: () => _controller.switchEditingMod(),
                   icon: const Icon(Icons.edit_outlined),
                 ),
                 // const VerticalDivider(
@@ -62,8 +62,10 @@ class BuildingTab extends StatelessWidget {
                 children: _controller.buildings
                     .map((building) => BuildingCard(
                           lable: building.name,
+                          buildingId: building.id,
                           buildingType: "спортивный корпус",
                           zones: const [],
+                          isEditing: _controller.isBuidlingEditing,
                         ))
                     .toList(),
               );

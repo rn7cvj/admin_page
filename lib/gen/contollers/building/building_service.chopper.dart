@@ -41,4 +41,17 @@ final class _$BuildingService extends BuildingService {
     );
     return client.send<dynamic, dynamic>($request);
   }
+
+  @override
+  Future<Response<dynamic>> _deleteBuilding(dynamic int) {
+    final Uri $url = Uri.parse('/building/delete');
+    final Map<String, dynamic> $params = <String, dynamic>{'building_id': int};
+    final Request $request = Request(
+      'DELETE',
+      $url,
+      client.baseUrl,
+      parameters: $params,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
 }

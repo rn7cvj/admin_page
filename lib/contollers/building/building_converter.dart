@@ -55,6 +55,12 @@ class BuildingConverter {
       status: AddBuildingResponseStatus.success,
     );
   }
+
+  Future<void> deleteBuiding(int buildingId) async {
+    try {
+      buildingService.deleteBuidling(buildingId);
+    } catch (ex) {}
+  }
 }
 
 class BuildingResponse {
