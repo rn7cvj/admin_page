@@ -2,7 +2,6 @@ import 'package:admin_page/themes/app_theme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
-import 'package:admin_page/pages/auth/widgets/logo.dart';
 import 'package:admin_page/contollers/auth/auth_contoller.dart';
 import 'package:admin_page/pages/auth/widgets/auth_buttons.dart';
 
@@ -29,15 +28,13 @@ class AuthPortrait extends StatelessWidget {
                   flex: 1,
                   child: SizedBox(
                     width: double.infinity,
-                    child: Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SvgPicture.asset(
-                          "assets/icons/logo.svg",
-                          colorFilter: ColorFilter.mode(
-                            context.appTheme.authTheme.logoBackgoundColor,
-                            BlendMode.srcIn,
-                          ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgPicture.asset(
+                        "assets/icons/logo.svg",
+                        colorFilter: ColorFilter.mode(
+                          context.appTheme.authTheme.logoBackgoundColor,
+                          BlendMode.srcIn,
                         ),
                       ),
                     ),

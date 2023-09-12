@@ -1,8 +1,6 @@
 import 'package:admin_page/i18n/strings.g.dart';
-import 'package:admin_page/router.dart';
 import 'package:admin_page/themes/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,7 +23,7 @@ class ScaffoldWithDrawer extends StatelessWidget {
         ),
         foregroundColor: Colors.white,
         backgroundColor: context.appTheme.navigationTheme.backgoundColor,
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
       // backgroundColor: context.appTheme.navigationTheme.backgoundColor,
       body: child,

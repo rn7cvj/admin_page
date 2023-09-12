@@ -40,12 +40,12 @@ abstract class ServiceControllerStore with Store {
   CategoryViewModel convertResponse(CategoryBackendResponse category) {
     List<ServiceViewModel> services = [];
 
-    category.services.forEach((service) {
+    for (var service in category.services) {
       services.add(ServiceViewModel(
         id: service.serviceId,
         name: service.serviceName,
       ));
-    });
+    }
 
     CategoryViewModel response = CategoryViewModel(
         id: category.categoryId,

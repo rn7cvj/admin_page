@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:admin_page/logger.dart';
 import 'package:chopper/chopper.dart';
 part '../../gen/contollers/building/building_service.chopper.dart';
 

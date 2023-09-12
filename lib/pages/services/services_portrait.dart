@@ -9,7 +9,6 @@ import 'package:get_it/get_it.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import 'widgets/actions_row.dart';
-import 'widgets/lable.dart';
 import 'widgets/tab_bar_selector.dart';
 
 class ServicesPortrait extends StatefulWidget {

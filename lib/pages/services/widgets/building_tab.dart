@@ -23,7 +23,7 @@ class BuildingTab extends StatelessWidget {
                 .map((building) => BuildingCard(
                       lable: building.name,
                       buildingType: "спортивный корпус",
-                      zones: [],
+                      zones: const [],
                     ))
                 .toList(),
           );

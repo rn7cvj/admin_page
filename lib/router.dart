@@ -2,7 +2,6 @@ import 'package:admin_page/contollers/token/token_contoller.dart';
 import 'package:admin_page/i18n/strings.g.dart';
 import 'package:admin_page/navigation/scaffold_with_drawer.dart';
 import 'package:admin_page/pages/auth/auth.dart';
-import 'package:admin_page/pages/calendar/calendar.dart';
 import 'package:admin_page/pages/people/people.dart';
 import 'package:admin_page/pages/services/services.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +51,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "/people",
           name: t.people.lable,
-          builder: (context, state) => People(),
+          builder: (context, state) => const People(),
         ),
         GoRoute(
           path: "/service",

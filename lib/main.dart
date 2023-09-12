@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:admin_page/i18n/strings.g.dart';
 import 'package:admin_page/contollers/building/building_contoller.dart';
 import 'package:admin_page/contollers/building/building_converter.dart';
 import 'package:admin_page/contollers/building/building_service.dart';
@@ -118,14 +119,9 @@ Future<void> main() async {
   GetIt.I.registerSingleton(authController);
   GetIt.I.registerSingleton(tokenContoller);
 
-  // GetIt.I.registerSingleton<PeopleService>(chopper.getService<PeopleService>());
-  // GetIt.I.registerSingleton<AuthService>(chopper.getService<AuthService>());
+  LocaleSettings.useDeviceLocale();
 
-  // GetIt.I.registerSingleton<PeopleContoller>(PeopleContoller());
-
-  // GetIt.I<AuthContoller>().init();
-
-  runApp(App());
+  runApp(TranslationProvider(child: App()));
 }
 
 class App extends StatelessWidget {

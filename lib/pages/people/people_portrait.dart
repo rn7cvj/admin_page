@@ -1,7 +1,4 @@
 import 'package:admin_page/contollers/people/people_controller.dart';
-import 'package:admin_page/models/person_viewmodel.dart';
-
-import 'package:admin_page/pages/people/widgets/lable.dart';
 import 'package:admin_page/pages/people/widgets/tab_bar_selector.dart';
 import 'package:admin_page/pages/people/widgets/actions_row.dart';
 import 'package:admin_page/pages/people/widgets/user_table_mobile.dart';
@@ -11,7 +8,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:mobx/mobx.dart';
-import 'widgets/users_table.dart';
 
 class PeoplePortrait extends StatefulWidget {
   const PeoplePortrait({super.key});
