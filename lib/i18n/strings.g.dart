@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 42 (21 per locale)
+/// Strings: 48 (24 per locale)
 ///
-/// Built on 2023-08-30 at 01:40 UTC
+/// Built on 2023-09-12 at 04:36 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -150,8 +150,41 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsEn _root = this; // ignore: unused_field
 
 	// Translations
+	late final _StringsCalculatorEn calculator = _StringsCalculatorEn._(_root);
+	late final _StringsCalendarEn calendar = _StringsCalendarEn._(_root);
+	late final _StringsDashboardEn dashboard = _StringsDashboardEn._(_root);
 	late final _StringsPeopleEn people = _StringsPeopleEn._(_root);
 	late final _StringsServicesEn services = _StringsServicesEn._(_root);
+}
+
+// Path: calculator
+class _StringsCalculatorEn {
+	_StringsCalculatorEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get label => 'Calculator';
+}
+
+// Path: calendar
+class _StringsCalendarEn {
+	_StringsCalendarEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get label => 'Calendar';
+}
+
+// Path: dashboard
+class _StringsDashboardEn {
+	_StringsDashboardEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get label => 'Dashboard';
 }
 
 // Path: people
@@ -161,7 +194,7 @@ class _StringsPeopleEn {
 	final _StringsEn _root; // ignore: unused_field
 
 	// Translations
-	String get lable => 'People';
+	String get label => 'People';
 	String get tab_visitor => 'Visiotrs';
 	String get tab_trainer => 'Trainers';
 	String get tab_staff => 'Staff';
@@ -218,8 +251,41 @@ class _StringsRu implements _StringsEn {
 	@override late final _StringsRu _root = this; // ignore: unused_field
 
 	// Translations
+	@override late final _StringsCalculatorRu calculator = _StringsCalculatorRu._(_root);
+	@override late final _StringsCalendarRu calendar = _StringsCalendarRu._(_root);
+	@override late final _StringsDashboardRu dashboard = _StringsDashboardRu._(_root);
 	@override late final _StringsPeopleRu people = _StringsPeopleRu._(_root);
 	@override late final _StringsServicesRu services = _StringsServicesRu._(_root);
+}
+
+// Path: calculator
+class _StringsCalculatorRu implements _StringsCalculatorEn {
+	_StringsCalculatorRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get label => 'Калькулятор';
+}
+
+// Path: calendar
+class _StringsCalendarRu implements _StringsCalendarEn {
+	_StringsCalendarRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get label => 'Каледарь';
+}
+
+// Path: dashboard
+class _StringsDashboardRu implements _StringsDashboardEn {
+	_StringsDashboardRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get label => 'Панель управления';
 }
 
 // Path: people
@@ -229,7 +295,7 @@ class _StringsPeopleRu implements _StringsPeopleEn {
 	@override final _StringsRu _root; // ignore: unused_field
 
 	// Translations
-	@override String get lable => 'Люди';
+	@override String get label => 'Люди';
 	@override String get tab_visitor => 'Посетители';
 	@override String get tab_trainer => 'Тренера';
 	@override String get tab_staff => 'Сотрудники';
@@ -267,7 +333,10 @@ class _StringsServicesRu implements _StringsServicesEn {
 extension on _StringsEn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'people.lable': return 'People';
+			case 'calculator.label': return 'Calculator';
+			case 'calendar.label': return 'Calendar';
+			case 'dashboard.label': return 'Dashboard';
+			case 'people.label': return 'People';
 			case 'people.tab_visitor': return 'Visiotrs';
 			case 'people.tab_trainer': return 'Trainers';
 			case 'people.tab_staff': return 'Staff';
@@ -296,7 +365,10 @@ extension on _StringsEn {
 extension on _StringsRu {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'people.lable': return 'Люди';
+			case 'calculator.label': return 'Калькулятор';
+			case 'calendar.label': return 'Каледарь';
+			case 'dashboard.label': return 'Панель управления';
+			case 'people.label': return 'Люди';
 			case 'people.tab_visitor': return 'Посетители';
 			case 'people.tab_trainer': return 'Тренера';
 			case 'people.tab_staff': return 'Сотрудники';

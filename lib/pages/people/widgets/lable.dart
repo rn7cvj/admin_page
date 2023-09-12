@@ -12,7 +12,7 @@ class Lable extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          t.people.lable,
+          t.people.label,
           style: context.appTheme.lableTextStyle,
         ),
         CircleAvatar(

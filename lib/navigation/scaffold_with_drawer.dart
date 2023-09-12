@@ -42,7 +42,7 @@ class ScaffoldWithDrawer extends StatelessWidget {
                 height: 24,
               ),
               title: Text(
-                "Dashboard",
+                t.dashboard.label,
                 style: context.appTheme.buttonextStyle.copyWith(fontSize: 16),
               ),
               selected: state.fullPath == "/dashboard",
@@ -60,7 +60,7 @@ class ScaffoldWithDrawer extends StatelessWidget {
                 height: 24,
               ),
               title: Text(
-                t.people.lable,
+                t.people.label,
                 style: context.appTheme.buttonextStyle.copyWith(fontSize: 16),
               ),
               selected: state.fullPath == "/people",
@@ -96,7 +96,7 @@ class ScaffoldWithDrawer extends StatelessWidget {
                 height: 24,
               ),
               title: Text(
-                "Calendar",
+                t.calendar.label,
                 style: context.appTheme.buttonextStyle.copyWith(fontSize: 16),
               ),
               selected: state.fullPath == "/calendar",
@@ -114,7 +114,7 @@ class ScaffoldWithDrawer extends StatelessWidget {
                 height: 24,
               ),
               title: Text(
-                "Calculator",
+                t.calculator.label,
                 style: context.appTheme.buttonextStyle.copyWith(fontSize: 16),
               ),
               selected: state.fullPath == "/calculator",
@@ -135,11 +135,11 @@ class ScaffoldWithDrawer extends StatelessWidget {
   }
 
   String getAppBarTitle() {
-    if (state.fullPath == "/dashboard") return "Dashboard";
-    if (state.fullPath == "/people") return t.people.lable;
+    if (state.fullPath == "/dashboard") return t.dashboard.label;
+    if (state.fullPath == "/people") return t.people.label;
     if (state.fullPath == "/service") return t.services.label;
-    if (state.fullPath == "/calendar") return "Calendar";
-    if (state.fullPath == "/calculator") return "Calculator";
+    if (state.fullPath == "/calendar") return t.calendar.label;
+    if (state.fullPath == "/calculator") return t.calculator.label;
 
     return "";
   }

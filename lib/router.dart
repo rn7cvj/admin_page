@@ -45,12 +45,12 @@ final GoRouter router = GoRouter(
       routes: [
         GoRoute(
           path: "/dashboard",
-          name: "Dashboard",
+          name: t.dashboard.label,
           builder: (context, state) => const Placeholder(),
         ),
         GoRoute(
           path: "/people",
-          name: t.people.lable,
+          name: t.people.label,
           builder: (context, state) => const People(),
         ),
         GoRoute(
@@ -60,12 +60,12 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "/calendar",
-          name: "Calendar",
+          name: t.calendar.label,
           builder: (context, state) => const Placeholder(),
         ),
         GoRoute(
           path: "/calculator",
-          name: "Calculator",
+          name: t.calculator.label,
           builder: (context, state) => const Placeholder(),
         ),
       ],
