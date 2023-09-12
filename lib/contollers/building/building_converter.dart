@@ -28,6 +28,33 @@ class BuildingConverter {
       buildingsList: backendResponse.buildingList,
     );
   }
+
+  Future<AddBuildingResponse> addBuidling(String buildingName) async {
+    AddBuildingBackendResponse? backendResponse;
+    try {
+      backendResponse = await buildingService.addBuidling(buildingName);
+    } catch (ex) {
+      return AddBuildingResponse(
+        status: AddBuildingResponseStatus.networkTrouble,
+      );
+    }
+
+    if (!backendResponse.isSuccess) {
+      return AddBuildingResponse(
+        status: AddBuildingResponseStatus.networkTrouble,
+      );
+    }
+
+    if (backendResponse.status == AddBuildingStatus.buildingAlradyExist) {
+      return AddBuildingResponse(
+        status: AddBuildingResponseStatus.buildingAlradyExist,
+      );
+    }
+
+    return AddBuildingResponse(
+      status: AddBuildingResponseStatus.success,
+    );
+  }
 }
 
 class BuildingResponse {
@@ -40,5 +67,17 @@ class BuildingResponse {
 
 enum BuildingResponseStatus {
   networkTrouble,
+  success,
+}
+
+class AddBuildingResponse {
+  final AddBuildingResponseStatus status;
+
+  AddBuildingResponse({required this.status});
+}
+
+enum AddBuildingResponseStatus {
+  networkTrouble,
+  buildingAlradyExist,
   success,
 }

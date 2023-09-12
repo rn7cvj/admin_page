@@ -3,37 +3,30 @@ import 'package:admin_page/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ActionsRow extends StatelessWidget {
-  const ActionsRow({super.key});
+  const ActionsRow({super.key, required this.actions});
+
+  final List<ActionButton> actions;
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> children = [];
+
+    for (int i = 0; i < actions.length; i++) {
+      children.add(actions[i]);
+
+      if (i != actions.length) {
+        children.add(
+          const VerticalDivider(
+            width: 16,
+          ),
+        );
+      }
+    }
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          ActionButton(
-            lable: t.services.new_category,
-            onPressed: () {},
-            icon: const Icon(Icons.add),
-          ),
-          const VerticalDivider(
-            width: 16,
-          ),
-          ActionButton(
-            lable: t.services.edit,
-            onPressed: () {},
-            icon: const Icon(Icons.edit_outlined),
-          ),
-          const VerticalDivider(
-            width: 16,
-          ),
-          ActionButton(
-            lable: t.people.download,
-            onPressed: () {},
-            icon: const Icon(Icons.download),
-          ),
-        ],
+        children: children,
       ),
     );
   }

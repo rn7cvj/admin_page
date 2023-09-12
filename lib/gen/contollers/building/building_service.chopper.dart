@@ -28,4 +28,17 @@ final class _$BuildingService extends BuildingService {
     );
     return client.send<dynamic, dynamic>($request);
   }
+
+  @override
+  Future<Response<dynamic>> _addBuilding(String buildingName) {
+    final Uri $url = Uri.parse('/building/add');
+    final $body = <String, dynamic>{'building_name': buildingName};
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
 }

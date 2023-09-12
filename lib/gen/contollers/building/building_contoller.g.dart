@@ -41,6 +41,22 @@ mixin _$BuildingController on BuildingControllerStore, Store {
     });
   }
 
+  late final _$isBuildingAddingAtom =
+      Atom(name: 'BuildingControllerStore.isBuildingAdding', context: context);
+
+  @override
+  bool get isBuildingAdding {
+    _$isBuildingAddingAtom.reportRead();
+    return super.isBuildingAdding;
+  }
+
+  @override
+  set isBuildingAdding(bool value) {
+    _$isBuildingAddingAtom.reportWrite(value, super.isBuildingAdding, () {
+      super.isBuildingAdding = value;
+    });
+  }
+
   late final _$initAsyncAction =
       AsyncAction('BuildingControllerStore.init', context: context);
 
@@ -49,11 +65,20 @@ mixin _$BuildingController on BuildingControllerStore, Store {
     return _$initAsyncAction.run(() => super.init());
   }
 
+  late final _$addBuidlingAsyncAction =
+      AsyncAction('BuildingControllerStore.addBuidling', context: context);
+
+  @override
+  Future<void> addBuidling(String buildingName) {
+    return _$addBuidlingAsyncAction.run(() => super.addBuidling(buildingName));
+  }
+
   @override
   String toString() {
     return '''
 isLoading: ${isLoading},
-buildings: ${buildings}
+buildings: ${buildings},
+isBuildingAdding: ${isBuildingAdding}
     ''';
   }
 }

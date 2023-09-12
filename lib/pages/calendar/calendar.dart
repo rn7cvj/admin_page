@@ -28,7 +28,7 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: ActionsRow(),
+              // child: ActionsRow(),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

@@ -9,16 +9,24 @@ abstract class BuildingService extends ChopperService {
   Future<BuildingBackendResponse> getBuilding() async {
     Response res = (await _getBuilding("admin_panel"));
 
-    return converResponse(res);
+    return converGetBuidlingResponse(res);
+  }
+
+  Future<AddBuildingBackendResponse> addBuidling(String buildingName) async {
+    Response res = (await _addBuilding(buildingName));
+    return convertAddBuildingResponse(res);
   }
 
   @Get(path: "/building/view")
   Future<Response> _getBuilding(@Query("screen") screen);
 
+  @Post(path: "/building/add")
+  Future<Response> _addBuilding(@Field("building_name") String buildingName);
+
   static BuildingService create([ChopperClient? client]) => _$BuildingService(client);
 }
 
-FutureOr<BuildingBackendResponse> converResponse(Response res) {
+FutureOr<BuildingBackendResponse> converGetBuidlingResponse(Response res) {
   if (!res.isSuccessful) {
     return BuildingBackendResponse(isSuccess: false, buildingList: null);
   }
@@ -31,6 +39,21 @@ FutureOr<BuildingBackendResponse> converResponse(Response res) {
   buildingList = json.map((e) => BuildingBackendModel.fromJson(e)).toList();
 
   return BuildingBackendResponse(isSuccess: true, buildingList: buildingList);
+}
+
+FutureOr<AddBuildingBackendResponse> convertAddBuildingResponse(Response res) {
+  if (res.statusCode == 400) {
+    String jsonBody = const Utf8Decoder().convert(res.bodyBytes);
+    dynamic json = jsonDecode(jsonBody);
+
+    return AddBuildingBackendResponse(isSuccess: true, status: AddBuildingStatus.buildingAlradyExist);
+  }
+
+  if (!res.isSuccessful) {
+    return AddBuildingBackendResponse(isSuccess: false, status: AddBuildingStatus.buildingAlradyExist);
+  }
+
+  return AddBuildingBackendResponse(isSuccess: true, status: AddBuildingStatus.successfullyAdded);
 }
 
 class BuildingBackendResponse {
@@ -61,4 +84,17 @@ class BuildingBackendModel {
     data["building_name"] = name;
     return data;
   }
+}
+
+class AddBuildingBackendResponse {
+  final bool isSuccess;
+
+  final AddBuildingStatus status;
+
+  AddBuildingBackendResponse({required this.isSuccess, required this.status});
+}
+
+enum AddBuildingStatus {
+  buildingAlradyExist,
+  successfullyAdded,
 }
