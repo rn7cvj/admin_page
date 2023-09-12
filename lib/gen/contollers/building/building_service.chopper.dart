@@ -43,13 +43,39 @@ final class _$BuildingService extends BuildingService {
   }
 
   @override
-  Future<Response<dynamic>> _deleteBuilding(dynamic int) {
+  Future<Response<dynamic>> _deleteBuilding(int buidlingId) {
     final Uri $url = Uri.parse('/building/delete');
-    final Map<String, dynamic> $params = <String, dynamic>{'building_id': int};
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'building_id': buidlingId
+    };
     final Request $request = Request(
-      'DELETE',
+      'POST',
       $url,
       client.baseUrl,
+      parameters: $params,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _editBuilding(
+    int buildingId,
+    dynamic buildingName,
+    bool active,
+  ) {
+    final Uri $url = Uri.parse('/building/edit');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'building_id': buildingId
+    };
+    final $body = <String, dynamic>{
+      'building_name': buildingName,
+      'active': active,
+    };
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
       parameters: $params,
     );
     return client.send<dynamic, dynamic>($request);

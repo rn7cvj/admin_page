@@ -89,13 +89,23 @@ mixin _$BuildingController on BuildingControllerStore, Store {
     return _$addBuidlingAsyncAction.run(() => super.addBuidling(buildingName));
   }
 
-  late final _$deleteBuildingAsyncAction =
-      AsyncAction('BuildingControllerStore.deleteBuilding', context: context);
+  late final _$deactiveteBuildingAsyncAction = AsyncAction(
+      'BuildingControllerStore.deactiveteBuilding',
+      context: context);
 
   @override
-  Future<void> deleteBuilding(int buildingId) {
-    return _$deleteBuildingAsyncAction
-        .run(() => super.deleteBuilding(buildingId));
+  Future<void> deactiveteBuilding(int buildingId) {
+    return _$deactiveteBuildingAsyncAction
+        .run(() => super.deactiveteBuilding(buildingId));
+  }
+
+  late final _$activateBuildingAsyncAction =
+      AsyncAction('BuildingControllerStore.activateBuilding', context: context);
+
+  @override
+  Future<void> activateBuilding(int buildingId, String buildingName) {
+    return _$activateBuildingAsyncAction
+        .run(() => super.activateBuilding(buildingId, buildingName));
   }
 
   late final _$BuildingControllerStoreActionController =

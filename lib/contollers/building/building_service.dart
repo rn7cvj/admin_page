@@ -21,14 +21,22 @@ abstract class BuildingService extends ChopperService {
     await _deleteBuilding(buildingId);
   }
 
+  Future<void> activateBuilding(int buildingId, String buildingName) async {
+    await _editBuilding(buildingId, buildingName, true);
+  }
+
   @Get(path: "/building/view")
   Future<Response> _getBuilding(@Query("screen") screen);
 
   @Post(path: "/building/add")
   Future<Response> _addBuilding(@Field("building_name") String buildingName);
 
-  @Delete(path: "/building/delete")
-  Future<Response> _deleteBuilding(@Query("building_id") int);
+  @Post(path: "/building/delete")
+  Future<Response> _deleteBuilding(@Query("building_id") int buidlingId);
+
+  @Post(path: "/building/edit")
+  Future<Response> _editBuilding(
+      @Query("building_id") int buildingId, @Field("building_name") buildingName, @Field("active") bool active);
 
   static BuildingService create([ChopperClient? client]) => _$BuildingService(client);
 }
@@ -74,21 +82,25 @@ class BuildingBackendResponse {
 class BuildingBackendModel {
   late int id;
   late String name;
+  late bool active;
 
   BuildingBackendModel({
     required this.id,
     required this.name,
+    required this.active,
   });
 
   BuildingBackendModel.fromJson(Map<String, dynamic> json) {
     id = json["building_id"];
     name = json["building_name"];
+    active = json["active"];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data["building_id"] = id;
     data["building_name"] = name;
+    data["active"] = active;
     return data;
   }
 }

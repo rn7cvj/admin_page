@@ -58,7 +58,13 @@ class BuildingConverter {
 
   Future<void> deleteBuiding(int buildingId) async {
     try {
-      buildingService.deleteBuidling(buildingId);
+      await buildingService.deleteBuidling(buildingId);
+    } catch (ex) {}
+  }
+
+  Future<void> activateBuilding(int buildingId, String buildingName) async {
+    try {
+      await buildingService.activateBuilding(buildingId, buildingName);
     } catch (ex) {}
   }
 }

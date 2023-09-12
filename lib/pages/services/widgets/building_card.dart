@@ -10,7 +10,8 @@ class BuildingCard extends StatelessWidget {
       required this.buildingType,
       required this.zones,
       required this.isEditing,
-      required this.buildingId});
+      required this.buildingId,
+      required this.isActive});
 
   final String lable;
   final String buildingType;
@@ -20,6 +21,7 @@ class BuildingCard extends StatelessWidget {
   final int buildingId;
 
   final bool isEditing;
+  final bool isActive;
 
   final BuildingController _controller = GetIt.I<BuildingController>();
 
@@ -69,19 +71,32 @@ class BuildingCard extends StatelessWidget {
               ],
             ),
           ),
+          Positioned.fill(
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(13.0),
+                  color: isActive ? Colors.transparent : Colors.grey.withOpacity(0.4),
+                ),
+              ),
+            ),
+          ),
           Positioned(
             right: 0,
             top: 0,
             child: AnimatedOpacity(
-              duration: const Duration(milliseconds: 100),
+              duration: const Duration(milliseconds: 200),
               opacity: isEditing ? 1 : 0,
               child: IconButton(
                 onPressed: isEditing
                     ? () {
-                        _controller.deleteBuilding(buildingId);
+                        isActive
+                            ? _controller.deactiveteBuilding(buildingId)
+                            : _controller.activateBuilding(buildingId, lable);
                       }
                     : null,
-                icon: const Icon(Icons.delete),
+                icon: Icon(isActive ? Icons.visibility : Icons.visibility_off),
               ),
             ),
           )

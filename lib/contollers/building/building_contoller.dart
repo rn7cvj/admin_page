@@ -36,11 +36,13 @@ abstract class BuildingControllerStore with Store {
       buildings.add(convertResponse(building));
     }
 
+    buildings.sort((BuildingViewModel a, BuildingViewModel b) => (b.isActive ? 1 : 0).compareTo(a.isActive ? 1 : 0));
+
     isLoading = false;
   }
 
   BuildingViewModel convertResponse(BuildingBackendModel building) {
-    return BuildingViewModel(id: building.id, name: building.name);
+    return BuildingViewModel(id: building.id, name: building.name, isActive: building.active);
   }
 
   StreamController<AddBuildingMessage> addBuidlingMessageStream = StreamController<AddBuildingMessage>.broadcast();
@@ -83,9 +85,16 @@ abstract class BuildingControllerStore with Store {
   }
 
   @action
-  Future<void> deleteBuilding(int buildingId) async {
+  Future<void> deactiveteBuilding(int buildingId) async {
     isLoading = true;
     await buildingConverter.deleteBuiding(buildingId);
+    init();
+  }
+
+  @action
+  Future<void> activateBuilding(int buildingId, String buildingName) async {
+    isLoading = true;
+    await buildingConverter.activateBuilding(buildingId, buildingName);
     init();
   }
 }

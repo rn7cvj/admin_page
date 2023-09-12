@@ -66,6 +66,7 @@ class BuildingTab extends StatelessWidget {
                           buildingType: "спортивный корпус",
                           zones: const [],
                           isEditing: _controller.isBuidlingEditing,
+                          isActive: building.isActive,
                         ))
                     .toList(),
               );
