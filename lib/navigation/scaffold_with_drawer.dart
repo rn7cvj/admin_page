@@ -184,6 +184,7 @@ class ScaffoldWithDrawer extends StatelessWidget {
     if (state.fullPath == "/calendar") return t.calendar.label;
     if (state.fullPath == "/calculator") return t.calculator.label;
     if (state.fullPath == "/scanner") return t.scanner.label;
+    if (state.fullPath == "/scanned") return t.scanned.label;
 
     return "";
   }

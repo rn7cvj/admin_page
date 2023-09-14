@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 50 (25 per locale)
+/// Strings: 52 (26 per locale)
 ///
-/// Built on 2023-09-13 at 11:28 UTC
+/// Built on 2023-09-14 at 06:18 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -154,6 +154,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsCalendarEn calendar = _StringsCalendarEn._(_root);
 	late final _StringsDashboardEn dashboard = _StringsDashboardEn._(_root);
 	late final _StringsPeopleEn people = _StringsPeopleEn._(_root);
+	late final _StringsScannedEn scanned = _StringsScannedEn._(_root);
 	late final _StringsScannerEn scanner = _StringsScannerEn._(_root);
 	late final _StringsServicesEn services = _StringsServicesEn._(_root);
 }
@@ -211,6 +212,16 @@ class _StringsPeopleEn {
 	String get column_profile => 'Profile';
 }
 
+// Path: scanned
+class _StringsScannedEn {
+	_StringsScannedEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get label => 'Scanned';
+}
+
 // Path: scanner
 class _StringsScannerEn {
 	_StringsScannerEn._(this._root);
@@ -266,6 +277,7 @@ class _StringsRu implements _StringsEn {
 	@override late final _StringsCalendarRu calendar = _StringsCalendarRu._(_root);
 	@override late final _StringsDashboardRu dashboard = _StringsDashboardRu._(_root);
 	@override late final _StringsPeopleRu people = _StringsPeopleRu._(_root);
+	@override late final _StringsScannedRu scanned = _StringsScannedRu._(_root);
 	@override late final _StringsScannerRu scanner = _StringsScannerRu._(_root);
 	@override late final _StringsServicesRu services = _StringsServicesRu._(_root);
 }
@@ -323,6 +335,16 @@ class _StringsPeopleRu implements _StringsPeopleEn {
 	@override String get column_profile => 'Профиль';
 }
 
+// Path: scanned
+class _StringsScannedRu implements _StringsScannedEn {
+	_StringsScannedRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get label => 'Отсканированно';
+}
+
 // Path: scanner
 class _StringsScannerRu implements _StringsScannerEn {
 	_StringsScannerRu._(this._root);
@@ -372,6 +394,7 @@ extension on _StringsEn {
 			case 'people.column_phone_number': return 'Phone number';
 			case 'people.column_last_visit': return 'Last visit';
 			case 'people.column_profile': return 'Profile';
+			case 'scanned.label': return 'Scanned';
 			case 'scanner.label': return 'Scanner';
 			case 'services.label': return 'Services';
 			case 'services.tab_exercise': return 'Exercise';
@@ -405,6 +428,7 @@ extension on _StringsRu {
 			case 'people.column_phone_number': return 'Номер телефона';
 			case 'people.column_last_visit': return 'Последнее посещение';
 			case 'people.column_profile': return 'Профиль';
+			case 'scanned.label': return 'Отсканированно';
 			case 'scanner.label': return 'Сканнер';
 			case 'services.label': return 'Услуги';
 			case 'services.tab_exercise': return 'Занятия';
