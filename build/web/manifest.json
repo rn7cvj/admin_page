@@ -1,6 +1,6 @@
 {
-    "name": "admin_page",
-    "short_name": "admin_page",
+    "name": "FefuFit Admin",
+    "short_name": "FefuFit Admin",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",

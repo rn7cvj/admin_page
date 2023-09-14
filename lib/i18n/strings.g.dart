@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 48 (24 per locale)
+/// Strings: 50 (25 per locale)
 ///
-/// Built on 2023-09-12 at 04:36 UTC
+/// Built on 2023-09-13 at 11:28 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -154,6 +154,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsCalendarEn calendar = _StringsCalendarEn._(_root);
 	late final _StringsDashboardEn dashboard = _StringsDashboardEn._(_root);
 	late final _StringsPeopleEn people = _StringsPeopleEn._(_root);
+	late final _StringsScannerEn scanner = _StringsScannerEn._(_root);
 	late final _StringsServicesEn services = _StringsServicesEn._(_root);
 }
 
@@ -210,6 +211,16 @@ class _StringsPeopleEn {
 	String get column_profile => 'Profile';
 }
 
+// Path: scanner
+class _StringsScannerEn {
+	_StringsScannerEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get label => 'Scanner';
+}
+
 // Path: services
 class _StringsServicesEn {
 	_StringsServicesEn._(this._root);
@@ -255,6 +266,7 @@ class _StringsRu implements _StringsEn {
 	@override late final _StringsCalendarRu calendar = _StringsCalendarRu._(_root);
 	@override late final _StringsDashboardRu dashboard = _StringsDashboardRu._(_root);
 	@override late final _StringsPeopleRu people = _StringsPeopleRu._(_root);
+	@override late final _StringsScannerRu scanner = _StringsScannerRu._(_root);
 	@override late final _StringsServicesRu services = _StringsServicesRu._(_root);
 }
 
@@ -311,6 +323,16 @@ class _StringsPeopleRu implements _StringsPeopleEn {
 	@override String get column_profile => 'Профиль';
 }
 
+// Path: scanner
+class _StringsScannerRu implements _StringsScannerEn {
+	_StringsScannerRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get label => 'Сканнер';
+}
+
 // Path: services
 class _StringsServicesRu implements _StringsServicesEn {
 	_StringsServicesRu._(this._root);
@@ -350,6 +372,7 @@ extension on _StringsEn {
 			case 'people.column_phone_number': return 'Phone number';
 			case 'people.column_last_visit': return 'Last visit';
 			case 'people.column_profile': return 'Profile';
+			case 'scanner.label': return 'Scanner';
 			case 'services.label': return 'Services';
 			case 'services.tab_exercise': return 'Exercise';
 			case 'services.tab_building': return 'Buildings';
@@ -382,6 +405,7 @@ extension on _StringsRu {
 			case 'people.column_phone_number': return 'Номер телефона';
 			case 'people.column_last_visit': return 'Последнее посещение';
 			case 'people.column_profile': return 'Профиль';
+			case 'scanner.label': return 'Сканнер';
 			case 'services.label': return 'Услуги';
 			case 'services.tab_exercise': return 'Занятия';
 			case 'services.tab_building': return 'Корпуса';

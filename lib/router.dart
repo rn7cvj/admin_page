@@ -3,6 +3,7 @@ import 'package:admin_page/i18n/strings.g.dart';
 import 'package:admin_page/navigation/scaffold_with_drawer.dart';
 import 'package:admin_page/pages/auth/auth.dart';
 import 'package:admin_page/pages/people/people.dart';
+import 'package:admin_page/pages/qr_scanner/qr_scanner.dart';
 import 'package:admin_page/pages/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -67,6 +68,11 @@ final GoRouter router = GoRouter(
           path: "/calculator",
           name: t.calculator.label,
           builder: (context, state) => const Placeholder(),
+        ),
+        GoRoute(
+          path: "/scanner",
+          name: t.scanner.label,
+          builder: (context, state) => const QrScanner(),
         ),
       ],
     ),
