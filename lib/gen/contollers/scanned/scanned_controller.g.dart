@@ -25,6 +25,22 @@ mixin _$ScannedController on ScannedContollerStore, Store {
     });
   }
 
+  late final _$scannedResultStatusAtom =
+      Atom(name: 'ScannedContollerStore.scannedResultStatus', context: context);
+
+  @override
+  ScannedResultStatus? get scannedResultStatus {
+    _$scannedResultStatusAtom.reportRead();
+    return super.scannedResultStatus;
+  }
+
+  @override
+  set scannedResultStatus(ScannedResultStatus? value) {
+    _$scannedResultStatusAtom.reportWrite(value, super.scannedResultStatus, () {
+      super.scannedResultStatus = value;
+    });
+  }
+
   late final _$userIdAtom =
       Atom(name: 'ScannedContollerStore.userId', context: context);
 
@@ -53,6 +69,7 @@ mixin _$ScannedController on ScannedContollerStore, Store {
   String toString() {
     return '''
 isScanning: ${isScanning},
+scannedResultStatus: ${scannedResultStatus},
 userId: ${userId}
     ''';
   }

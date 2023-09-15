@@ -1,6 +1,7 @@
 import 'package:admin_page/contollers/scanned/scanned_controller.dart';
 import 'package:admin_page/i18n/strings.g.dart';
 import 'package:admin_page/navigation/navigator.dart';
+import 'package:admin_page/pages/scanned_person/widgets/person_page.dart';
 import 'package:admin_page/pages/services/widgets/actions_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -47,9 +48,7 @@ class ScannedPerson extends StatelessWidget {
           );
         }
 
-        return Center(
-          child: Text(" Scanned userId: ${controller.userId}"),
-        );
+        return PersonScannedPage(scannedUserId: controller.userId);
       },
     );
   }
