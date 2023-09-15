@@ -157,10 +157,6 @@ class App extends StatelessWidget {
     return MaterialApp.router(
       title: "FefuFit Admin",
       themeMode: ThemeMode.light,
-      supportedLocales: const <Locale>[
-        Locale('ru'),
-        Locale('en'),
-      ],
       theme: _lightTheme,
       darkTheme: _darkTheme,
       routerConfig: router,
