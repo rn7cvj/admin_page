@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:admin_page/contollers/calendar/calendar_contoller.dart';
+import 'package:admin_page/contollers/calendar/calendar_converter.dart';
+import 'package:admin_page/contollers/calendar/calendar_service.dart';
 import 'package:admin_page/vibration.dart';
 import 'package:get_it/get_it.dart';
 import 'package:chopper/chopper.dart';
@@ -68,13 +71,17 @@ Future<void> main() async {
       PeopleService.create(),
       ServiceService.create(),
       BuildingService.create(),
+      CalendarService.create(),
     ],
     converter: const JsonConverter(),
   );
 
-  VibrationController vibrationController = VibrationController();
-  await vibrationController.init();
-  GetIt.I.registerSingleton(vibrationController);
+  // VibrationController vibrationController = VibrationController();
+  // await vibrationController.init();
+  // GetIt.I.registerSingleton(vibrationController);
+
+  CalendarConverter calendarConverter = CalendarConverter(calendarService: chopper.getService<CalendarService>());
+  CalendarController calendarController = CalendarController(calendarConverter: calendarConverter);
 
   BuildingConverter buildingConverter = BuildingConverter(buildingService: chopper.getService<BuildingService>());
   BuildingController buildingController = BuildingController(buildingConverter: buildingConverter);
@@ -88,6 +95,7 @@ Future<void> main() async {
   GetIt.I.registerSingleton(peopleContoller);
   GetIt.I.registerSingleton(serviceController);
   GetIt.I.registerSingleton(buildingController);
+  GetIt.I.registerSingleton(calendarController);
 
   TokenConvertor tokenConvertor = TokenConvertor(tokenService: chopper.getService<TokenService>());
   TokenStorage tokenStorage = TokenStorage();
@@ -100,6 +108,7 @@ Future<void> main() async {
     peopleContoller.init();
     serviceController.init();
     buildingController.init();
+    calendarController.init();
   });
   // tokenContoller.onSuccessAwait.add((response) async => AppNavigator.goToHomePage());
 
@@ -118,6 +127,7 @@ Future<void> main() async {
     peopleContoller.init();
     serviceController.init();
     buildingController.init();
+    calendarController.init();
   });
   authController.onSuccessAwait.add((response) async => AppNavigator.goToHomePage());
 
@@ -147,6 +157,10 @@ class App extends StatelessWidget {
     return MaterialApp.router(
       title: "FefuFit Admin",
       themeMode: ThemeMode.light,
+      supportedLocales: const <Locale>[
+        Locale('ru'),
+        Locale('en'),
+      ],
       theme: _lightTheme,
       darkTheme: _darkTheme,
       routerConfig: router,

@@ -1,4 +1,4 @@
-#Tue Sep 12 19:52:41 VLAT 2023
+#Fri Sep 15 10:42:35 VLAT 2023
 base.0=C\:\\Users\\KJ6Z5\\Projects\\Flutter\\admin_page\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

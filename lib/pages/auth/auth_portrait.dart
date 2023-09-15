@@ -15,46 +15,48 @@ class AuthPortrait extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: context.appTheme.authTheme.authBackgroundColor,
-      child: Scaffold(
-        body: Builder(
-          builder: (context) {
-            _controller.messageStream.stream.listen(
-              (message) => showSnackBar(context, message),
-            );
+      child: SafeArea(
+        child: Scaffold(
+          body: Builder(
+            builder: (context) {
+              _controller.messageStream.stream.listen(
+                (message) => showSnackBar(context, message),
+              );
 
-            return Column(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SvgPicture.asset(
-                        "assets/icons/logo.svg",
-                        colorFilter: ColorFilter.mode(
-                          context.appTheme.authTheme.logoBackgoundColor,
-                          BlendMode.srcIn,
+              return Column(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SvgPicture.asset(
+                          "assets/icons/logo.svg",
+                          colorFilter: ColorFilter.mode(
+                            context.appTheme.authTheme.logoBackgoundColor,
+                            BlendMode.srcIn,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 4,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: SingleChildScrollView(
-                      child: AuthButtons(
-                        email: email,
-                        password: password,
+                  Expanded(
+                    flex: 4,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: SingleChildScrollView(
+                        child: AuthButtons(
+                          email: email,
+                          password: password,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            );
-          },
+                ],
+              );
+            },
+          ),
         ),
       ),
     );

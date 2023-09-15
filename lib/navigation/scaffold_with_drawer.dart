@@ -14,7 +14,7 @@ class ScaffoldWithDrawer extends StatelessWidget {
   final Widget child;
   final GoRouterState state;
 
-  final VibrationController vibrationController = GetIt.I<VibrationController>();
+  // final VibrationController vibrationController = GetIt.I<VibrationController>();
 
   @override
   Widget build(BuildContext context) {
@@ -173,7 +173,7 @@ class ScaffoldWithDrawer extends StatelessWidget {
   }
 
   void clearAndNavigate(BuildContext context, String path) {
-    vibrationController.onTapVibraion();
+    // vibrationController.onTapVibraion();
     Router.neglect(context, () => context.go(path));
   }
 
