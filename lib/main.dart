@@ -34,6 +34,8 @@ import 'package:admin_page/contollers/token/token_storage.dart';
 
 import 'navigation/navigator.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 void setUpSystemUIOverlay() {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -167,6 +169,9 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: _lightTheme,
       darkTheme: _darkTheme,
+      locale: TranslationProvider.of(context).flutterLocale,
+      supportedLocales: AppLocaleUtils.supportedLocales,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       routerConfig: router,
       debugShowCheckedModeBanner: false,
     );
