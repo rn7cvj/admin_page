@@ -2,8 +2,10 @@ import 'package:admin_page/contollers/token/token_contoller.dart';
 import 'package:admin_page/i18n/strings.g.dart';
 import 'package:admin_page/navigation/scaffold_with_drawer.dart';
 import 'package:admin_page/pages/auth/auth.dart';
+import 'package:admin_page/pages/calendar/calendar.dart';
 import 'package:admin_page/pages/people/people.dart';
 import 'package:admin_page/pages/qr_scanner/qr_scanner.dart';
+import 'package:admin_page/pages/scanned_person/scanned_person.dart';
 import 'package:admin_page/pages/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -62,7 +64,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "/calendar",
           name: t.calendar.label,
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const Calendar(),
         ),
         GoRoute(
           path: "/calculator",
@@ -73,6 +75,13 @@ final GoRouter router = GoRouter(
           path: "/scanner",
           name: t.scanner.label,
           builder: (context, state) => const QrScanner(),
+        ),
+        GoRoute(
+          path: "/scanned/:qrToken",
+          name: t.scanned.label,
+          builder: (context, state) => ScannedPerson(
+            qrToken: state.pathParameters["qrToken"] ?? "",
+          ),
         ),
       ],
     ),

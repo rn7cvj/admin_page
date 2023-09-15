@@ -28,7 +28,7 @@ class _PeopleLandscapeState extends State<PeopleLandscape> with TickerProviderSt
     return Scaffold(
       backgroundColor: context.appTheme.backgoundColor,
       body: Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             const Padding(

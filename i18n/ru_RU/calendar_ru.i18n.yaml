@@ -1,1 +1,11 @@
 label: Каледарь
+new_event: Новое занятие
+edit: Изменить
+download: Скачать
+event_column_name: Название
+event_column_begin: Начало
+event_column_end: Конец
+event_column_building: Здание
+event_column_area: Зона
+event_column_total_spaces: Всего мест
+event_column_occupied_spaces: Занято мест

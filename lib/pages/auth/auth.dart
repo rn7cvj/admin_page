@@ -20,7 +20,7 @@ class Auth extends StatelessWidget {
       );
     }
 
-    return AuthLandscape(
+    return AuthLandscape( 
       email: email,
       password: password,
     );

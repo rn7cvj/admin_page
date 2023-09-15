@@ -1,1 +1,11 @@
 label: Calendar
+new_event: New event
+edit: Edit
+download: Download
+event_column_name: Event name
+event_column_begin: Begin
+event_column_end: End
+event_column_building: Building
+event_column_area: Area
+event_column_total_spaces: Total spaces
+event_column_occupied_spaces: Occupied spaces

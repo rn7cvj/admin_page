@@ -1,3 +1,4 @@
+import 'package:admin_page/i18n/strings.g.dart';
 import 'package:admin_page/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class Lable extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "Календарь",
+          t.calendar.label,
           style: context.appTheme.lableTextStyle,
         ),
         CircleAvatar(

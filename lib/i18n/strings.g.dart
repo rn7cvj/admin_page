@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 50 (25 per locale)
+/// Strings: 72 (36 per locale)
 ///
-/// Built on 2023-09-13 at 11:28 UTC
+/// Built on 2023-09-15 at 03:30 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -154,6 +154,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsCalendarEn calendar = _StringsCalendarEn._(_root);
 	late final _StringsDashboardEn dashboard = _StringsDashboardEn._(_root);
 	late final _StringsPeopleEn people = _StringsPeopleEn._(_root);
+	late final _StringsScannedEn scanned = _StringsScannedEn._(_root);
 	late final _StringsScannerEn scanner = _StringsScannerEn._(_root);
 	late final _StringsServicesEn services = _StringsServicesEn._(_root);
 }
@@ -176,6 +177,16 @@ class _StringsCalendarEn {
 
 	// Translations
 	String get label => 'Calendar';
+	String get new_event => 'New event';
+	String get edit => 'Edit';
+	String get download => 'Download';
+	String get event_column_name => 'Event name';
+	String get event_column_begin => 'Begin';
+	String get event_column_end => 'End';
+	String get event_column_building => 'Building';
+	String get event_column_area => 'Area';
+	String get event_column_total_spaces => 'Total spaces';
+	String get event_column_occupied_spaces => 'Occupied spaces';
 }
 
 // Path: dashboard
@@ -209,6 +220,16 @@ class _StringsPeopleEn {
 	String get column_phone_number => 'Phone number';
 	String get column_last_visit => 'Last visit';
 	String get column_profile => 'Profile';
+}
+
+// Path: scanned
+class _StringsScannedEn {
+	_StringsScannedEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get label => 'Scanned';
 }
 
 // Path: scanner
@@ -266,6 +287,7 @@ class _StringsRu implements _StringsEn {
 	@override late final _StringsCalendarRu calendar = _StringsCalendarRu._(_root);
 	@override late final _StringsDashboardRu dashboard = _StringsDashboardRu._(_root);
 	@override late final _StringsPeopleRu people = _StringsPeopleRu._(_root);
+	@override late final _StringsScannedRu scanned = _StringsScannedRu._(_root);
 	@override late final _StringsScannerRu scanner = _StringsScannerRu._(_root);
 	@override late final _StringsServicesRu services = _StringsServicesRu._(_root);
 }
@@ -288,6 +310,16 @@ class _StringsCalendarRu implements _StringsCalendarEn {
 
 	// Translations
 	@override String get label => 'Каледарь';
+	@override String get new_event => 'Новое занятие';
+	@override String get edit => 'Изменить';
+	@override String get download => 'Скачать';
+	@override String get event_column_name => 'Название';
+	@override String get event_column_begin => 'Начало';
+	@override String get event_column_end => 'Конец';
+	@override String get event_column_building => 'Здание';
+	@override String get event_column_area => 'Зона';
+	@override String get event_column_total_spaces => 'Всего мест';
+	@override String get event_column_occupied_spaces => 'Занято мест';
 }
 
 // Path: dashboard
@@ -321,6 +353,16 @@ class _StringsPeopleRu implements _StringsPeopleEn {
 	@override String get column_phone_number => 'Номер телефона';
 	@override String get column_last_visit => 'Последнее посещение';
 	@override String get column_profile => 'Профиль';
+}
+
+// Path: scanned
+class _StringsScannedRu implements _StringsScannedEn {
+	_StringsScannedRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get label => 'Отсканированно';
 }
 
 // Path: scanner
@@ -357,6 +399,16 @@ extension on _StringsEn {
 		switch (path) {
 			case 'calculator.label': return 'Calculator';
 			case 'calendar.label': return 'Calendar';
+			case 'calendar.new_event': return 'New event';
+			case 'calendar.edit': return 'Edit';
+			case 'calendar.download': return 'Download';
+			case 'calendar.event_column_name': return 'Event name';
+			case 'calendar.event_column_begin': return 'Begin';
+			case 'calendar.event_column_end': return 'End';
+			case 'calendar.event_column_building': return 'Building';
+			case 'calendar.event_column_area': return 'Area';
+			case 'calendar.event_column_total_spaces': return 'Total spaces';
+			case 'calendar.event_column_occupied_spaces': return 'Occupied spaces';
 			case 'dashboard.label': return 'Dashboard';
 			case 'people.label': return 'People';
 			case 'people.tab_visitor': return 'Visiotrs';
@@ -372,6 +424,7 @@ extension on _StringsEn {
 			case 'people.column_phone_number': return 'Phone number';
 			case 'people.column_last_visit': return 'Last visit';
 			case 'people.column_profile': return 'Profile';
+			case 'scanned.label': return 'Scanned';
 			case 'scanner.label': return 'Scanner';
 			case 'services.label': return 'Services';
 			case 'services.tab_exercise': return 'Exercise';
@@ -390,6 +443,16 @@ extension on _StringsRu {
 		switch (path) {
 			case 'calculator.label': return 'Калькулятор';
 			case 'calendar.label': return 'Каледарь';
+			case 'calendar.new_event': return 'Новое занятие';
+			case 'calendar.edit': return 'Изменить';
+			case 'calendar.download': return 'Скачать';
+			case 'calendar.event_column_name': return 'Название';
+			case 'calendar.event_column_begin': return 'Начало';
+			case 'calendar.event_column_end': return 'Конец';
+			case 'calendar.event_column_building': return 'Здание';
+			case 'calendar.event_column_area': return 'Зона';
+			case 'calendar.event_column_total_spaces': return 'Всего мест';
+			case 'calendar.event_column_occupied_spaces': return 'Занято мест';
 			case 'dashboard.label': return 'Панель управления';
 			case 'people.label': return 'Люди';
 			case 'people.tab_visitor': return 'Посетители';
@@ -405,6 +468,7 @@ extension on _StringsRu {
 			case 'people.column_phone_number': return 'Номер телефона';
 			case 'people.column_last_visit': return 'Последнее посещение';
 			case 'people.column_profile': return 'Профиль';
+			case 'scanned.label': return 'Отсканированно';
 			case 'scanner.label': return 'Сканнер';
 			case 'services.label': return 'Услуги';
 			case 'services.tab_exercise': return 'Занятия';
