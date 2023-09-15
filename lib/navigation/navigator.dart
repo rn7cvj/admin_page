@@ -13,4 +13,8 @@ class AppNavigator {
     Router.neglect(rootNavigatorKey.currentContext!,
         () => rootNavigatorKey.currentContext!.goNamed(t.scanned.label, pathParameters: {"qrToken": qrToken}));
   }
+
+  static void goScanner() {
+    Router.neglect(rootNavigatorKey.currentContext!, () => rootNavigatorKey.currentContext!.goNamed(t.scanner.label));
+  }
 }

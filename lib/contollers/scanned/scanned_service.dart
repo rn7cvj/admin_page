@@ -1,26 +1,38 @@
-// import 'dart:async';
-// import 'dart:convert';
+import 'dart:async';
+import 'dart:convert';
 
-// import 'package:chopper/chopper.dart';
+import 'package:chopper/chopper.dart';
+part '../../gen/contollers/scanned/scanned_service.chopper.dart';
 
-// @ChopperApi()
-// abstract class ScannedService extends ChopperService {
-//   Future<ScanTokenResponse> tryToLogin(String email, String password) async {
-//     Response response = (await _tryToLogin(email, password));
-//     return await converScanTokenResponse(response);
-//   }
+@ChopperApi()
+abstract class ScannedService extends ChopperService {
+  Future<ScanTokenBackendResponse> scanQr(String qrToken) async {
+    Response response = (await _scanQr(qrToken));
+    return converScanTokenResponse(response);
+  }
 
-//   static ScannedService create([ChopperClient? client]) => _$ScannedService(client);
-// }
+  @Post(path: "/qr/scan")
+  Future<Response> _scanQr(@Field("qr_token") String qrToken);
 
-// class ScanTokenResponse {
-//   late bool isSuccess;
+  static ScannedService create([ChopperClient? client]) => _$ScannedService(client);
+}
 
-//   String? userId;
-// }
+class ScanTokenBackendResponse {
+  late bool isSuccess;
 
-// Future<ScanTokenResponse> converScanTokenResponse(Response res){
+  String? userId;
+}
 
+Future<ScanTokenBackendResponse> converScanTokenResponse(Response res) async {
+  if (!res.isSuccessful) {
+    return ScanTokenBackendResponse()..isSuccess = false;
+  }
+  String jsonBody = const Utf8Decoder().convert(res.bodyBytes);
+  dynamic json = jsonDecode(jsonBody);
 
+  ScanTokenBackendResponse response = ScanTokenBackendResponse()
+    ..isSuccess = true
+    ..userId = json["user_id"].toString();
 
-// }
+  return response;
+}
