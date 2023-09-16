@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 72 (36 per locale)
+/// Strings: 76 (38 per locale)
 ///
-/// Built on 2023-09-15 at 03:30 UTC
+/// Built on 2023-09-15 at 05:24 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -230,6 +230,8 @@ class _StringsScannedEn {
 
 	// Translations
 	String get label => 'Scanned';
+	String get qr_invalid => 'This qr is invalid';
+	String get back_to_camera => 'Back to camera';
 }
 
 // Path: scanner
@@ -363,6 +365,8 @@ class _StringsScannedRu implements _StringsScannedEn {
 
 	// Translations
 	@override String get label => 'Отсканированно';
+	@override String get qr_invalid => 'Данный QR не действителен';
+	@override String get back_to_camera => 'назад к камере';
 }
 
 // Path: scanner
@@ -425,6 +429,8 @@ extension on _StringsEn {
 			case 'people.column_last_visit': return 'Last visit';
 			case 'people.column_profile': return 'Profile';
 			case 'scanned.label': return 'Scanned';
+			case 'scanned.qr_invalid': return 'This qr is invalid';
+			case 'scanned.back_to_camera': return 'Back to camera';
 			case 'scanner.label': return 'Scanner';
 			case 'services.label': return 'Services';
 			case 'services.tab_exercise': return 'Exercise';
@@ -469,6 +475,8 @@ extension on _StringsRu {
 			case 'people.column_last_visit': return 'Последнее посещение';
 			case 'people.column_profile': return 'Профиль';
 			case 'scanned.label': return 'Отсканированно';
+			case 'scanned.qr_invalid': return 'Данный QR не действителен';
+			case 'scanned.back_to_camera': return 'назад к камере';
 			case 'scanner.label': return 'Сканнер';
 			case 'services.label': return 'Услуги';
 			case 'services.tab_exercise': return 'Занятия';

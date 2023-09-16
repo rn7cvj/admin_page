@@ -3,7 +3,12 @@ import 'dart:async';
 import 'package:admin_page/contollers/calendar/calendar_contoller.dart';
 import 'package:admin_page/contollers/calendar/calendar_converter.dart';
 import 'package:admin_page/contollers/calendar/calendar_service.dart';
-import 'package:admin_page/vibration.dart';
+import 'package:admin_page/contollers/scanned/scanned_controller.dart';
+import 'package:admin_page/contollers/scanned/scanned_converter.dart';
+import 'package:admin_page/contollers/scanned/scanned_service.dart';
+import 'package:admin_page/contollers/scanned_person/scanned_person_controller.dart';
+import 'package:admin_page/contollers/scanned_person/scanned_person_converter.dart';
+import 'package:admin_page/contollers/scanned_person/scanned_person_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +35,8 @@ import 'package:admin_page/contollers/token/token_service.dart';
 import 'package:admin_page/contollers/token/token_storage.dart';
 
 import 'navigation/navigator.dart';
+
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void setUpSystemUIOverlay() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -72,6 +79,8 @@ Future<void> main() async {
       ServiceService.create(),
       BuildingService.create(),
       CalendarService.create(),
+      ScannedService.create(),
+      ScannedPersonService.create(),
     ],
     converter: const JsonConverter(),
   );
@@ -79,6 +88,14 @@ Future<void> main() async {
   // VibrationController vibrationController = VibrationController();
   // await vibrationController.init();
   // GetIt.I.registerSingleton(vibrationController);
+
+  ScannedPersonConverter scannedPersonConverter =
+      ScannedPersonConverter(scannedPersonService: chopper.getService<ScannedPersonService>());
+  ScannedPersonContoller scannedPersonContoller =
+      ScannedPersonContoller(scannedPersonConverter: scannedPersonConverter);
+
+  ScannedConverter scannedConverter = ScannedConverter(scannedService: chopper.getService<ScannedService>());
+  ScannedController scannedController = ScannedController(scannedConverter: scannedConverter);
 
   CalendarConverter calendarConverter = CalendarConverter(calendarService: chopper.getService<CalendarService>());
   CalendarController calendarController = CalendarController(calendarConverter: calendarConverter);
@@ -96,6 +113,8 @@ Future<void> main() async {
   GetIt.I.registerSingleton(serviceController);
   GetIt.I.registerSingleton(buildingController);
   GetIt.I.registerSingleton(calendarController);
+  GetIt.I.registerSingleton(scannedController);
+  GetIt.I.registerSingleton(scannedPersonContoller);
 
   TokenConvertor tokenConvertor = TokenConvertor(tokenService: chopper.getService<TokenService>());
   TokenStorage tokenStorage = TokenStorage();
@@ -159,6 +178,9 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: _lightTheme,
       darkTheme: _darkTheme,
+      locale: TranslationProvider.of(context).flutterLocale,
+      supportedLocales: AppLocaleUtils.supportedLocales,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       routerConfig: router,
       debugShowCheckedModeBanner: false,
     );

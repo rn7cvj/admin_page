@@ -1,1 +1,3 @@
 label: Scanned
+qr_invalid: This qr is invalid
+back_to_camera: Back to camera
