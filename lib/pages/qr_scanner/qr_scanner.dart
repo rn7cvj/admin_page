@@ -12,6 +12,7 @@ class QrScanner extends StatelessWidget {
     return AiBarcodeScanner(
       allowDuplicates: false,
       showError: false,
+      showSuccess: false,
       successColor: const Color.fromRGBO(67, 67, 244, 0.4),
       validator: (value) {
         logger.i("Validate token $value");

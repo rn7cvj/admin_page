@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 76 (38 per locale)
+/// Strings: 78 (39 per locale)
 ///
-/// Built on 2023-09-15 at 05:24 UTC
+/// Built on 2023-09-16 at 04:27 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -157,6 +157,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsScannedEn scanned = _StringsScannedEn._(_root);
 	late final _StringsScannerEn scanner = _StringsScannerEn._(_root);
 	late final _StringsServicesEn services = _StringsServicesEn._(_root);
+	late final _StringsUserpageEn userpage = _StringsUserpageEn._(_root);
 }
 
 // Path: calculator
@@ -260,6 +261,16 @@ class _StringsServicesEn {
 	String get download => 'Download';
 }
 
+// Path: userpage
+class _StringsUserpageEn {
+	_StringsUserpageEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get label => 'User page';
+}
+
 // Path: <root>
 class _StringsRu implements _StringsEn {
 
@@ -292,6 +303,7 @@ class _StringsRu implements _StringsEn {
 	@override late final _StringsScannedRu scanned = _StringsScannedRu._(_root);
 	@override late final _StringsScannerRu scanner = _StringsScannerRu._(_root);
 	@override late final _StringsServicesRu services = _StringsServicesRu._(_root);
+	@override late final _StringsUserpageRu userpage = _StringsUserpageRu._(_root);
 }
 
 // Path: calculator
@@ -395,6 +407,16 @@ class _StringsServicesRu implements _StringsServicesEn {
 	@override String get download => 'Скачтаь';
 }
 
+// Path: userpage
+class _StringsUserpageRu implements _StringsUserpageEn {
+	_StringsUserpageRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get label => 'Странница пользователя';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -439,6 +461,7 @@ extension on _StringsEn {
 			case 'services.new_building': return 'new buildings';
 			case 'services.edit': return 'Edit';
 			case 'services.download': return 'Download';
+			case 'userpage.label': return 'User page';
 			default: return null;
 		}
 	}
@@ -485,6 +508,7 @@ extension on _StringsRu {
 			case 'services.new_building': return 'Новый корпус';
 			case 'services.edit': return 'Редактирвоать';
 			case 'services.download': return 'Скачтаь';
+			case 'userpage.label': return 'Странница пользователя';
 			default: return null;
 		}
 	}

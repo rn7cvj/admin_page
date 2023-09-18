@@ -6,9 +6,9 @@ import 'package:admin_page/contollers/calendar/calendar_service.dart';
 import 'package:admin_page/contollers/scanned/scanned_controller.dart';
 import 'package:admin_page/contollers/scanned/scanned_converter.dart';
 import 'package:admin_page/contollers/scanned/scanned_service.dart';
-import 'package:admin_page/contollers/scanned_person/scanned_person_controller.dart';
-import 'package:admin_page/contollers/scanned_person/scanned_person_converter.dart';
-import 'package:admin_page/contollers/scanned_person/scanned_person_service.dart';
+import 'package:admin_page/contollers/user_data/user_data_controller.dart';
+import 'package:admin_page/contollers/user_data/user_data_converter.dart';
+import 'package:admin_page/contollers/user_data/user_data_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
@@ -80,7 +80,7 @@ Future<void> main() async {
       BuildingService.create(),
       CalendarService.create(),
       ScannedService.create(),
-      ScannedPersonService.create(),
+      UserDataService.create(),
     ],
     converter: const JsonConverter(),
   );
@@ -89,10 +89,7 @@ Future<void> main() async {
   // await vibrationController.init();
   // GetIt.I.registerSingleton(vibrationController);
 
-  ScannedPersonConverter scannedPersonConverter =
-      ScannedPersonConverter(scannedPersonService: chopper.getService<ScannedPersonService>());
-  ScannedPersonContoller scannedPersonContoller =
-      ScannedPersonContoller(scannedPersonConverter: scannedPersonConverter);
+  GetIt.I.registerSingleton<ChopperClient>(chopper);
 
   ScannedConverter scannedConverter = ScannedConverter(scannedService: chopper.getService<ScannedService>());
   ScannedController scannedController = ScannedController(scannedConverter: scannedConverter);
@@ -114,7 +111,6 @@ Future<void> main() async {
   GetIt.I.registerSingleton(buildingController);
   GetIt.I.registerSingleton(calendarController);
   GetIt.I.registerSingleton(scannedController);
-  GetIt.I.registerSingleton(scannedPersonContoller);
 
   TokenConvertor tokenConvertor = TokenConvertor(tokenService: chopper.getService<TokenService>());
   TokenStorage tokenStorage = TokenStorage();
@@ -123,6 +119,7 @@ Future<void> main() async {
   tokenContoller.onSuccessAwait.add((response) async {
     logger.i("Token sucsessfully restore\n$response");
   });
+
   tokenContoller.onSuccess.add((response) async {
     peopleContoller.init();
     serviceController.init();
@@ -142,6 +139,7 @@ Future<void> main() async {
       tokenContoller.writeNewToken(response.token!, response.refreshToken!);
     }
   });
+
   authController.onSuccessAwait.add((response) async {
     peopleContoller.init();
     serviceController.init();

@@ -10,11 +10,15 @@ class AppNavigator {
   }
 
   static void goScannedPeron(String qrToken) {
-    Router.neglect(rootNavigatorKey.currentContext!,
-        () => rootNavigatorKey.currentContext!.goNamed(t.scanned.label, pathParameters: {"qrToken": qrToken}));
+    rootNavigatorKey.currentContext!.goNamed(t.scanned.label, pathParameters: {"qrToken": qrToken});
   }
 
   static void goScanner() {
     Router.neglect(rootNavigatorKey.currentContext!, () => rootNavigatorKey.currentContext!.goNamed(t.scanner.label));
+  }
+
+  static void goUserPage(String userId) {
+    // GoRouter.of(rootNavigatorKey.currentContext!).push('/people/page/$userId');
+    rootNavigatorKey.currentContext!.goNamed(t.userpage.label, pathParameters: {"userId": userId});
   }
 }

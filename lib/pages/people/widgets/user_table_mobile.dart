@@ -1,7 +1,9 @@
 import 'package:admin_page/i18n/strings.g.dart';
 import 'package:admin_page/models/person_viewmodel.dart';
+import 'package:admin_page/navigation/navigator.dart';
 import 'package:admin_page/themes/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobx/mobx.dart';
 
 class UserTableMobile extends StatelessWidget {
@@ -29,6 +31,7 @@ class UserTableMobile extends StatelessWidget {
       children: data
           .map((person) => ListTile(
                 onTap: () => showPersonInfoDialog(context, person),
+                onLongPress: () => AppNavigator.goUserPage(person.id.toString()),
                 title: Text(person.name!),
               ))
           .toList(),
@@ -101,7 +104,10 @@ class UserTableMobile extends StatelessWidget {
                     RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
                   visualDensity: VisualDensity.comfortable),
-              onPressed: () {},
+              onPressed: () {
+                context.pop();
+                AppNavigator.goUserPage(person.id.toString());
+              },
               icon: const Icon(Icons.person),
               label: Text("Подробнее", style: context.appTheme.buttonextStyle.copyWith(fontSize: 12)),
             )

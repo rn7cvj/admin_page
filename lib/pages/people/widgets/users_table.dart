@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:admin_page/models/person_viewmodel.dart';
+import 'package:admin_page/navigation/navigator.dart';
 import 'package:admin_page/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -92,7 +93,11 @@ class UsersTable extends StatelessWidget {
                   List<TableViewCell> cells = [
                     TableViewCell(
                       alignment: Alignment.centerLeft,
-                      child: Text(record.name!),
+                      child: TextButton(
+                          onPressed: () {
+                            AppNavigator.goUserPage(record.id.toString());
+                          },
+                          child: Text(record.name!)),
                     ),
                     TableViewCell(
                       alignment: Alignment.centerLeft,

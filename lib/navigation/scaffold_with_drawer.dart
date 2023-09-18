@@ -20,15 +20,17 @@ class ScaffoldWithDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        title: Text(
-          getAppBarTitle(),
-          style: context.appTheme.buttonextStyle,
-        ),
-        foregroundColor: Colors.white,
-        backgroundColor: context.appTheme.navigationTheme.backgoundColor,
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
-      ),
+      appBar: !shoudHaveDrawer()
+          ? null
+          : AppBar(
+              title: Text(
+                getAppBarTitle(),
+                style: context.appTheme.buttonextStyle,
+              ),
+              foregroundColor: Colors.white,
+              backgroundColor: context.appTheme.navigationTheme.backgoundColor,
+              actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+            ),
       // backgroundColor: context.appTheme.navigationTheme.backgoundColor,
       body: child,
       drawer: Drawer(
@@ -177,6 +179,17 @@ class ScaffoldWithDrawer extends StatelessWidget {
     Router.neglect(context, () => context.go(path));
   }
 
+  bool shoudHaveDrawer() {
+    if (state.fullPath == "/dashboard") return true;
+    if (state.fullPath == "/people") return true;
+    if (state.fullPath == "/service") return true;
+    if (state.fullPath == "/calendar") return true;
+    if (state.fullPath == "/calculator") return true;
+    if (state.fullPath == "/scanner") return true;
+
+    return false;
+  }
+
   String getAppBarTitle() {
     if (state.fullPath == "/dashboard") return t.dashboard.label;
     if (state.fullPath == "/people") return t.people.label;
@@ -185,6 +198,7 @@ class ScaffoldWithDrawer extends StatelessWidget {
     if (state.fullPath == "/calculator") return t.calculator.label;
     if (state.fullPath == "/scanner") return t.scanner.label;
     if (state.fullPath?.startsWith("/scanned") ?? false) return t.scanned.label;
+    if (state.fullPath?.startsWith("/people/page") ?? false) return t.userpage.label;
 
     return "";
   }

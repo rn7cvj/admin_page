@@ -39,8 +39,6 @@ INJECTED from C:\Users\KJ6Z5\Projects\Flutter\admin_page\android\app\src\main\An
 INJECTED from C:\Users\KJ6Z5\Projects\Flutter\admin_page\android\app\src\main\AndroidManifest.xml:1:1-35:12
 INJECTED from C:\Users\KJ6Z5\Projects\Flutter\admin_page\android\app\src\main\AndroidManifest.xml:1:1-35:12
 MERGED from C:\Users\KJ6Z5\Projects\Flutter\admin_page\android\app\src\main\AndroidManifest.xml:1:1-35:12
-MERGED from [:vibration] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\vibration\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
-MERGED from [:device_info_plus] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\device_info_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:path_provider_android] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:flutter_native_splash] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\flutter_native_splash\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:mobile_scanner] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\mobile_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
@@ -109,10 +107,6 @@ uses-sdk
 INJECTED from C:\Users\KJ6Z5\Projects\Flutter\admin_page\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\KJ6Z5\Projects\Flutter\admin_page\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\KJ6Z5\Projects\Flutter\admin_page\android\app\src\main\AndroidManifest.xml
-MERGED from [:vibration] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\vibration\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:vibration] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\vibration\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:device_info_plus] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\device_info_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:device_info_plus] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\device_info_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_native_splash] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\flutter_native_splash\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
@@ -199,10 +193,6 @@ INJECTED from C:\Users\KJ6Z5\Projects\Flutter\admin_page\android\app\src\debug\A
 	android:minSdkVersion
 		INJECTED from C:\Users\KJ6Z5\Projects\Flutter\admin_page\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\KJ6Z5\Projects\Flutter\admin_page\android\app\src\debug\AndroidManifest.xml
-uses-permission#android.permission.VIBRATE
-ADDED from [:vibration] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\vibration\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-66
-	android:name
-		ADDED from [:vibration] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\vibration\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-63
 uses-permission#android.permission.CAMERA
 ADDED from [:mobile_scanner] C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\mobile_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-65
 	android:name

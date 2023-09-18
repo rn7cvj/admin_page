@@ -15,8 +15,6 @@ com.example.admin_page.app-rs-13 C:\Users\KJ6Z5\Projects\Flutter\admin_page\buil
 com.example.admin_page.app-mergeDebugResources-14 C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
 com.example.admin_page.app-mergeDebugResources-15 C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
 com.example.admin_page.app-merged_res-16 C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\app\intermediates\merged_res\debug
-com.example.admin_page.app-packaged_res-17 C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\device_info_plus\intermediates\packaged_res\debug
-com.example.admin_page.app-packaged_res-18 C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\flutter_native_splash\intermediates\packaged_res\debug
-com.example.admin_page.app-packaged_res-19 C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\mobile_scanner\intermediates\packaged_res\debug
-com.example.admin_page.app-packaged_res-20 C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\path_provider_android\intermediates\packaged_res\debug
-com.example.admin_page.app-packaged_res-21 C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\vibration\intermediates\packaged_res\debug
+com.example.admin_page.app-packaged_res-17 C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\flutter_native_splash\intermediates\packaged_res\debug
+com.example.admin_page.app-packaged_res-18 C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\mobile_scanner\intermediates\packaged_res\debug
+com.example.admin_page.app-packaged_res-19 C:\Users\KJ6Z5\Projects\Flutter\admin_page\build\path_provider_android\intermediates\packaged_res\debug
