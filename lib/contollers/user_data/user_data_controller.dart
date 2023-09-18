@@ -41,13 +41,14 @@ abstract class UserDataStore with Store {
 
 UserDataLongViewModel convertResponse(UserDataLongBackendModel backendModel) {
   return UserDataLongViewModel(
-      firstName: backendModel.firstName,
-      secondName: backendModel.secondName,
-      thirdName: backendModel.thirdName,
-      email: backendModel.email,
-      birthdate: backendModel.birthdate,
-      gender: backendModel.gender,
-      status: backendModel.status,
-      phoneNumber: backendModel.phoneNumber,
-      photo: backendModel.photo?.map((e) => "https://fefufit.dvfu.ru/api2?img=$e").toList());
+    firstName: backendModel.firstName,
+    secondName: backendModel.secondName,
+    thirdName: backendModel.thirdName,
+    email: backendModel.email,
+    birthdate: backendModel.birthdate,
+    gender: backendModel.gender,
+    status: backendModel.status,
+    phoneNumber: backendModel.phoneNumber,
+    photo: backendModel.photo,
+  );
 }

@@ -18,6 +18,7 @@ class PersonCard extends StatelessWidget {
       body: Column(
         children: [
           PersonHeader(userData: userData),
+          Divider(),
         ],
       ),
     );
