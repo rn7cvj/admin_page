@@ -29,5 +29,5 @@ jobs:
       - run: flutter pub get
       - run: flutter build web --web-renderer canvaskit --base-href "/admin/"
       
-      - name: 📂 Sync files
+ 
       - run: mv ./build/web/ /home/admin1/fefufit-admin
