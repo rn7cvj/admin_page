@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:admin_page/contollers/booking/booking_service.dart';
 import 'package:admin_page/contollers/calendar/calendar_contoller.dart';
 import 'package:admin_page/contollers/calendar/calendar_converter.dart';
 import 'package:admin_page/contollers/calendar/calendar_service.dart';
@@ -81,6 +82,7 @@ Future<void> main() async {
       CalendarService.create(),
       ScannedService.create(),
       UserDataService.create(),
+      BookingService.create(),
     ],
     converter: const JsonConverter(),
   );

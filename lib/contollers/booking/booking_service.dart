@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:chopper/chopper.dart';
 import 'dart:convert';
 
+part '../../gen/contollers/booking/booking_service.chopper.dart';
+
 @ChopperApi()
 abstract class BookingService extends ChopperService {
   Future<BookingBackendResponse> getBooking(String userId) async {
@@ -12,9 +14,22 @@ abstract class BookingService extends ChopperService {
 
   @Get(path: "/booking/view")
   Future<Response> _getBooking(@Query("screen") String screen, @Query("user_id") String userId);
+
+  static BookingService create([ChopperClient? client]) => _$BookingService(client);
 }
 
-FutureOr<BookingBackendResponse> convertResponse(Response res) async {}
+FutureOr<BookingBackendResponse> convertResponse(Response res) async {
+  if (!res.isSuccessful) return BookingBackendResponse()..isSuccess = false;
+
+  String jsonBody = const Utf8Decoder().convert(res.bodyBytes);
+  List<dynamic> json = jsonDecode(jsonBody);
+
+  List<BookingBackendModel> booking = json.map((e) => BookingBackendModel.fromJson(e)).toList();
+
+  return BookingBackendResponse()
+    ..isSuccess = true
+    ..booking = booking;
+}
 
 class BookingBackendResponse {
   late bool isSuccess;
@@ -27,7 +42,7 @@ class BookingBackendModel {
   String? eventName;
   String? beginTime;
   String? endTime;
-  Null? coachPhoneNumber;
+  String? coachPhoneNumber;
   String? coachEmail;
   String? buildingName;
   int? totalSpaces;
