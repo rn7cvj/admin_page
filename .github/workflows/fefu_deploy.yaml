@@ -1,7 +1,5 @@
 name: Fefu deploy
 
-runs-on: self-hosted
-
 on:
   workflow_dispatch:
 
@@ -12,8 +10,9 @@ on:
 
 jobs:
   fefu_deploy:
+    
     name: Build and deploy
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
