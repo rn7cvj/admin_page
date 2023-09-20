@@ -1,9 +1,8 @@
-name: Build Release
+name: Build кelease
 
 on:
   workflow_dispatch:
   
-
 jobs:
   build_release:
     name: Build and deploy
@@ -25,7 +24,7 @@ jobs:
       - run: flutter build web --web-renderer canvaskit --base-href "/admin/"
 
       - name: 📂Upload release
-      - uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
             name: my-artifact
             path: path/to/artifact/world.txt
