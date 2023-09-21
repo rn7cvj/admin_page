@@ -49,7 +49,7 @@ class QrScanner extends StatelessWidget {
       },
       hintWidget: Container(),
       controller: MobileScannerController(
-        detectionSpeed: DetectionSpeed.noDuplicates,
+        detectionSpeed: DetectionSpeed.normal,
         detectionTimeoutMs: 1500,
       ),
     );
