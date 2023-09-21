@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:chopper/chopper.dart';
+import 'package:http/http.dart' show MultipartFile;
+
 part '../../gen/contollers/building/building_service.chopper.dart';
 
 @ChopperApi()
@@ -25,6 +27,10 @@ abstract class BuildingService extends ChopperService {
     await _editBuilding(buildingId, buildingName, true);
   }
 
+  Future<void> uploadBuidingImage(String buildingId, MultipartFile image) async {
+    await _uploadImage(buildingId, image);
+  }
+
   @Get(path: "/building/view")
   Future<Response> _getBuilding(@Query("screen") screen);
 
@@ -37,6 +43,16 @@ abstract class BuildingService extends ChopperService {
   @Post(path: "/building/edit")
   Future<Response> _editBuilding(
       @Query("building_id") int buildingId, @Field("building_name") buildingName, @Field("active") bool active);
+
+  @Post(
+    path: "/upload",
+    headers: {"Content-Type": "multipart/form-data"},
+  )
+  @multipart
+  Future<Response> _uploadImage(
+    @Query("building_id") String buidlingId,
+    @PartFile('files') MultipartFile image,
+  );
 
   static BuildingService create([ChopperClient? client]) => _$BuildingService(client);
 }

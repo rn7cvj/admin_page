@@ -1,4 +1,6 @@
 import 'package:admin_page/contollers/building/building_service.dart';
+import 'package:http/http.dart' show MultipartFile;
+import 'package:http/http.dart';
 
 class BuildingConverter {
   final BuildingService buildingService;
@@ -65,6 +67,13 @@ class BuildingConverter {
   Future<void> activateBuilding(int buildingId, String buildingName) async {
     try {
       await buildingService.activateBuilding(buildingId, buildingName);
+    } catch (ex) {}
+  }
+
+  Future<void> uploadBuildingImage(String buildingId, List<int> imgBytes) async {
+    try {
+      MultipartFile image = await MultipartFile.fromBytes('img', imgBytes);
+      await buildingService.uploadBuidingImage(buildingId, image);
     } catch (ex) {}
   }
 }

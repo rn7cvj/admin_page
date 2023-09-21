@@ -27,4 +27,10 @@ class AppNavigator {
     Router.neglect(rootNavigatorKey.currentContext!,
         () => rootNavigatorKey.currentContext!.goNamed(t.userpage.label, pathParameters: {"userId": userId}));
   }
+
+  static void goBuildingPage(String buildingId) {
+    // GoRouter.of(rootNavigatorKey.currentContext!).push('/people/page/$userId');
+    Router.neglect(rootNavigatorKey.currentContext!,
+        () => rootNavigatorKey.currentContext!.goNamed(t.building.label, pathParameters: {"buildingId": buildingId}));
+  }
 }

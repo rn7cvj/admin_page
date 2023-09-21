@@ -97,6 +97,11 @@ abstract class BuildingControllerStore with Store {
     await buildingConverter.activateBuilding(buildingId, buildingName);
     init();
   }
+
+  @action
+  Future<void> uploadImage(String buildingId, List<int> imgBytes) async {
+    buildingConverter.uploadBuildingImage(buildingId, imgBytes);
+  }
 }
 
 class AddBuildingMessage {

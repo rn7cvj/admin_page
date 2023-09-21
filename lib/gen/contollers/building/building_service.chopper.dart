@@ -80,4 +80,34 @@ final class _$BuildingService extends BuildingService {
     );
     return client.send<dynamic, dynamic>($request);
   }
+
+  @override
+  Future<Response<dynamic>> _uploadImage(
+    String buidlingId,
+    MultipartFile image,
+  ) {
+    final Uri $url = Uri.parse('/upload');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'building_id': buidlingId
+    };
+    final Map<String, String> $headers = {
+      'Content-Type': 'multipart/form-data',
+    };
+    final List<PartValue> $parts = <PartValue>[
+      PartValueFile<MultipartFile>(
+        'files',
+        image,
+      )
+    ];
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      parts: $parts,
+      multipart: true,
+      parameters: $params,
+      headers: $headers,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
 }

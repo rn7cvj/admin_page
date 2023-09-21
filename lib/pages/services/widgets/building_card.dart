@@ -1,4 +1,5 @@
 import 'package:admin_page/contollers/building/building_contoller.dart';
+import 'package:admin_page/navigation/navigator.dart';
 import 'package:admin_page/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -101,7 +102,11 @@ class BuildingCard extends StatelessWidget {
                     icon: Icon(isActive ? Icons.visibility : Icons.visibility_off),
                   ),
                   IconButton(
-                    onPressed: isEditing ? () {} : null,
+                    onPressed: isEditing
+                        ? () {
+                            AppNavigator.goBuildingPage(buildingId.toString());
+                          }
+                        : null,
                     icon: const Icon(Icons.edit),
                   ),
                 ],

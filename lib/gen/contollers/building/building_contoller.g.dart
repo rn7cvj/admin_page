@@ -108,6 +108,15 @@ mixin _$BuildingController on BuildingControllerStore, Store {
         .run(() => super.activateBuilding(buildingId, buildingName));
   }
 
+  late final _$uploadImageAsyncAction =
+      AsyncAction('BuildingControllerStore.uploadImage', context: context);
+
+  @override
+  Future<void> uploadImage(String buildingId, List<int> imgBytes) {
+    return _$uploadImageAsyncAction
+        .run(() => super.uploadImage(buildingId, imgBytes));
+  }
+
   late final _$BuildingControllerStoreActionController =
       ActionController(name: 'BuildingControllerStore', context: context);
 

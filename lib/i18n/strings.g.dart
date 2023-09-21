@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 78 (39 per locale)
+/// Strings: 80 (40 per locale)
 ///
-/// Built on 2023-09-16 at 04:27 UTC
+/// Built on 2023-09-21 at 04:44 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -150,6 +150,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsEn _root = this; // ignore: unused_field
 
 	// Translations
+	late final _StringsBuildingEn building = _StringsBuildingEn._(_root);
 	late final _StringsCalculatorEn calculator = _StringsCalculatorEn._(_root);
 	late final _StringsCalendarEn calendar = _StringsCalendarEn._(_root);
 	late final _StringsDashboardEn dashboard = _StringsDashboardEn._(_root);
@@ -158,6 +159,16 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsScannerEn scanner = _StringsScannerEn._(_root);
 	late final _StringsServicesEn services = _StringsServicesEn._(_root);
 	late final _StringsUserpageEn userpage = _StringsUserpageEn._(_root);
+}
+
+// Path: building
+class _StringsBuildingEn {
+	_StringsBuildingEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get label => 'Building';
 }
 
 // Path: calculator
@@ -296,6 +307,7 @@ class _StringsRu implements _StringsEn {
 	@override late final _StringsRu _root = this; // ignore: unused_field
 
 	// Translations
+	@override late final _StringsBuildingRu building = _StringsBuildingRu._(_root);
 	@override late final _StringsCalculatorRu calculator = _StringsCalculatorRu._(_root);
 	@override late final _StringsCalendarRu calendar = _StringsCalendarRu._(_root);
 	@override late final _StringsDashboardRu dashboard = _StringsDashboardRu._(_root);
@@ -304,6 +316,16 @@ class _StringsRu implements _StringsEn {
 	@override late final _StringsScannerRu scanner = _StringsScannerRu._(_root);
 	@override late final _StringsServicesRu services = _StringsServicesRu._(_root);
 	@override late final _StringsUserpageRu userpage = _StringsUserpageRu._(_root);
+}
+
+// Path: building
+class _StringsBuildingRu implements _StringsBuildingEn {
+	_StringsBuildingRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get label => 'Корпус';
 }
 
 // Path: calculator
@@ -423,6 +445,7 @@ class _StringsUserpageRu implements _StringsUserpageEn {
 extension on _StringsEn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'building.label': return 'Building';
 			case 'calculator.label': return 'Calculator';
 			case 'calendar.label': return 'Calendar';
 			case 'calendar.new_event': return 'New event';
@@ -470,6 +493,7 @@ extension on _StringsEn {
 extension on _StringsRu {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'building.label': return 'Корпус';
 			case 'calculator.label': return 'Калькулятор';
 			case 'calendar.label': return 'Каледарь';
 			case 'calendar.new_event': return 'Новое занятие';

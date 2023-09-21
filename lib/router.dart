@@ -2,6 +2,7 @@ import 'package:admin_page/contollers/token/token_contoller.dart';
 import 'package:admin_page/i18n/strings.g.dart';
 import 'package:admin_page/navigation/scaffold_with_drawer.dart';
 import 'package:admin_page/pages/auth/auth.dart';
+import 'package:admin_page/pages/building/building_page.dart';
 import 'package:admin_page/pages/calendar/calendar.dart';
 import 'package:admin_page/pages/people/people.dart';
 import 'package:admin_page/pages/qr_scanner/qr_scanner.dart';
@@ -73,6 +74,15 @@ final GoRouter router = GoRouter(
           path: "/service",
           name: t.services.label,
           builder: (context, state) => const Services(),
+          routes: [
+            GoRoute(
+              path: "building/:buildingId",
+              name: t.building.label,
+              pageBuilder: (context, state) => CupertinoPage(
+                child: BuildingPage(buildingId: state.pathParameters["buildingId"] ?? ""),
+              ),
+            )
+          ],
         ),
         GoRoute(
           path: "/calendar",
