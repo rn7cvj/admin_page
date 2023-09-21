@@ -9,6 +9,10 @@ class AppNavigator {
     Router.neglect(rootNavigatorKey.currentContext!, () => rootNavigatorKey.currentContext!.go("/dashboard"));
   }
 
+  static void goToPeoplePage() {
+    Router.neglect(rootNavigatorKey.currentContext!, () => rootNavigatorKey.currentContext!.go("/people"));
+  }
+
   static void goScannedPeron(String qrToken) {
     Router.neglect(rootNavigatorKey.currentContext!,
         () => rootNavigatorKey.currentContext!.goNamed(t.scanned.label, pathParameters: {"qrToken": qrToken}));

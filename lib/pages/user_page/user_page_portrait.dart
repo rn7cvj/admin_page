@@ -1,6 +1,7 @@
 import 'package:admin_page/contollers/user_data/user_data_controller.dart';
 import 'package:admin_page/contollers/user_data/user_data_converter.dart';
 import 'package:admin_page/contollers/user_data/user_data_service.dart';
+import 'package:admin_page/navigation/navigator.dart';
 import 'package:admin_page/pages/user_page/widgets/user_card.dart';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
@@ -29,13 +30,19 @@ class UserPagePortrait extends StatelessWidget {
             userName = "${userDataContoller.userData?.firstName} ${userDataContoller.userData?.thirdName} ";
           }
 
-          return Scaffold(
-            appBar: AppBar(
-              title: userDataContoller.isLoading
-                  ? LoadingAnimationWidget.prograssiveDots(color: Color.fromRGBO(67, 67, 244, 1), size: 60)
-                  : Text(userName),
+          return WillPopScope(
+            onWillPop: () async {
+              AppNavigator.goToPeoplePage();
+              return false;
+            },
+            child: Scaffold(
+              appBar: AppBar(
+                title: userDataContoller.isLoading
+                    ? LoadingAnimationWidget.prograssiveDots(color: Color.fromRGBO(67, 67, 244, 1), size: 60)
+                    : Text(userName),
+              ),
+              body: userDataContoller.isLoading ? null : UserCard(userData: userDataContoller.userData!),
             ),
-            body: userDataContoller.isLoading ? null : UserCard(userData: userDataContoller.userData!),
           );
         },
       );
