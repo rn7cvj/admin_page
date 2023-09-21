@@ -33,5 +33,5 @@ jobs:
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          files: build/app/outputs/flutter-apk/UTTC.apk
+          files: build/app/outputs/flutter-apk/fefu-fit-admin.apk
           prerelease: false
