@@ -25,7 +25,7 @@ class TabBarSelector extends StatelessWidget {
         tabAlignment: TabAlignment.start,
         tabs: [
           Tab(text: "Записи"),
-          Tab(text: "Абонименты"),
+          Tab(text: "Абонементы"),
         ],
       ),
     );
