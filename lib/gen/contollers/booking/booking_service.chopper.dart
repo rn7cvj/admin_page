@@ -34,4 +34,42 @@ final class _$BookingService extends BookingService {
     );
     return client.send<dynamic, dynamic>($request);
   }
+
+  @override
+  Future<Response<dynamic>> _confirmBooking(
+    int eventId,
+    int userId,
+  ) {
+    final Uri $url = Uri.parse('/qr/confirm');
+    final $body = <String, dynamic>{
+      'event_id': eventId,
+      'user_id': userId,
+    };
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> _unconfirmBooking(
+    int eventId,
+    int userId,
+  ) {
+    final Uri $url = Uri.parse('/qr/unconfirm');
+    final $body = <String, dynamic>{
+      'event_id': eventId,
+      'user_id': userId,
+    };
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
 }

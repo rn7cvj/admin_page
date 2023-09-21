@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:admin_page/contollers/booking/booking_controller.dart';
+import 'package:admin_page/contollers/booking/booking_converter.dart';
 import 'package:admin_page/contollers/booking/booking_service.dart';
 import 'package:admin_page/contollers/calendar/calendar_contoller.dart';
 import 'package:admin_page/contollers/calendar/calendar_converter.dart';
@@ -108,11 +110,21 @@ Future<void> main() async {
   PeopleConvertor peopleConvertor = PeopleConvertor(peopleService: chopper.getService<PeopleService>());
   PeopleContoller peopleContoller = PeopleContoller(peopleConvertor: peopleConvertor);
 
+  UserDataConverter userDataConverter =
+      UserDataConverter(scannedPersonService: GetIt.I<ChopperClient>().getService<UserDataService>());
+  UserDataContoller userDataContoller = UserDataContoller(scannedPersonConverter: userDataConverter);
+
+  BookingConverter bookingConverter =
+      BookingConverter(bookingService: GetIt.I<ChopperClient>().getService<BookingService>());
+  BookingContoroller bookingContoroller = BookingContoroller(bookingConverter: bookingConverter);
+
   GetIt.I.registerSingleton(peopleContoller);
   GetIt.I.registerSingleton(serviceController);
   GetIt.I.registerSingleton(buildingController);
   GetIt.I.registerSingleton(calendarController);
   GetIt.I.registerSingleton(scannedController);
+  GetIt.I.registerSingleton(userDataContoller);
+  GetIt.I.registerSingleton(bookingContoroller);
 
   TokenConvertor tokenConvertor = TokenConvertor(tokenService: chopper.getService<TokenService>());
   TokenStorage tokenStorage = TokenStorage();

@@ -1,12 +1,18 @@
+import 'package:admin_page/contollers/booking/booking_controller.dart';
 import 'package:admin_page/models/booking_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 
 class BookingCard extends StatelessWidget {
-  const BookingCard({super.key, required this.booking});
+  BookingCard({super.key, required this.booking, required this.userId});
 
   final BookingViewModel booking;
+
+  final BookingContoroller bookingContoroller = GetIt.I<BookingContoroller>();
+
+  final String userId;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +93,18 @@ class BookingCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const RightVerticalButton()
+              RightVerticalButton(
+                lable: booking.status! == "done" ? "Отменить" : "Подтвердить",
+                onTap: () {
+                  if (booking.status! == "done") {
+                    bookingContoroller.unconfirmBooking(booking.id.toString(), userId);
+                  } else {
+                    bookingContoroller.confirmBooking(booking.id.toString(), userId);
+                  }
+                },
+                backgroundColor: booking.status! == "done" ? Colors.transparent : const Color(0xff4343F4),
+                textColor: booking.status! == "done" ? const Color(0xFF4A4A4A) : Colors.white,
+              )
             ],
           ),
         ),
@@ -99,7 +116,16 @@ class BookingCard extends StatelessWidget {
 class RightVerticalButton extends StatelessWidget {
   const RightVerticalButton({
     super.key,
+    required this.lable,
+    required this.onTap,
+    required this.backgroundColor,
+    required this.textColor,
   });
+
+  final String lable;
+  final VoidCallback onTap;
+  final Color backgroundColor;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -108,10 +134,15 @@ class RightVerticalButton extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: const BorderRadius.vertical(
-            bottom: Radius.circular(13),
+          borderRadius: const BorderRadius.only(
+            bottomRight: Radius.circular(13),
+            bottomLeft: Radius.circular(13),
           ),
-          onTap: () {},
+          focusColor: Colors.black,
+          hoverColor: Colors.black,
+          highlightColor: Colors.black,
+          splashColor: Colors.black,
+          onTap: onTap,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -121,15 +152,22 @@ class RightVerticalButton extends StatelessWidget {
                   size: const Size(double.infinity, 1),
                 ),
               ),
-              SizedBox(
+              Container(
                 height: 44,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    bottomRight: Radius.circular(13),
+                    bottomLeft: Radius.circular(13),
+                  ),
+                  color: backgroundColor,
+                ),
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: Text(
-                      'Отменить',
+                      lable,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: const Color(0xFF4A4A4A),
+                            color: textColor,
                           ),
                     ),
                   ),

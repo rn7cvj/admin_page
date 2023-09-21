@@ -13,11 +13,8 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class PersonScannedPage extends StatelessWidget {
   PersonScannedPage({super.key, required this.scannedUserId}) {
-    userDataConverter = UserDataConverter(scannedPersonService: GetIt.I<ChopperClient>().getService<UserDataService>());
-    userDataContoller = UserDataContoller(scannedPersonConverter: userDataConverter);
-
-    bookingConverter = BookingConverter(bookingService: GetIt.I<ChopperClient>().getService<BookingService>());
-    bookingContoroller = BookingContoroller(bookingConverter: bookingConverter);
+    userDataContoller = GetIt.I<UserDataContoller>();
+    bookingContoroller = GetIt.I<BookingContoroller>();
 
     userDataContoller.getUserData(scannedUserId);
     bookingContoroller.getBooking(scannedUserId);
@@ -25,10 +22,8 @@ class PersonScannedPage extends StatelessWidget {
 
   final String scannedUserId;
 
-  late UserDataConverter userDataConverter;
   late UserDataContoller userDataContoller;
 
-  late BookingConverter bookingConverter;
   late BookingContoroller bookingContoroller;
 
   @override
@@ -38,11 +33,12 @@ class PersonScannedPage extends StatelessWidget {
       builder: (context) {
         if (userDataContoller.isLoading || bookingContoroller.isLoading) {
           return Center(
-            child: LoadingAnimationWidget.prograssiveDots(color: Color.fromRGBO(67, 67, 244, 1), size: 60),
+            child: LoadingAnimationWidget.prograssiveDots(color: const Color.fromRGBO(67, 67, 244, 1), size: 60),
           );
         }
 
         return PersonCard(
+          userId: scannedUserId,
           userData: userDataContoller.userData!,
           booking: bookingContoroller.booking,
         );

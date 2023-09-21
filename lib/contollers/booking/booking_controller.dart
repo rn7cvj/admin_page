@@ -36,12 +36,33 @@ abstract class BookingControllerStore with Store {
     isLoading = false;
   }
 
+  @action
+  Future<void> confirmBooking(String eventId, String userId) async {
+    isLoading = true;
+    await bookingConverter.confirmBooking(eventId, userId);
+
+    await getBooking(userId);
+
+    isLoading = false;
+  }
+
+  @action
+  Future<void> unconfirmBooking(String eventId, String userId) async {
+    isLoading = true;
+    await bookingConverter.unconfirmBooking(eventId, userId);
+
+    await getBooking(userId);
+
+    isLoading = false;
+  }
+
   Iterable<BookingViewModel> convertResponse(List<BookingBackendModel> bookings) sync* {
     for (BookingBackendModel booking in bookings) {
       yield BookingViewModel(
         id: booking.id,
         eventName: booking.eventName,
         beginTime: booking.beginTime,
+        buildingName: booking.buildingName,
         endTime: booking.endTime,
         coachPhoneNumber: booking.coachPhoneNumber,
         coachName: booking.coachName,
