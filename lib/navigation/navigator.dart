@@ -10,7 +10,8 @@ class AppNavigator {
   }
 
   static void goScannedPeron(String qrToken) {
-    rootNavigatorKey.currentContext!.goNamed(t.scanned.label, pathParameters: {"qrToken": qrToken});
+    Router.neglect(rootNavigatorKey.currentContext!,
+        () => rootNavigatorKey.currentContext!.goNamed(t.scanned.label, pathParameters: {"qrToken": qrToken}));
   }
 
   static void goScanner() {
@@ -19,6 +20,7 @@ class AppNavigator {
 
   static void goUserPage(String userId) {
     // GoRouter.of(rootNavigatorKey.currentContext!).push('/people/page/$userId');
-    rootNavigatorKey.currentContext!.goNamed(t.userpage.label, pathParameters: {"userId": userId});
+    Router.neglect(rootNavigatorKey.currentContext!,
+        () => rootNavigatorKey.currentContext!.goNamed(t.userpage.label, pathParameters: {"userId": userId}));
   }
 }

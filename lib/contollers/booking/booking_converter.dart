@@ -22,6 +22,18 @@ class BookingConverter {
       ..status = BookingResponseStatus.success
       ..booking = backendResponse.booking;
   }
+
+  Future<void> confirmBooking(String eventId, String userId) async {
+    try {
+      await bookingService.confirmBooking(eventId, userId);
+    } catch (ex) {}
+  }
+
+  Future<void> unconfirmBooking(String eventId, String userId) async {
+    try {
+      await bookingService.unconfirmBooking(eventId, userId);
+    } catch (ex) {}
+  }
 }
 
 class BookingResponse {

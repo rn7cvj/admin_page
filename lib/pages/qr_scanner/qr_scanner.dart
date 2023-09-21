@@ -42,7 +42,7 @@ class QrScanner extends StatelessWidget {
 
         return false;
       },
-      // canPop: false,
+      canPop: false,
       onScan: (String value) {
         logger.i("Scan token $value");
         AppNavigator.goScannedPeron(value);
@@ -50,7 +50,7 @@ class QrScanner extends StatelessWidget {
       hintWidget: Container(),
       controller: MobileScannerController(
         detectionSpeed: DetectionSpeed.noDuplicates,
-        // detectionTimeoutMs: 1500,
+        detectionTimeoutMs: 1500,
       ),
     );
   }
