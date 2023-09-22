@@ -12,8 +12,22 @@ abstract class BookingService extends ChopperService {
     return convertResponse(res);
   }
 
+  Future<void> confirmBooking(String eventId, String userId) async {
+    await _confirmBooking(int.parse(eventId), int.parse(userId));
+  }
+
+  Future<void> unconfirmBooking(String eventId, String userId) async {
+    await _unconfirmBooking(int.parse(eventId), int.parse(userId));
+  }
+
   @Get(path: "/booking/view")
   Future<Response> _getBooking(@Query("screen") String screen, @Query("user_id") String userId);
+
+  @Post(path: "/qr/confirm")
+  Future<Response> _confirmBooking(@Field("event_id") int eventId, @Field("user_id") int userId);
+
+  @Post(path: "/qr/unconfirm")
+  Future<Response> _unconfirmBooking(@Field("event_id") int eventId, @Field("user_id") int userId);
 
   static BookingService create([ChopperClient? client]) => _$BookingService(client);
 }

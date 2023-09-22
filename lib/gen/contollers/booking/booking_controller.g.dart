@@ -49,6 +49,24 @@ mixin _$BookingContoroller on BookingControllerStore, Store {
     return _$getBookingAsyncAction.run(() => super.getBooking(userId));
   }
 
+  late final _$confirmBookingAsyncAction =
+      AsyncAction('BookingControllerStore.confirmBooking', context: context);
+
+  @override
+  Future<void> confirmBooking(String eventId, String userId) {
+    return _$confirmBookingAsyncAction
+        .run(() => super.confirmBooking(eventId, userId));
+  }
+
+  late final _$unconfirmBookingAsyncAction =
+      AsyncAction('BookingControllerStore.unconfirmBooking', context: context);
+
+  @override
+  Future<void> unconfirmBooking(String eventId, String userId) {
+    return _$unconfirmBookingAsyncAction
+        .run(() => super.unconfirmBooking(eventId, userId));
+  }
+
   @override
   String toString() {
     return '''
