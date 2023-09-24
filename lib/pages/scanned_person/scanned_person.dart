@@ -15,7 +15,6 @@ class ScannedPerson extends StatelessWidget {
   ScannedPerson({super.key, required this.qrToken}) {
     scannedConverter = ScannedConverter(scannedService: GetIt.I<ChopperClient>().getService<ScannedService>());
     scannedController = ScannedController(scannedConverter: scannedConverter);
-    scannedController.scanQr(qrToken);
   }
 
   final String qrToken;
@@ -27,6 +26,7 @@ class ScannedPerson extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    scannedController.scanQr(qrToken);
     return Observer(
       builder: (context) {
         if (scannedController.isScanning) {

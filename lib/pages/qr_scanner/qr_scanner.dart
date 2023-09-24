@@ -16,7 +16,7 @@ class QrScanner extends StatelessWidget {
       successColor: const Color.fromRGBO(67, 67, 244, 0.4),
       validator: (value) {
         logger.i("Validate token $value");
-        if (value.startsWith('ff://')) return true;
+        if (value.startsWith('ff://') && (value.length > 6)) return true;
 
         Widget snackBarContent = Card(
           color: const Color.fromRGBO(67, 67, 244, 1),

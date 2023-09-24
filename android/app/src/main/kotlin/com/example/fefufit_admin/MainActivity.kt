@@ -1,4 +1,4 @@
-package com.example.admin_page
+package com.example.fefufit_admin
 
 import io.flutter.embedding.android.FlutterActivity
 
