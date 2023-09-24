@@ -1,33 +1,41 @@
 import 'package:admin_page/contollers/scanned/scanned_controller.dart';
+import 'package:admin_page/contollers/scanned/scanned_converter.dart';
+import 'package:admin_page/contollers/scanned/scanned_service.dart';
 import 'package:admin_page/i18n/strings.g.dart';
 import 'package:admin_page/navigation/navigator.dart';
 import 'package:admin_page/pages/scanned_person/widgets/person_page.dart';
 import 'package:admin_page/pages/services/widgets/actions_row.dart';
+import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class ScannedPerson extends StatelessWidget {
-  ScannedPerson({super.key, required this.qrToken});
+  ScannedPerson({super.key, required this.qrToken}) {
+    scannedConverter = ScannedConverter(scannedService: GetIt.I<ChopperClient>().getService<ScannedService>());
+    scannedController = ScannedController(scannedConverter: scannedConverter);
+    scannedController.scanQr(qrToken);
+  }
 
   final String qrToken;
 
-  final ScannedController controller = GetIt.I<ScannedController>();
+  // final ScannedController controller = GetIt.I<ScannedController>();
+
+  late final ScannedConverter scannedConverter;
+  late final ScannedController scannedController;
 
   @override
   Widget build(BuildContext context) {
-    controller.scanQr(qrToken);
-
     return Observer(
       builder: (context) {
-        if (controller.isScanning) {
+        if (scannedController.isScanning) {
           return Center(
             child: LoadingAnimationWidget.prograssiveDots(color: Color.fromRGBO(67, 67, 244, 1), size: 60),
           );
         }
 
-        if (controller.scannedResultStatus == ScannedResultStatus.tokendInvalid) {
+        if (scannedController.scannedResultStatus == ScannedResultStatus.tokendInvalid) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,7 +56,7 @@ class ScannedPerson extends StatelessWidget {
           );
         }
 
-        return PersonScannedPage(scannedUserId: controller.userId);
+        return PersonScannedPage(scannedUserId: scannedController.userId);
       },
     );
   }
