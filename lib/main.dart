@@ -95,9 +95,6 @@ Future<void> main() async {
 
   GetIt.I.registerSingleton<ChopperClient>(chopper);
 
-  ScannedConverter scannedConverter = ScannedConverter(scannedService: chopper.getService<ScannedService>());
-  ScannedController scannedController = ScannedController(scannedConverter: scannedConverter);
-
   CalendarConverter calendarConverter = CalendarConverter(calendarService: chopper.getService<CalendarService>());
   CalendarController calendarController = CalendarController(calendarConverter: calendarConverter);
 
@@ -122,7 +119,7 @@ Future<void> main() async {
   GetIt.I.registerSingleton(serviceController);
   GetIt.I.registerSingleton(buildingController);
   GetIt.I.registerSingleton(calendarController);
-  GetIt.I.registerSingleton(scannedController);
+  // GetIt.I.registerSingleton(scannedController);
   GetIt.I.registerSingleton(userDataContoller);
   GetIt.I.registerSingleton(bookingContoroller);
 

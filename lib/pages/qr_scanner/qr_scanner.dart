@@ -45,7 +45,7 @@ class QrScanner extends StatelessWidget {
       canPop: false,
       onScan: (String value) {
         logger.i("Scan token $value");
-        AppNavigator.goScannedPeron(value);
+        AppNavigator.goScannedPeron(value.substring(5));
       },
       hintWidget: Container(),
       controller: MobileScannerController(

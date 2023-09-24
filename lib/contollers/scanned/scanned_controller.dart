@@ -23,6 +23,7 @@ abstract class ScannedContollerStore with Store {
   @action
   Future<void> scanQr(String qrToken) async {
     isScanning = true;
+    scannedResultStatus = null;
 
     ScannedTokenResponse response = await scannedConverter.scanQr(qrToken);
 
