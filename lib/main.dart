@@ -183,7 +183,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: "FefuFit Admin",
+      title: "fefufit (admin)",
       themeMode: ThemeMode.light,
       theme: _lightTheme,
       darkTheme: _darkTheme,
