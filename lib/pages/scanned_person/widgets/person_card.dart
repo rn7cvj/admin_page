@@ -1,19 +1,23 @@
 import 'package:admin_page/models/booking_viewmodel.dart';
+import 'package:admin_page/models/plan_viewmodel.dart';
 import 'package:admin_page/models/user_long_viewmodel.dart';
 import 'package:admin_page/navigation/navigator.dart';
 import 'package:admin_page/pages/scanned_person/widgets/booking_card.dart';
 import 'package:admin_page/pages/scanned_person/widgets/booking_tab.dart';
 import 'package:admin_page/pages/scanned_person/widgets/person_header.dart';
+import 'package:admin_page/pages/scanned_person/widgets/plans_tab.dart';
 import 'package:flutter/material.dart';
 
 import 'tab_bar_selector.dart';
 
 class PersonCard extends StatefulWidget {
-  const PersonCard({super.key, required this.userData, required this.booking, required this.userId});
+  const PersonCard(
+      {super.key, required this.userData, required this.booking, required this.userId, required this.plans});
 
   final UserDataLongViewModel userData;
 
   final List<BookingViewModel> booking;
+  final List<PlanViewModel> plans;
 
   final String userId;
 
@@ -51,7 +55,7 @@ class _PersonCardState extends State<PersonCard> with TickerProviderStateMixin {
                   controller: tabBarContoller,
                   children: [
                     BookingTab(booking: widget.booking, userId: widget.userId),
-                    BookingTab(booking: widget.booking, userId: widget.userId),
+                    PlansTab(plans: widget.plans, userId: widget.userId),
                   ],
                 ),
               ),

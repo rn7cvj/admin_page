@@ -6,6 +6,9 @@ import 'package:admin_page/contollers/booking/booking_service.dart';
 import 'package:admin_page/contollers/calendar/calendar_contoller.dart';
 import 'package:admin_page/contollers/calendar/calendar_converter.dart';
 import 'package:admin_page/contollers/calendar/calendar_service.dart';
+import 'package:admin_page/contollers/plan/plan_controller.dart';
+import 'package:admin_page/contollers/plan/plan_convertor.dart';
+import 'package:admin_page/contollers/plan/plan_service.dart';
 import 'package:admin_page/contollers/scanned/scanned_controller.dart';
 import 'package:admin_page/contollers/scanned/scanned_converter.dart';
 import 'package:admin_page/contollers/scanned/scanned_service.dart';
@@ -85,6 +88,7 @@ Future<void> main() async {
       ScannedService.create(),
       UserDataService.create(),
       BookingService.create(),
+      PlanService.create(),
     ],
     converter: const JsonConverter(),
   );
@@ -111,6 +115,9 @@ Future<void> main() async {
       UserDataConverter(scannedPersonService: GetIt.I<ChopperClient>().getService<UserDataService>());
   UserDataContoller userDataContoller = UserDataContoller(scannedPersonConverter: userDataConverter);
 
+  PlanConvertor planConvertor = PlanConvertor(planService: GetIt.I<ChopperClient>().getService<PlanService>());
+  PlanContoroller planContoroller = PlanContoroller(planConvertor: planConvertor);
+
   BookingConverter bookingConverter =
       BookingConverter(bookingService: GetIt.I<ChopperClient>().getService<BookingService>());
   BookingContoroller bookingContoroller = BookingContoroller(bookingConverter: bookingConverter);
@@ -122,6 +129,7 @@ Future<void> main() async {
   // GetIt.I.registerSingleton(scannedController);
   GetIt.I.registerSingleton(userDataContoller);
   GetIt.I.registerSingleton(bookingContoroller);
+  GetIt.I.registerSingleton(planContoroller);
 
   TokenConvertor tokenConvertor = TokenConvertor(tokenService: chopper.getService<TokenService>());
   TokenStorage tokenStorage = TokenStorage();

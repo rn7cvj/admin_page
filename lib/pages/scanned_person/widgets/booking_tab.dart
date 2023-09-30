@@ -11,15 +11,13 @@ class BookingTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: booking
-            .map((booking) => BookingCard(
-                  booking: booking,
-                  userId: userId,
-                ))
-            .toList(),
-      ),
+    return ListView(
+      children: booking
+          .map((booking) => BookingCard(
+                booking: booking,
+                userId: userId,
+              ))
+          .toList(),
     );
   }
 }

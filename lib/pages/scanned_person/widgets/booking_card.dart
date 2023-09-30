@@ -104,6 +104,7 @@ class BookingCard extends StatelessWidget {
                 },
                 backgroundColor: booking.status! == "done" ? Colors.transparent : const Color(0xff4343F4),
                 textColor: booking.status! == "done" ? const Color(0xFF4A4A4A) : Colors.white,
+                drawDashLine: booking.status! == "done",
               )
             ],
           ),
@@ -120,12 +121,14 @@ class RightVerticalButton extends StatelessWidget {
     required this.onTap,
     required this.backgroundColor,
     required this.textColor,
+    required this.drawDashLine,
   });
 
   final String lable;
   final VoidCallback onTap;
   final Color backgroundColor;
   final Color textColor;
+  final bool drawDashLine;
 
   @override
   Widget build(BuildContext context) {
@@ -147,10 +150,12 @@ class RightVerticalButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ClipRRect(
-                child: CustomPaint(
-                  painter: DashedLinePainter(color: const Color(0xFF4A4A4A)),
-                  size: const Size(double.infinity, 1),
-                ),
+                child: drawDashLine
+                    ? CustomPaint(
+                        painter: DashedLinePainter(color: const Color(0xFF4A4A4A)),
+                        size: const Size(double.infinity, 1),
+                      )
+                    : null,
               ),
               Container(
                 height: 44,

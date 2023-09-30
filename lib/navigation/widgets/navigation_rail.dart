@@ -72,6 +72,15 @@ class CustomNavigationRail extends StatelessWidget {
                       onTap: () => context.go("/calculator"),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 24.0),
+                    child: NavigationButton(
+                      selectedSvgPath: "assets/icons/qr_scanner.svg",
+                      unselectedSvgPath: "assets/icons/qr_scanner.svg",
+                      isSelected: state.fullPath == "/scanner",
+                      onTap: () => context.go("/scanner"),
+                    ),
+                  ),
                 ],
               ),
             ),
