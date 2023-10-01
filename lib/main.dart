@@ -44,6 +44,8 @@ import 'navigation/navigator.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+GlobalKey _appKey = GlobalKey();
+
 void setUpSystemUIOverlay() {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -68,7 +70,24 @@ class CustomAuthenticator extends Authenticator {
     final Map<String, String> updatedHeaders = request.headers;
     updatedHeaders["auth"] = newToken;
 
+    request.parameters["lang"] = Localizations.localeOf(rootNavigatorKey.currentContext!).languageCode;
+
     return request.copyWith(headers: updatedHeaders);
+  }
+}
+
+class LocaleInterceptor implements RequestInterceptor {
+  const LocaleInterceptor();
+
+  @override
+  FutureOr<Request> onRequest(Request request) {
+    final updatedRequest = request;
+
+    logger.i(request.parameters);
+
+    // logger.i(Localizations.localeOf(rootNavigatorKey.currentContext!).languageCode);
+
+    return updatedRequest;
   }
 }
 
@@ -78,6 +97,7 @@ Future<void> main() async {
   final chopper = ChopperClient(
     baseUrl: Uri.parse("https://fefufit.dvfu.ru/api2"),
     authenticator: CustomAuthenticator(),
+    interceptors: [const LocaleInterceptor()],
     services: [
       AuthService.create(),
       TokenService.create(),
@@ -191,6 +211,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      // key: _appKey,
       title: "fefufit (admin)",
       themeMode: ThemeMode.light,
       theme: _lightTheme,
