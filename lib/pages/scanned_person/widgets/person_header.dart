@@ -28,11 +28,13 @@ class PersonHeader extends StatelessWidget {
             height: 120.0,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              image: DecorationImage(
-                scale: 0.9,
-                fit: BoxFit.fill,
-                image: NetworkImage(userData.photo!.first),
-              ),
+              image: userData.photo!.isEmpty
+                  ? null
+                  : DecorationImage(
+                      scale: 0.9,
+                      fit: BoxFit.fill,
+                      image: NetworkImage(userData.photo!.first),
+                    ),
             ),
           ),
         ),

@@ -70,25 +70,41 @@ class CustomAuthenticator extends Authenticator {
     final Map<String, String> updatedHeaders = request.headers;
     updatedHeaders["auth"] = newToken;
 
-    request.parameters["lang"] = Localizations.localeOf(rootNavigatorKey.currentContext!).languageCode;
+    // request.parameters["lang"] = Localizations.localeOf(rootNavigatorKey.currentContext!).languageCode;
 
     return request.copyWith(headers: updatedHeaders);
   }
 }
 
-class LocaleInterceptor implements RequestInterceptor {
-  const LocaleInterceptor();
+FutureOr<Request> localeInterceptors(Request request) {
+  final updatedRequest = request;
 
-  @override
-  FutureOr<Request> onRequest(Request request) {
-    final updatedRequest = request;
-
-    logger.i(request.parameters);
-
-    // logger.i(Localizations.localeOf(rootNavigatorKey.currentContext!).languageCode);
-
-    return updatedRequest;
+  if (rootNavigatorKey.currentContext != null &&
+      Localizations.maybeLocaleOf(rootNavigatorKey.currentContext!) != null) {
+    updatedRequest.parameters["lang"] = Localizations.localeOf(rootNavigatorKey.currentContext!).languageCode;
   }
+
+  return updatedRequest;
+}
+
+FutureOr<Request> authInterceptor(Request request) {
+  final updatedRequest = request;
+
+  if (!GetIt.I.isRegistered<TokenContoller>()) return updatedRequest;
+
+  TokenContoller tokenContoller = GetIt.I<TokenContoller>();
+
+  String newToken = tokenContoller.token ?? "";
+
+  updatedRequest.headers["auth"] = newToken;
+
+  return updatedRequest;
+}
+
+FutureOr<Request> loggerRequestInterceptor(Request request) {
+  logger.i("Request\n${request.uri}\n${request.headers}\n${request.parameters}");
+
+  return request;
 }
 
 Future<void> main() async {
@@ -97,7 +113,11 @@ Future<void> main() async {
   final chopper = ChopperClient(
     baseUrl: Uri.parse("https://fefufit.dvfu.ru/api2"),
     authenticator: CustomAuthenticator(),
-    interceptors: [const LocaleInterceptor()],
+    interceptors: [
+      // authInterceptor,
+      // localeInterceptors,
+      loggerRequestInterceptor,
+    ],
     services: [
       AuthService.create(),
       TokenService.create(),
@@ -211,7 +231,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      // key: _appKey,
+      key: _appKey,
       title: "fefufit (admin)",
       themeMode: ThemeMode.light,
       theme: _lightTheme,
