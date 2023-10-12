@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:admin_page/logger.dart';
 import 'package:admin_page/models/event_viewmodel.dart';
 import 'package:mobx/mobx.dart';
@@ -72,5 +74,13 @@ abstract class CalendarControllerStore with Store {
         coachName: event.coachName,
       );
     }
+  }
+
+  Future<void> exportExcel() async => calendarConverter.exportExcel();
+
+  Future<void> importExcel(Uint8List bytes) async {
+    String file = bytes.join(" ");
+
+    calendarConverter.importExcel(file);
   }
 }

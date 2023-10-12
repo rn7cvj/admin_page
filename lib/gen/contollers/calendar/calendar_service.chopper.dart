@@ -38,4 +38,28 @@ final class _$CalendarService extends CalendarService {
     );
     return client.send<dynamic, dynamic>($request);
   }
+
+  @override
+  Future<Response<dynamic>> exportExcel() {
+    final Uri $url = Uri.parse('/excel/export');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> importExcel(String file) {
+    final Uri $url = Uri.parse('/excel/import');
+    final $body = <String, dynamic>{'file': file};
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
 }

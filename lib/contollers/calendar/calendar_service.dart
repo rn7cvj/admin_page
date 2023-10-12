@@ -21,6 +21,12 @@ abstract class CalendarService extends ChopperService {
     @Query("lang") String lang,
   );
 
+  @Get(path: "/excel/export")
+  Future<Response> exportExcel();
+
+  @Post(path: "/excel/import")
+  Future<Response> importExcel(@Field("file") String file);
+
   static CalendarService create([ChopperClient? client]) => _$CalendarService(client);
 }
 

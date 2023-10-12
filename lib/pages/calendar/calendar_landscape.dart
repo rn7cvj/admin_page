@@ -2,6 +2,7 @@ import 'package:admin_page/contollers/calendar/calendar_contoller.dart';
 import 'package:admin_page/i18n/strings.g.dart';
 import 'package:admin_page/pages/services/widgets/actions_row.dart';
 import 'package:admin_page/themes/app_theme.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
@@ -35,7 +36,13 @@ class CalendarLandscape extends StatelessWidget {
                 child: ActionsRow(actions: [
                   ActionButton(
                     lable: t.calendar.new_event,
-                    onPressed: () {},
+                    onPressed: () async {
+                      FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+                      if (result == null) return;
+
+                      _controller.importExcel(result.files.single.bytes!);
+                    },
                     icon: const Icon(Icons.add),
                   ),
                   // const VerticalDivider(
@@ -51,7 +58,7 @@ class CalendarLandscape extends StatelessWidget {
                   // ),
                   ActionButton(
                     lable: t.calendar.download,
-                    onPressed: () {},
+                    onPressed: _controller.exportExcel,
                     icon: const Icon(Icons.download),
                   ),
                 ]),

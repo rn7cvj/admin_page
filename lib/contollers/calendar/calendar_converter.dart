@@ -1,4 +1,8 @@
 import 'package:admin_page/contollers/calendar/calendar_service.dart';
+import 'package:admin_page/contollers/token/token_contoller.dart';
+import 'package:chopper/chopper.dart';
+import 'package:get_it/get_it.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class CalendarConverter {
   final CalendarService calendarService;
@@ -21,6 +25,24 @@ class CalendarConverter {
     return CalendarResponse()
       ..status = CalendarResponseStatus.success
       ..events = backendResponse.events;
+  }
+
+  Future<void> exportExcel() async {
+    try {
+      TokenContoller tokenContoller = GetIt.I<TokenContoller>();
+      String newToken = tokenContoller.token ?? "";
+      launchUrlString("https://fefufit.dvfu.ru/api2/excel/export",
+          mode: LaunchMode.externalApplication,
+          webViewConfiguration: WebViewConfiguration(
+            headers: <String, String>{'auth': newToken},
+          ));
+    } catch (ex) {}
+  }
+
+  Future<void> importExcel(String file) async {
+    try {
+      calendarService.importExcel(file);
+    } catch (ex) {}
   }
 }
 
