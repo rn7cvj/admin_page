@@ -69,7 +69,7 @@ class UserDataLongBackendModel {
   UserDataLongBackendModel.fromJson(Map<String, dynamic> json) {
     firstName = json['first_name'];
     secondName = json['second_name'];
-    thirdName = json['third_name'];
+    thirdName = json['third_name'] ?? "";
     email = json['email'];
     type = json['type'];
     birthdate = json['birthdate'];
