@@ -1,0 +1,14 @@
+emailHint: Email or phone number
+emailRequired: Email is required
+emailInvalid: Invalid email
+passwordHint: Password
+passwordRequired: Password is required
+passwordTooShort: Password should be at least 6 characters long
+forgotPassword: Forgot password?
+login: Login
+restorePassword: Restore password
+restorePasswordHint: Enter your email address and we will send you a link to reset your password
+sendRestoreLink: Send restore link
+newtworkTroubleMessage: Network trouble
+serverInaccessibleMessage: Server is inaccessible
+wrongDataMessage: Wrong email or password

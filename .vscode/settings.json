@@ -1,5 +1,5 @@
 {
-  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "dart.flutterSdkPath": "C:\\Users\\KJ6Z5\\.puro\\envs\\master\\flutter",
   // Remove .fvm files from search
   "search.exclude": {
     "**/.fvm": true
@@ -8,5 +8,6 @@
   "files.watcherExclude": {
     "**/.fvm": true
   },
-  "dotnet.defaultSolution": "disable"
+  "dotnet.defaultSolution": "disable",
+    "dart.sdkPath": "C:\\Users\\KJ6Z5\\.puro\\envs\\master\\flutter\\bin\\cache\\dart-sdk"
 }

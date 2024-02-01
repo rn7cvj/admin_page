@@ -1,0 +1,14 @@
+emailHint: Email или номер телефона
+emailRequired: Email обязателен
+emailInvalid: Неверный email
+passwordHint: Пароль
+passwordRequired: Пароль обязателен
+passwordTooShort: Пароль должен быть не менее 6 символов
+forgotPassword: Забыли пароль?
+login: Войти
+restorePassword: Восстановление пароля
+restorePasswordHint: Введите адрес электронной почты и мы отправим вам ссылку для сброса пароля
+sendRestoreLink: Отправить ссылку
+newtworkTroubleMessage: Проблемы с сетью
+serverInaccessibleMessage: Сервис временно недоступен
+wrongDataMessage: Неверный email или пароль
