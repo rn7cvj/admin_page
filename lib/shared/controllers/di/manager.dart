@@ -3,7 +3,6 @@ import 'package:admin_page/shared/controllers/auth/controller.dart';
 import 'package:admin_page/shared/controllers/token/token_storage.dart';
 import 'package:admin_page/shared/controllers/user_data/controller.dart';
 import 'package:admin_page/shared/logger.dart';
-import 'package:fefufit_uikit/fefufit_uikit.dart';
 import 'package:get_it/get_it.dart';
 
 class DIManager {

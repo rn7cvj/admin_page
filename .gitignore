@@ -45,3 +45,7 @@ app.*.map.json
 
 /build/
 /windows/
+
+/.vscode/settings.json
+
+/lib/gen/
