@@ -8,33 +8,49 @@ class UserDataController = UserDataControllerBase with _$UserDataController;
 
 abstract class UserDataControllerBase with Store {
   @observable
-  bool isLoading = true;
-
-  @observable
-  bool isSuccessfullyLoad = false;
+  UserDataControllerState state = UserDataControllerState.loading;
 
   UserData? userData;
 
+  bool get isInitialized => _isInitialized;
+  bool _isInitialized = false;
+
+  @action
+  void init() {
+    if (_isInitialized) return;
+
+    getUserData();
+
+    _isInitialized = true;
+  }
+
   @action
   Future<void> getUserData() async {
-    isLoading = true;
-    isSuccessfullyLoad = false;
+    state = UserDataControllerState.loading;
 
     final response = await UserDataConverter.getUserData();
 
     if (response.status != UserDataResponseStatus.success) {
       _handelErrror(response);
-      isLoading = false;
       return;
     }
 
     _handelSuccess(response);
-
-    isSuccessfullyLoad = true;
-    isLoading = false;
   }
 
-  Future<void> _handelSuccess(UserDataResponse response) async {}
+  Future<void> _handelSuccess(UserDataResponse response) async {
+    state = UserDataControllerState.successfullyLoad;
+    userData = response.userData;
+  }
 
-  Future<void> _handelErrror(UserDataResponse response) async {}
+  Future<void> _handelErrror(UserDataResponse response) async {
+    state = UserDataControllerState.loadWithErrors;
+    // response.status = UserDataResponseStatus.error;
+  }
+}
+
+enum UserDataControllerState {
+  loading,
+  successfullyLoad,
+  loadWithErrors,
 }

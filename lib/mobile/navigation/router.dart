@@ -40,7 +40,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: RoutesName.auth.reletivePath,
           name: RoutesName.auth.name,
-          builder: (context, state) => AuthPage(),
+          pageBuilder: (context, state) => MaterialPage(child: AuthPage()),
           routes: [
             GoRoute(
               path: RoutesName.restorePassword.reletivePath,
@@ -60,17 +60,17 @@ final GoRouter router = GoRouter(
               path: RoutesName.home.reletivePath,
               name: RoutesName.home.name,
               builder: (context, state) => HomePage(),
-              routes: [],
+              routes: const [],
             ),
             GoRoute(
               path: RoutesName.calendar.reletivePath,
               name: RoutesName.calendar.name,
-              builder: (context, state) => CalendarPage(),
+              builder: (context, state) => const CalendarPage(),
             ),
             GoRoute(
               path: RoutesName.dashboard.reletivePath,
               name: RoutesName.dashboard.name,
-              builder: (context, state) => DashboardPage(),
+              builder: (context, state) => const DashboardPage(),
             ),
           ],
         )

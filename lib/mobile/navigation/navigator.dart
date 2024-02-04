@@ -30,12 +30,14 @@ final class AppNavigator {
   static void openCalendar() {
     FFSnackBarSystem.showInfoSnackBar("Calendar is not implemented yet");
     return;
-    _openNamed(RoutesName.calendar.name);
+    // TODO: uncomment this line when calendar is implemented
+    // _openNamed(RoutesName.calendar.name);
   }
 
   static void openDashboard() {
     FFSnackBarSystem.showInfoSnackBar("Dashboard is not implemented yet");
     return;
-    _openNamed(RoutesName.dashboard.name);
+    // TODO: uncomment this line when dashboard is implemented
+    // _openNamed(RoutesName.dashboard.name);
   }
 }

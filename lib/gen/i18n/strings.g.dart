@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 108 (54 per locale)
+/// Strings: 116 (58 per locale)
 ///
-/// Built on 2024-01-27 at 09:40 UTC
+/// Built on 2024-02-04 at 21:14 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -152,7 +152,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsBuildingEn building = _StringsBuildingEn._(_root);
 	late final _StringsCalculatorEn calculator = _StringsCalculatorEn._(_root);
 	late final _StringsCalendarEn calendar = _StringsCalendarEn._(_root);
+	late final _StringsCommonEn common = _StringsCommonEn._(_root);
 	late final _StringsDashboardEn dashboard = _StringsDashboardEn._(_root);
+	late final _StringsHomeEn home = _StringsHomeEn._(_root);
 	late final _StringsPeopleEn people = _StringsPeopleEn._(_root);
 	late final _StringsScannedEn scanned = _StringsScannedEn._(_root);
 	late final _StringsScannerEn scanner = _StringsScannerEn._(_root);
@@ -181,6 +183,7 @@ class _StringsAuthEn {
 	String get newtworkTroubleMessage => 'Network trouble';
 	String get serverInaccessibleMessage => 'Server is inaccessible';
 	String get wrongDataMessage => 'Wrong email or password';
+	String get expiredTokenMessage => 'Your session has expired, please login again';
 }
 
 // Path: building
@@ -223,6 +226,17 @@ class _StringsCalendarEn {
 	String get event_column_occupied_spaces => 'Occupied spaces';
 }
 
+// Path: common
+class _StringsCommonEn {
+	_StringsCommonEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get loading => 'Loading...';
+	String get error => 'Error :(';
+}
+
 // Path: dashboard
 class _StringsDashboardEn {
 	_StringsDashboardEn._(this._root);
@@ -231,6 +245,16 @@ class _StringsDashboardEn {
 
 	// Translations
 	String get label => 'Dashboard';
+}
+
+// Path: home
+class _StringsHomeEn {
+	_StringsHomeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get welcome => 'Good afternoon';
 }
 
 // Path: people
@@ -332,7 +356,9 @@ class _StringsRu implements Translations {
 	@override late final _StringsBuildingRu building = _StringsBuildingRu._(_root);
 	@override late final _StringsCalculatorRu calculator = _StringsCalculatorRu._(_root);
 	@override late final _StringsCalendarRu calendar = _StringsCalendarRu._(_root);
+	@override late final _StringsCommonRu common = _StringsCommonRu._(_root);
 	@override late final _StringsDashboardRu dashboard = _StringsDashboardRu._(_root);
+	@override late final _StringsHomeRu home = _StringsHomeRu._(_root);
 	@override late final _StringsPeopleRu people = _StringsPeopleRu._(_root);
 	@override late final _StringsScannedRu scanned = _StringsScannedRu._(_root);
 	@override late final _StringsScannerRu scanner = _StringsScannerRu._(_root);
@@ -361,6 +387,7 @@ class _StringsAuthRu implements _StringsAuthEn {
 	@override String get newtworkTroubleMessage => 'Проблемы с сетью';
 	@override String get serverInaccessibleMessage => 'Сервис временно недоступен';
 	@override String get wrongDataMessage => 'Неверный email или пароль';
+	@override String get expiredTokenMessage => 'Ваша сессия истекла, пожалуйста, войдите снова';
 }
 
 // Path: building
@@ -403,6 +430,17 @@ class _StringsCalendarRu implements _StringsCalendarEn {
 	@override String get event_column_occupied_spaces => 'Занято мест';
 }
 
+// Path: common
+class _StringsCommonRu implements _StringsCommonEn {
+	_StringsCommonRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get loading => 'Загрузка...';
+	@override String get error => 'Ошибка :(';
+}
+
 // Path: dashboard
 class _StringsDashboardRu implements _StringsDashboardEn {
 	_StringsDashboardRu._(this._root);
@@ -411,6 +449,16 @@ class _StringsDashboardRu implements _StringsDashboardEn {
 
 	// Translations
 	@override String get label => 'Панель управления';
+}
+
+// Path: home
+class _StringsHomeRu implements _StringsHomeEn {
+	_StringsHomeRu._(this._root);
+
+	@override final _StringsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get welcome => 'Добрый день';
 }
 
 // Path: people
@@ -504,6 +552,7 @@ extension on Translations {
 			case 'auth.newtworkTroubleMessage': return 'Network trouble';
 			case 'auth.serverInaccessibleMessage': return 'Server is inaccessible';
 			case 'auth.wrongDataMessage': return 'Wrong email or password';
+			case 'auth.expiredTokenMessage': return 'Your session has expired, please login again';
 			case 'building.label': return 'Building';
 			case 'calculator.label': return 'Calculator';
 			case 'calendar.label': return 'Calendar';
@@ -517,7 +566,10 @@ extension on Translations {
 			case 'calendar.event_column_area': return 'Area';
 			case 'calendar.event_column_total_spaces': return 'Total spaces';
 			case 'calendar.event_column_occupied_spaces': return 'Occupied spaces';
+			case 'common.loading': return 'Loading...';
+			case 'common.error': return 'Error :(';
 			case 'dashboard.label': return 'Dashboard';
+			case 'home.welcome': return 'Good afternoon';
 			case 'people.label': return 'People';
 			case 'people.tab_visitor': return 'Visiotrs';
 			case 'people.tab_trainer': return 'Trainers';
@@ -566,6 +618,7 @@ extension on _StringsRu {
 			case 'auth.newtworkTroubleMessage': return 'Проблемы с сетью';
 			case 'auth.serverInaccessibleMessage': return 'Сервис временно недоступен';
 			case 'auth.wrongDataMessage': return 'Неверный email или пароль';
+			case 'auth.expiredTokenMessage': return 'Ваша сессия истекла, пожалуйста, войдите снова';
 			case 'building.label': return 'Корпус';
 			case 'calculator.label': return 'Калькулятор';
 			case 'calendar.label': return 'Каледарь';
@@ -579,7 +632,10 @@ extension on _StringsRu {
 			case 'calendar.event_column_area': return 'Зона';
 			case 'calendar.event_column_total_spaces': return 'Всего мест';
 			case 'calendar.event_column_occupied_spaces': return 'Занято мест';
+			case 'common.loading': return 'Загрузка...';
+			case 'common.error': return 'Ошибка :(';
 			case 'dashboard.label': return 'Панель управления';
+			case 'home.welcome': return 'Добрый день';
 			case 'people.label': return 'Люди';
 			case 'people.tab_visitor': return 'Посетители';
 			case 'people.tab_trainer': return 'Тренера';

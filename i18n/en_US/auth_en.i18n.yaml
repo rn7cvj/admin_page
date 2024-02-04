@@ -12,3 +12,4 @@ sendRestoreLink: Send restore link
 newtworkTroubleMessage: Network trouble
 serverInaccessibleMessage: Server is inaccessible
 wrongDataMessage: Wrong email or password
+expiredTokenMessage: Your session has expired, please login again

@@ -9,19 +9,19 @@ part of '../../../../shared/controllers/user_data/controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$UserDataController on UserDataControllerBase, Store {
-  late final _$isLoadingAtom =
-      Atom(name: 'UserDataControllerBase.isLoading', context: context);
+  late final _$stateAtom =
+      Atom(name: 'UserDataControllerBase.state', context: context);
 
   @override
-  bool get isLoading {
-    _$isLoadingAtom.reportRead();
-    return super.isLoading;
+  UserDataControllerState get state {
+    _$stateAtom.reportRead();
+    return super.state;
   }
 
   @override
-  set isLoading(bool value) {
-    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
-      super.isLoading = value;
+  set state(UserDataControllerState value) {
+    _$stateAtom.reportWrite(value, super.state, () {
+      super.state = value;
     });
   }
 
@@ -33,10 +33,24 @@ mixin _$UserDataController on UserDataControllerBase, Store {
     return _$getUserDataAsyncAction.run(() => super.getUserData());
   }
 
+  late final _$UserDataControllerBaseActionController =
+      ActionController(name: 'UserDataControllerBase', context: context);
+
+  @override
+  void init() {
+    final _$actionInfo = _$UserDataControllerBaseActionController.startAction(
+        name: 'UserDataControllerBase.init');
+    try {
+      return super.init();
+    } finally {
+      _$UserDataControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-isLoading: ${isLoading}
+state: ${state}
     ''';
   }
 }

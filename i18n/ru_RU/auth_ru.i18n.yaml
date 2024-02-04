@@ -12,3 +12,4 @@ sendRestoreLink: Отправить ссылку
 newtworkTroubleMessage: Проблемы с сетью
 serverInaccessibleMessage: Сервис временно недоступен
 wrongDataMessage: Неверный email или пароль
+expiredTokenMessage: Ваша сессия истекла, пожалуйста, войдите снова

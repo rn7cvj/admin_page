@@ -33,4 +33,14 @@ class TokenStorage {
 
     logger.i("Write\n\ttoken: $_token\n\trefreshToken: $_refreshToken");
   }
+
+  Future<void> clearToken() async {
+    _token = null;
+    _refreshToken = null;
+
+    await _box.remove(_tokenName);
+    await _box.remove(_refreshTokenName);
+
+    logger.i("Clear\n    token: $_token\n    refreshToken: $_refreshToken");
+  }
 }

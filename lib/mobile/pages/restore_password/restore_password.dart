@@ -54,7 +54,7 @@ class RestorePasswordPage extends StatelessWidget {
 }
 
 class _RestoreForm extends StatelessWidget {
-  const _RestoreForm({super.key});
+  const _RestoreForm();
 
   @override
   Widget build(BuildContext context) => Form(

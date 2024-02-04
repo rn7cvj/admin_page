@@ -47,7 +47,7 @@ class AuthPage extends StatelessWidget {
 }
 
 class _AuthForm extends StatelessWidget {
-  _AuthForm({super.key});
+  _AuthForm();
 
   final AuthController controller = DIManager.get<AuthController>();
 

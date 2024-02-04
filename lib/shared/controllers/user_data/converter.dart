@@ -26,7 +26,7 @@ class UserDataConverter {
 
     const jsonEncoder = JsonEncoder.withIndent('    ');
 
-    logger.i("Loadded user data: ${jsonEncoder.convert(userData.toJson())}");
+    logger.i("Loaded user data: ${jsonEncoder.convert(userData.toJson())}");
 
     return UserDataResponse(
       status: UserDataResponseStatus.success,
