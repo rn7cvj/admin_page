@@ -20,17 +20,26 @@ class NavbarWrapper extends StatelessWidget {
 
     final String fullPath = state.fullPath ?? "";
 
-    final bool isHomeSelected = fullPath.contains(RoutesName.home.reletivePath);
-    final bool isCalendarSelected =
-        fullPath.contains(RoutesName.calendar.reletivePath);
-    final bool isDashboardSelected =
-        fullPath.contains(RoutesName.dashboard.reletivePath);
+    final bool isHomeSelected = fullPath == RoutesName.home.fullPath;
+    final bool isCalendarSelected = fullPath == RoutesName.calendar.fullPath;
+    final bool isDashboardSelected = fullPath == RoutesName.dashboard.fullPath;
+
+    final bool shoudShowNavBar =
+        isHomeSelected || isCalendarSelected || isDashboardSelected;
+
+    double navBarTopOffset = MediaQuery.sizeOf(context).height - 56 - 16;
+    final double navBarLeftOffset =
+        (MediaQuery.sizeOf(context).width - 250) / 2;
+
+    if (!shoudShowNavBar) navBarTopOffset = MediaQuery.sizeOf(context).height;
 
     return Stack(
       children: [
         child,
-        Align(
-          alignment: Alignment.bottomCenter,
+        AnimatedPositioned(
+          duration: const Duration(milliseconds: 300),
+          top: navBarTopOffset,
+          left: navBarLeftOffset,
           child: FFNavBar(
             [
               FFNavBarElement(

@@ -4,6 +4,7 @@ import 'package:admin_page/mobile/pages/auth/auth.dart';
 import 'package:admin_page/mobile/pages/calendar/calendart.dart';
 import 'package:admin_page/mobile/pages/dashboard/dashboard.dart';
 import 'package:admin_page/mobile/pages/home/home.dart';
+import 'package:admin_page/mobile/pages/profile/profile.dart';
 import 'package:admin_page/mobile/pages/restore_password/restore_password.dart';
 import 'package:admin_page/shared/controllers/di/manager.dart';
 import 'package:admin_page/shared/controllers/token/token_storage.dart';
@@ -60,7 +61,14 @@ final GoRouter router = GoRouter(
               path: RoutesName.home.reletivePath,
               name: RoutesName.home.name,
               builder: (context, state) => HomePage(),
-              routes: const [],
+              routes: [
+                GoRoute(
+                  path: RoutesName.profile.reletivePath,
+                  name: RoutesName.profile.name,
+                  pageBuilder: (context, state) =>
+                      const CupertinoPage(child: ProfilePage()),
+                )
+              ],
             ),
             GoRoute(
               path: RoutesName.calendar.reletivePath,
