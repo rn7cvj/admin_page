@@ -8,6 +8,7 @@ import 'package:admin_page/mobile/pages/profile/profile.dart';
 import 'package:admin_page/mobile/pages/restore_password/restore_password.dart';
 import 'package:admin_page/shared/controllers/di/manager.dart';
 import 'package:admin_page/shared/controllers/token/token_storage.dart';
+import 'package:fefufit_uikit/fefufit_uikit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -65,9 +66,15 @@ final GoRouter router = GoRouter(
                 GoRoute(
                   path: RoutesName.profile.reletivePath,
                   name: RoutesName.profile.name,
-                  pageBuilder: (context, state) =>
-                      const CupertinoPage(child: ProfilePage()),
-                )
+                  pageBuilder: (context, state) => const CupertinoPage(
+                    child: ProfilePage(),
+                  ),
+                ),
+                GoRoute(
+                  path: RoutesName.qrScanner.reletivePath,
+                  name: RoutesName.qrScanner.name,
+                  builder: (context, state) => HomePage(),
+                ),
               ],
             ),
             GoRoute(

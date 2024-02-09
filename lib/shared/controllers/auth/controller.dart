@@ -2,6 +2,7 @@ import 'package:admin_page/mobile/navigation/navigator.dart';
 import 'package:admin_page/shared/controllers/auth/converter.dart';
 import 'package:admin_page/shared/controllers/di/manager.dart';
 import 'package:admin_page/shared/controllers/token/token_storage.dart';
+import 'package:admin_page/shared/controllers/user_data/controller.dart';
 import 'package:admin_page/shared/logger.dart';
 import 'package:fefufit_uikit/fefufit_uikit.dart';
 import 'package:flutter/material.dart';
@@ -71,6 +72,7 @@ abstract class AuthControllerBase with Store {
       response.qrToken!,
       response.refreshToken!,
     );
+    DIManager.get<UserDataController>().getUserData();
     AppNavigator.openHome();
   }
 

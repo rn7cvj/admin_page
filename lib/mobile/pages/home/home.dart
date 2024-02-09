@@ -27,9 +27,9 @@ class HomePage extends StatelessWidget {
         ),
         children: [
           HomeAppBar(),
-          SizedBox(height: ffPaddingMedium),
+          const SizedBox(height: ffPaddingMedium),
           QrToken(),
-          SizedBox(height: ffPaddingMedium),
+          const SizedBox(height: ffPaddingMedium),
           ScanQr(),
         ],
       ),

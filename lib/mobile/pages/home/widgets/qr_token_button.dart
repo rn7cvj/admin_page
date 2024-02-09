@@ -1,10 +1,12 @@
 import 'package:admin_page/gen/i18n/strings.g.dart';
+import 'package:admin_page/mobile/navigation/router.dart';
 import 'package:admin_page/shared/controllers/di/manager.dart';
 import 'package:admin_page/shared/controllers/token/token_storage.dart';
 import 'package:admin_page/shared/controllers/user_data/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:fefufit_uikit/fefufit_uikit.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -44,7 +46,7 @@ class QrToken extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: borderRadius),
         color: context.ffTheme.color.mainControllColor,
         child: InkWell(
-          onTap: isEnable ? () => _openQrDialog(context) : null,
+          onTap: isEnable ? () => _openQrBottomSheet(context) : null,
           borderRadius: borderRadius,
           child: Padding(
             padding: const EdgeInsets.all(ffPaddingMedium),
@@ -102,14 +104,38 @@ class QrToken extends StatelessWidget {
         ),
       );
 
-  void _openQrDialog(BuildContext context) => showDialog<void>(
-        context: context,
-        builder: (_) => const _QrTokenDialog(),
+  void _openQrBottomSheet(BuildContext context) => showModalBottomSheet(
+        context: rootNavigatorKey.currentContext!,
+        backgroundColor: context.ffTheme.color.mainBackgoundColor,
+        isScrollControlled: true,
+        builder: (context) => Container(
+          height: MediaQuery.sizeOf(context).height * 0.6,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: ffPaddingMedium),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: _QrToken(),
+                  ),
+                ),
+                FFMinorButton(
+                  text: t.common.close,
+                  onTap: rootNavigatorKey.currentContext!.pop,
+                ),
+                SizedBox(
+                  height:
+                      MediaQuery.of(context).padding.bottom + ffPaddingMedium,
+                )
+              ],
+            ),
+          ),
+        ),
       );
 }
 
-class _QrTokenDialog extends StatelessWidget {
-  const _QrTokenDialog({super.key});
+class _QrToken extends StatelessWidget {
+  const _QrToken({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -121,21 +147,18 @@ class _QrTokenDialog extends StatelessWidget {
   }
 
   Widget _qrScreen(BuildContext context, String qrToken) {
-    return Dialog(
-      backgroundColor: context.ffTheme.color.minorControllColor,
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: QrImageView(
-            data: qrToken,
-            eyeStyle: QrEyeStyle(
-              eyeShape: QrEyeShape.circle,
-              color: context.ffTheme.color.onMinorControllColor,
-            ),
-            dataModuleStyle: QrDataModuleStyle(
-              dataModuleShape: QrDataModuleShape.circle,
-              color: context.ffTheme.color.onMinorControllColor,
-            )),
-      ),
+    return AspectRatio(
+      aspectRatio: 1,
+      child: QrImageView(
+          data: qrToken,
+          eyeStyle: QrEyeStyle(
+            eyeShape: QrEyeShape.circle,
+            color: context.ffTheme.color.minorControllColor,
+          ),
+          dataModuleStyle: QrDataModuleStyle(
+            dataModuleShape: QrDataModuleShape.circle,
+            color: context.ffTheme.color.minorControllColor,
+          )),
     );
   }
 

@@ -49,6 +49,7 @@ class TokenStorage {
 
   Future<void> clearToken() async {
     _token = null;
+    _qrToken = null;
     _refreshToken = null;
 
     await _box.remove(_tokenName);

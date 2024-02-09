@@ -29,6 +29,8 @@ final class AppNavigator {
 
   static void openProfile() => _openNamed(RoutesName.profile.name);
 
+  static void openQrScanner() => _openNamed(RoutesName.qrScanner.name);
+
   static void openCalendar() {
     FFSnackBarSystem.showInfoSnackBar("Calendar is not implemented yet");
     return;

@@ -40,6 +40,12 @@ final class RoutesName {
     name: "profile",
   );
 
+  static Route qrScanner = Route(
+    fullPath: '/home/qr-scanner',
+    reletivePath: 'qr-scanner',
+    name: "qrScanner",
+  );
+
   static Route calendar = Route(
     fullPath: '/calendar',
     reletivePath: '/calendar',
