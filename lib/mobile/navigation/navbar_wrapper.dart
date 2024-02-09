@@ -27,7 +27,14 @@ class NavbarWrapper extends StatelessWidget {
     final bool shoudShowNavBar =
         isHomeSelected || isCalendarSelected || isDashboardSelected;
 
-    double navBarTopOffset = MediaQuery.sizeOf(context).height - 56 - 16;
+    double navBarHeight = 56;
+
+    double navBarTopOffset = MediaQuery.sizeOf(context).height -
+        navBarHeight -
+        ffPaddingSmall -
+        MediaQuery.of(context).padding.bottom -
+        MediaQuery.of(context).padding.top;
+
     final double navBarLeftOffset =
         (MediaQuery.sizeOf(context).width - 250) / 2;
 
@@ -79,6 +86,7 @@ class NavbarWrapper extends StatelessWidget {
                 onTap: AppNavigator.openDashboard,
               ),
             ],
+            navbarHeight: navBarHeight,
             areaHeight: 60,
             navbarColor: context.ffTheme.color.minorControllColor,
           ),

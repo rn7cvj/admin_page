@@ -11,13 +11,32 @@ class ScanQr extends StatelessWidget {
   final UserDataController controller = DIManager.get<UserDataController>();
 
   @override
-  Widget build(BuildContext context) => Observer(builder: (_) {
-        bool isEnable =
-            controller.state == UserDataControllerState.successfullyLoad;
-        return FFMinorButton(
-          text: t.home.scan_qr,
-          onTap: () {},
-          isLoading: !isEnable,
-        );
-      });
+  Widget build(BuildContext context) => Observer(
+        builder: (_) {
+          bool isEnable =
+              controller.state == UserDataControllerState.successfullyLoad;
+          return FFMinorButton(
+            text: t.home.scan_qr,
+            onTap: () => _showQrScanneBotomSheet(context),
+            isLoading: !isEnable,
+            textStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
+              color: context.ffTheme.color.onMinorControllColor,
+            ),
+          );
+        },
+      );
+
+  void _showQrScanneBotomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => Container(
+        height: 200,
+        child: Center(
+          child: Text('QR Scanner'),
+        ),
+      ),
+    );
+  }
 }

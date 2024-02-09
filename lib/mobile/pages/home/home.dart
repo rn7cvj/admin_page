@@ -19,16 +19,19 @@ class HomePage extends StatelessWidget {
       onRefresh: controller.getUserData,
       color: context.ffTheme.color.onMinorControllColor,
       backgroundColor: context.ffTheme.color.minorControllColor,
-      child: Scaffold(
-        appBar: HomeAppBar(),
-        body: ListView(
-          children: [
-            SizedBox(height: ffPaddingMedium),
-            QrToken(),
-            SizedBox(height: ffPaddingMedium),
-            ScanQr(),
-          ],
+      child: ListView(
+        padding: const EdgeInsets.only(
+          left: ffPaddingMedium,
+          right: ffPaddingMedium,
+          top: ffPaddingLarge,
         ),
+        children: [
+          HomeAppBar(),
+          SizedBox(height: ffPaddingMedium),
+          QrToken(),
+          SizedBox(height: ffPaddingMedium),
+          ScanQr(),
+        ],
       ),
     );
   }

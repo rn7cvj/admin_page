@@ -54,6 +54,7 @@ class QrToken extends StatelessWidget {
                   flex: 3,
                   child: _qrHint(context),
                 ),
+                SizedBox(width: ffPaddingMedium),
                 Expanded(
                   flex: 1,
                   child: _qrPlaceHolder(context),
@@ -69,16 +70,19 @@ class QrToken extends StatelessWidget {
         children: [
           Text(
             t.home.your_pass,
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge
-                ?.copyWith(color: context.ffTheme.color.onMainControllColor),
+            style: TextStyle(
+              color: context.ffTheme.color.onMainControllColor,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
           ),
           Text(
             t.home.show_qr,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: context.ffTheme.color.onMainControllColor,
-                ),
+            style: TextStyle(
+              color: context.ffTheme.color.onMainControllColor,
+              fontSize: 14,
+              fontWeight: FontWeight.w300,
+            ),
           ),
         ],
       );
@@ -88,11 +92,12 @@ class QrToken extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(ffBorderRadiusMedium),
-            color: context.ffTheme.color.mainBackgoundColor,
+            color: Colors.white,
           ),
           child: QrImageView(
             data: "QRCODE",
             version: QrVersions.auto,
+            foregroundColor: Colors.black,
           ),
         ),
       );
