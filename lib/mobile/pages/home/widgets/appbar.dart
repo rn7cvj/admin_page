@@ -96,16 +96,8 @@ class _HomeAppBarProfile extends StatelessWidget {
   Widget _buildLoadedScreen(BuildContext context) => CircleAvatar(
         backgroundColor: context.ffTheme.color.minorControllColor,
         radius: double.infinity,
-        foregroundImage: CachedNetworkImage(
-              imageUrl: controller.userData!.photos!.first,
-              placeholder: (context, url) => CircularProgressIndicator(
-                color: context.ffTheme.color.onMinorControllColor,
-              ),
-              errorWidget: (context, url, error) => Icon(
-                Icons.person_outline,
-                color: context.ffTheme.color.onMinorControllColor,
-              ),
-            ).,
+        foregroundImage: CachedNetworkImageProvider(
+          controller.userData!.photos!.first,
         ),
       );
 
