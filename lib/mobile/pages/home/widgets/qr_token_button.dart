@@ -5,6 +5,7 @@ import 'package:admin_page/shared/controllers/token/token_storage.dart';
 import 'package:admin_page/shared/controllers/user_data/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:fefufit_uikit/fefufit_uikit.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -107,28 +108,29 @@ class QrToken extends StatelessWidget {
   void _openQrBottomSheet(BuildContext context) => showModalBottomSheet(
         context: rootNavigatorKey.currentContext!,
         backgroundColor: context.ffTheme.color.mainBackgoundColor,
-        isScrollControlled: true,
-        builder: (context) => Container(
-          height: MediaQuery.sizeOf(context).height * 0.6,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: ffPaddingMedium),
-            child: Column(
-              children: [
-                Expanded(
-                  child: Center(
-                    child: _QrToken(),
-                  ),
-                ),
-                FFMinorButton(
-                  text: t.common.close,
-                  onTap: rootNavigatorKey.currentContext!.pop,
-                ),
-                SizedBox(
-                  height:
-                      MediaQuery.of(context).padding.bottom + ffPaddingMedium,
-                )
-              ],
-            ),
+        // isScrollControlled: true,
+        scrollControlDisabledMaxHeightRatio: 0.7,
+        builder: (context) => Padding(
+          padding: const EdgeInsets.symmetric(horizontal: ffPaddingMedium),
+          child: Column(
+            children: [
+              const SizedBox(height: ffPaddingMedium),
+              const Expanded(
+                child: _QrToken(),
+              ),
+              FFMainButton(
+                text: t.home.refresh_qr,
+                onTap: () {},
+              ),
+              const SizedBox(height: ffPaddingMedium),
+              FFMinorButton(
+                text: t.common.close,
+                onTap: rootNavigatorKey.currentContext!.pop,
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).padding.bottom + ffPaddingMedium,
+              )
+            ],
           ),
         ),
       );
@@ -146,42 +148,29 @@ class _QrToken extends StatelessWidget {
     return _qrScreen(context, qrToken);
   }
 
-  Widget _qrScreen(BuildContext context, String qrToken) {
-    return AspectRatio(
-      aspectRatio: 1,
-      child: QrImageView(
-          data: qrToken,
-          eyeStyle: QrEyeStyle(
-            eyeShape: QrEyeShape.circle,
-            color: context.ffTheme.color.minorControllColor,
-          ),
-          dataModuleStyle: QrDataModuleStyle(
-            dataModuleShape: QrDataModuleShape.circle,
-            color: context.ffTheme.color.minorControllColor,
-          )),
-    );
-  }
+  Widget _qrScreen(BuildContext context, String qrToken) => QrImageView(
+      data: qrToken,
+      eyeStyle: QrEyeStyle(
+        eyeShape: QrEyeShape.circle,
+        color: context.ffTheme.color.minorControllColor,
+      ),
+      dataModuleStyle: QrDataModuleStyle(
+        dataModuleShape: QrDataModuleShape.circle,
+        color: context.ffTheme.color.minorControllColor,
+      ));
 
-  Widget _errorScreen(BuildContext context) => AlertDialog(
-        backgroundColor: context.ffTheme.color.minorControllColor,
-        content: AspectRatio(
-          aspectRatio: 1,
-          child: Center(
+  Widget _errorScreen(BuildContext context) => Center(
+        child: Card(
+          color: context.ffTheme.color.mainControllColor,
+          child: Padding(
+            padding: const EdgeInsets.all(ffPaddingMedium),
             child: Text(
               t.home.error_qr,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: context.ffTheme.color.onMinorControllColor,
+                    color: context.ffTheme.color.onMainControllColor,
                   ),
             ),
           ),
         ),
-        actions: [
-          Center(
-            child: FFMainButton(
-              text: t.home.refresh_qr,
-              onTap: () {},
-            ),
-          )
-        ],
       );
 }
