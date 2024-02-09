@@ -68,6 +68,7 @@ abstract class AuthControllerBase with Store {
   Future<void> _handelSuccess(AuthResponse response) async {
     DIManager.get<TokenStorage>().writeNewToken(
       response.token!,
+      response.qrToken!,
       response.refreshToken!,
     );
     AppNavigator.openHome();

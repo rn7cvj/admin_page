@@ -1,3 +1,6 @@
 welcome: Good afternoon
 your_pass: Your pass to exericse
 show_qr: Show the QR code to the administrator
+error_qr: Error loading QR code
+refresh_qr: Refresh QR code
+scan_qr: Scan QR code

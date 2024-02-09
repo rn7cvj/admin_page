@@ -1,36 +1,159 @@
 import 'package:admin_page/gen/i18n/strings.g.dart';
+import 'package:admin_page/shared/controllers/di/manager.dart';
+import 'package:admin_page/shared/controllers/token/token_storage.dart';
+import 'package:admin_page/shared/controllers/user_data/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:fefufit_uikit/fefufit_uikit.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:shimmer/shimmer.dart';
 
 class QrToken extends StatelessWidget {
-  const QrToken({super.key});
+  QrToken({super.key});
+
+  final UserDataController controller = DIManager.get<UserDataController>();
 
   @override
-  Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(ffBorderRadiusMedium),
-      ),
-      color: context.ffTheme.color.mainControllColor,
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(
-          minHeight: 100,
-        ),
+  Widget build(BuildContext context) => Observer(
+        builder: (context) {
+          BorderRadius borderRadius =
+              BorderRadius.circular(ffBorderRadiusMedium);
+
+          bool isEnable =
+              controller.state == UserDataControllerState.successfullyLoad;
+
+          if (isEnable) return _build(context, borderRadius, isEnable);
+
+          return Shimmer.fromColors(
+            baseColor: context.ffTheme.color.mainControllColor,
+            highlightColor: context.ffTheme.color.onMainControllColor,
+            enabled: !isEnable,
+            direction: ShimmerDirection.rtl,
+            child: _build(context, borderRadius, isEnable),
+          );
+        },
+      );
+
+  Widget _build(
+    BuildContext context,
+    BorderRadius borderRadius,
+    bool isEnable,
+  ) =>
+      Card(
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(borderRadius: borderRadius),
+        color: context.ffTheme.color.mainControllColor,
         child: InkWell(
-          onTap: () {},
-          borderRadius: BorderRadius.circular(ffBorderRadiusMedium),
+          onTap: isEnable ? () => _openQrDialog(context) : null,
+          borderRadius: borderRadius,
           child: Padding(
-            padding: const EdgeInsets.all(ffPaddingSmall),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            padding: const EdgeInsets.all(ffPaddingMedium),
+            child: Row(
               children: [
-                Text(t.home.your_pass),
-                Text(t.home.show_qr),
+                Expanded(
+                  flex: 3,
+                  child: _qrHint(context),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: _qrPlaceHolder(context),
+                ),
               ],
             ),
           ),
         ),
+      );
+
+  Widget _qrHint(BuildContext context) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            t.home.your_pass,
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge
+                ?.copyWith(color: context.ffTheme.color.onMainControllColor),
+          ),
+          Text(
+            t.home.show_qr,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: context.ffTheme.color.onMainControllColor,
+                ),
+          ),
+        ],
+      );
+
+  Widget _qrPlaceHolder(BuildContext context) => AspectRatio(
+        aspectRatio: 1,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(ffBorderRadiusMedium),
+            color: context.ffTheme.color.mainBackgoundColor,
+          ),
+          child: QrImageView(
+            data: "QRCODE",
+            version: QrVersions.auto,
+          ),
+        ),
+      );
+
+  void _openQrDialog(BuildContext context) => showDialog<void>(
+        context: context,
+        builder: (_) => const _QrTokenDialog(),
+      );
+}
+
+class _QrTokenDialog extends StatelessWidget {
+  const _QrTokenDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    String? qrToken = DIManager.get<TokenStorage>().qrToken;
+
+    if (qrToken == null) return _errorScreen(context);
+
+    return _qrScreen(context, qrToken);
+  }
+
+  Widget _qrScreen(BuildContext context, String qrToken) {
+    return Dialog(
+      backgroundColor: context.ffTheme.color.minorControllColor,
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: QrImageView(
+            data: qrToken,
+            eyeStyle: QrEyeStyle(
+              eyeShape: QrEyeShape.circle,
+              color: context.ffTheme.color.onMinorControllColor,
+            ),
+            dataModuleStyle: QrDataModuleStyle(
+              dataModuleShape: QrDataModuleShape.circle,
+              color: context.ffTheme.color.onMinorControllColor,
+            )),
       ),
     );
   }
+
+  Widget _errorScreen(BuildContext context) => AlertDialog(
+        backgroundColor: context.ffTheme.color.minorControllColor,
+        content: AspectRatio(
+          aspectRatio: 1,
+          child: Center(
+            child: Text(
+              t.home.error_qr,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: context.ffTheme.color.onMinorControllColor,
+                  ),
+            ),
+          ),
+        ),
+        actions: [
+          Center(
+            child: FFMainButton(
+              text: t.home.refresh_qr,
+              onTap: () {},
+            ),
+          )
+        ],
+      );
 }

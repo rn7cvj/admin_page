@@ -13,6 +13,7 @@ class AuthConverter {
       return AuthResponse(
         status: AuthResponseStatus.newtworkTrouble,
         token: null,
+        qrToken: null,
         refreshToken: null,
       );
     }
@@ -21,6 +22,7 @@ class AuthConverter {
       return AuthResponse(
         status: AuthResponseStatus.wrongData,
         token: null,
+        qrToken: null,
         refreshToken: null,
       );
     }
@@ -29,6 +31,7 @@ class AuthConverter {
       return AuthResponse(
         status: AuthResponseStatus.wrongData,
         token: null,
+        qrToken: null,
         refreshToken: null,
       );
     }
@@ -36,6 +39,7 @@ class AuthConverter {
     return AuthResponse(
       status: AuthResponseStatus.success,
       token: backendResponse.token,
+      qrToken: backendResponse.qrToken,
       refreshToken: backendResponse.refreshToken,
     );
   }
@@ -45,17 +49,19 @@ class AuthResponse {
   final AuthResponseStatus status;
 
   final String? token;
+  final String? qrToken;
   final String? refreshToken;
 
   AuthResponse({
     required this.status,
     required this.token,
+    required this.qrToken,
     required this.refreshToken,
   });
 
   @override
   String toString() {
-    return "Status: ${status.name}\nToken: $token\nRefreshToken: $refreshToken";
+    return "Status: ${status.name}\nToken: $token\nRefreshToken: $refreshToken\nQrToken: $qrToken";
   }
 }
 

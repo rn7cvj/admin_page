@@ -36,6 +36,7 @@ FutureOr<AuthBackendResponse> converResponse(Response res) {
 
   newBody.refreshToken = json["data"]["refresh_token"];
   newBody.token = json["data"]["token"];
+  newBody.qrToken = json["data"]["qr_token"];
 
   return newBody;
 }
@@ -44,5 +45,6 @@ class AuthBackendResponse {
   late bool isSuccess;
 
   String? token;
+  String? qrToken;
   String? refreshToken;
 }

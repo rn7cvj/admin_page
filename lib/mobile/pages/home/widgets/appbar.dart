@@ -12,10 +12,14 @@ class HomeAppBar extends AppBar {
   HomeAppBar({super.key})
       : super(
           automaticallyImplyLeading: false,
-          title: _HomeAppBarTitle(),
+          title: Padding(
+            padding: const EdgeInsets.only(left: ffPaddingMedium),
+            child: _HomeAppBarTitle(),
+          ),
           actions: [
             _HomeAppBarNofications(),
             _HomeAppBarProfile(),
+            const SizedBox(width: ffMarginMedium)
           ],
           titleSpacing: 0,
           forceMaterialTransparency: false,
