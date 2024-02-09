@@ -50,4 +50,4 @@ app.*.map.json
 
 /lib/gen/
 pubspec.lock
-pubspec.lock
+android/local.properties
