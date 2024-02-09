@@ -34,6 +34,12 @@ final class RoutesName {
     name: "home",
   );
 
+  static Route profile = Route(
+    fullPath: '/home/profile',
+    reletivePath: 'profile',
+    name: "profile",
+  );
+
   static Route calendar = Route(
     fullPath: '/calendar',
     reletivePath: '/calendar',
